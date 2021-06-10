@@ -1,0 +1,15 @@
+.text-deco{
+    text-decoration: none;
+}
+
+.text-color{
+    color: whitesmoke;
+}
+
+.text-color:hover{
+    color: orange;
+}
+
+.bg-customcolor{
+    background: #001526;
+}
