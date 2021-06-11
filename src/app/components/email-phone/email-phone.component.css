@@ -8,9 +8,12 @@
     align-items: center;
     font-size: large;
 }
-
+h2 {
+	font-size: 25px;
+	color:aliceblue;
+	text-align: center;
+}
 button{
-    width: 150px;
     height: 40px;
     margin: 25px auto 0px auto;
     font-family: Arial, Helvetica, sans-serif;
