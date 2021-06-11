@@ -1,0 +1,38 @@
+<div class="register">
+    <form (ngSubmit)="register()" #frm=ngForm action="">
+        <i class="fa fa-empire"></i>
+        <h2>SignIn</h2>
+        <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Login Failed !</strong> Invalid User Details
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <div class="group">
+            <input type="text" name="uname" id="username" autocomplete="off" placeholder="Username" [(ngModel)]="auth.uname" #uid=ngModel><i class="fa fa-envelope"></i>
+            
+        </div>
+        <div class="group">
+            <input type="text" name="email" id="email" autocomplete="off" placeholder="Email" [(ngModel)]="auth.email" #mail=ngModel><i class="fa fa-user"></i>
+            
+        </div>
+        <div class="group">
+            <input type="password" name="password" id="password" autocomplete="off" placeholder="Password" [(ngModel)]="auth.pwd" #pass=ngModel> <i class="fa fa-unlock-alt"></i>
+                
+            </div>
+        <div class="group">
+            <input type="password" name="confirmpassword" id="confirmpassword" autocomplete="off" placeholder="Confirm Password" [(ngModel)]="auth.confirmpwd" #cnfpwd="ngModel"><i class="fa fa-unlock-alt"></i>
+        </div>
+        <div class="group">
+            <input type="tel" name="phonenumber" id="phonenumber" autocomplete="off" placeholder="Phone Number" [(ngModel)]="auth.phnnum" #phn=ngModel> <i class="fa fa-unlock-alt"></i>
+        </div>
+        <div class="group">
+            <input type="submit" class="btnn" value="CONTINUE">
+        </div>
+        <p class="para">Already have an account?<a routerLink="login" >Login</a></p>
+    </form>
+
+</div>
+
+
+
