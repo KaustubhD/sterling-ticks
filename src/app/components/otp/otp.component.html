@@ -1,0 +1,18 @@
+<body>
+    <div class="container">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form">
+          <h3>Enter your OTP </h3>
+                  <div class="form-inline">
+                    <div class="row">
+                        <div class="col-2" *ngFor="let input of formInput;  index as i">
+                        <input #formRow type="text" formControlName="{{input}}" class="form-control" maxlength="1" (keyup)="keyUpEvent($event, i)">
+                </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <br />
+          <h4>Didn't Receive OTP?</h4>
+          <button type="button" class="btn btn-primary" >Resend OTP</button>
+        </form>
+      </div>
+    </body>
