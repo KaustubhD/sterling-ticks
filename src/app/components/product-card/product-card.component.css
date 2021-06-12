@@ -1,0 +1,14 @@
+img{
+    height: 75%;
+    width: 95%;
+    max-width: 12em;
+    margin: 2px auto;
+}
+p{
+    margin: 2px auto;
+    text-align: center;
+}
+
+app-product-card{
+    border: 2px solid black;
+}

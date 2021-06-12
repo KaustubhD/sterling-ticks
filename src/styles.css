@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* Colour Pallette----------------
+    primary-colour: #
+    secondary-colour: #
+    tertiary-colour: #
+    highlighting-colour: #
+    effect-colour: #
+
+    To change the colours find and replace the required colour codes with new set
+*/
+
+
+/* Fonts Pallette------------------
+*/
+
+
+/* important classes: 
+    1) .card
+    2) 
+*/
+
+
+/* CSS Starts here ----------------
+*/
+
+*,
+body,
+.container,
+app-router-outlet {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.no-margin {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.card {
+    height: 15em;
+    width: 100%;
+    max-width: 18em;
+    margin: 4px auto;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.col {
+    margin: 0 auto;
+}
