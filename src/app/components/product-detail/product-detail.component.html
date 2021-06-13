@@ -1,0 +1,202 @@
+<div id="content-wrapper" class="row px-5">
+
+    <div class=" mt-5 col-sm-12 col-md-6 ">
+        <img id="featured" src="{{featureImage}}" class="mt-1" alt="Watch">
+        <br /><br />
+        <div id="slide-wrapper">
+
+            <i id="slideLeft" class="bi bi-arrow-left-circle-fill arrow" (click)="scrollLeft()"></i>
+            <div id="slider" #slider>
+                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}"
+                    alt="Watch" (mouseover)="changeImg($event)">
+            </div>
+            <i id="slideRight" class="bi bi-arrow-right-circle-fill arrow " (click)="scrollRight()"></i>
+
+        </div>
+    </div>
+
+    <div class=" mt-3  col-sm-12 col-md-6 p-4">
+        <h1>{{product.name}}</h1>
+        <h2 class="text-gray">{{product.gender}} {{product.strap[0].colour}} {{product.glass_material}} Watch</h2><br />
+        <span class="bg-light p-2 rating"> {{product.star_rating}}
+            <i class="bi bi-star-fill" style="color: green;"></i> | 1.1k Ratings
+        </span>
+
+        <br />
+        <hr>
+
+        <span style="font-size:x-large;"><strong>{{sellingPrice | currency: "INR" :
+                "symbol"}}</strong></span>&nbsp;&nbsp;&nbsp;<span style="font-size: x-large;"><del> {{product.price |
+                currency: "INR" : "symbol"}}</del></span>&nbsp;&nbsp;&nbsp;<span class="discount">({{product.discount}}%
+            OFF)</span><br />
+        <div class="text-success" style="font-size: larger;"><strong>inclusive of all taxes</strong></div>
+
+
+        <hr>
+
+        <div class="lh-lg">
+            <h4>DELIVERY OPTIONS&nbsp;&nbsp;<i class="bi bi-truck"></i></h4><br />
+            <h4><i class="bi bi-bag-check"></i>&nbsp;&nbsp;&nbsp;Get it by one week</h4><br />
+            <h4><i class="bi bi-cash-coin"></i>&nbsp;&nbsp;&nbsp;Pay on delivery available</h4><br />
+            <h4><i class="bi bi-arrow-left-right"></i>&nbsp;&nbsp;&nbsp;Easy 30 days return available</h4><br />
+
+            <h5>100% original products</h5><br />
+
+            <button type="submit" class="btn btn-info btn-lg p-3 text-center"
+                style="font-weight: 700; border-radius: 6px;">Add
+                to Cart <i class="bi bi-cart2 navbar-icon"></i></button>
+        </div>
+        <br />
+        <hr><br />
+
+        <h4>PRODUCT DETAILS&nbsp;&nbsp;<i class="bi bi-card-text"></i></h4>
+
+        <p>
+            Brand: {{product.brand}} <br />
+            Collection: {{product.collection}} <br />
+            Series: {{product.series}} <br />
+            Model Number: {{product.modelno}} <br />
+            Movement: {{product.movement}} <br />
+            Features: {{product.features}} <br />
+            Water Resistance: {{product.water_resistance}} M<br />
+            Warranty: {{product.warranty_period}} years<br />
+            Warranty provided by brand/ manufacturer <br />
+            Comes in a signature {{product.name}} case <br />
+        </p>
+
+        <div>
+            <h4>Specifications</h4><br />
+            <div class="row row-cols-2">
+                <div class="col">
+                    <div>
+                        <h6>Movement</h6>
+                        <h5>{{product.movement}}</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Dial Colour</h6>
+                        <h5>{{product.dial_colour}}</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Case Size</h6>
+                        <h5>{{product.case[0].size}} mm</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Case Material</h6>
+                        <h5>{{product.case[0].material}}</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Water Resistance</h6>
+                        <h5>{{product.water_resistance}} M</h5>
+                    </div>
+                    <hr />
+
+                </div>
+                <div class="col">
+                    <div>
+                        <h6>Glass Material</h6>
+                        <h5>{{product.glass_material}}</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Strap Colour</h6>
+                        <h5>{{product.strap[0].colour}}</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Case Shape</h6>
+                        <h5>{{product.case[0].shape}}</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Strap Material</h6>
+                        <h5>{{product.strap[0].material}}</h5>
+                    </div>
+                    <hr />
+                    <div>
+                        <h6>Warranty Period</h6>
+                        <h5>{{product.warranty_period}} years</h5>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row mt-5">
+            <h2>Similar Products</h2>
+        </div><br />
+        <div class="row row-cols-1 row-cols-md-4 ">
+            <div class="col">
+                <div class="card">
+                    <img src="../../../assets/images/{{product.img[0]}}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text text-gray">{{product.gender}} {{product.strap[0].colour}}
+                            {{product.glass_material}} Watch</p>
+                        <span class="bg-light p-2 rating"> {{product.star_rating}}
+                            <i class="bi bi-star-fill" style="color: green;"></i>
+                        </span>&nbsp;&nbsp;
+                        <span class="discount">
+                            ({{product.discount}}% OFF)
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="../../../assets/images/{{product.img[1]}}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text text-gray">{{product.gender}} {{product.strap[0].colour}}
+                            {{product.glass_material}} Watch</p>
+                        <span class="bg-light p-2 rating"> {{product.star_rating}}
+                            <i class="bi bi-star-fill" style="color: green;"></i>
+                        </span>&nbsp;&nbsp;
+                        <span class="discount">
+                            ({{product.discount}}% OFF)
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="../../../assets/images/{{product.img[2]}}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text text-gray">{{product.gender}} {{product.strap[0].colour}}
+                            {{product.glass_material}} Watch</p>
+                        <span class="bg-light p-2 rating"> {{product.star_rating}}
+                            <i class="bi bi-star-fill" style="color: green;"></i>
+                        </span>&nbsp;&nbsp;
+                        <span class="discount">
+                            ({{product.discount}}% OFF)
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="../../../assets/images/{{product.img[3]}}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text text-gray">{{product.gender}} {{product.strap[0].colour}}
+                            {{product.glass_material}} Watch</p>
+                        <span class="bg-light p-2 rating"> {{product.star_rating}}
+                            <i class="bi bi-star-fill" style="color: green;"></i>
+                        </span>&nbsp;&nbsp;
+                        <span class="discount">
+                            ({{product.discount}}% OFF)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br /><br />
+    </div>
+
+</div>
