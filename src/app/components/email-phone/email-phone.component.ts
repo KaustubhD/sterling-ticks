@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GlobalConstants } from 'src/app/common/global-constants';
+import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
 	selector: 'app-email-phone',
@@ -9,37 +12,33 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EmailPhoneComponent implements OnInit {
 	public email: String | undefined
 	public phone: String | undefined
+	public username: String
 
-	constructor(private router: Router, private route: ActivatedRoute) {
-		route.queryParams.subscribe(params => {
-			// TODO: Remove this if
-			if(!params.id) {
-				router.navigate(['/email-phone'], {
-					queryParams: {
-						email: btoa("abc@gmail.com"),
-						phone: btoa("9944336677")
-					}
-				})
-			}
-			this.email = params.email && atob(params.email)
-			this.phone = params.phone && atob(params.phone)
-		})
+	constructor(private router: Router, private http: HttpClient, private regService: RegisterService) {
+		({userName: this.username, email: this.email, phoneNo: this.phone} = regService.registeredUser)
 	}
 
 	ngOnInit(): void {
 	}
 
 	onSend(choice: Number) {
-			if(choice == 1) {
-				// this.http.post("/otp/generate", {email: this.email})
-			}
+		if(choice == 1) {
+			this.http.post(GlobalConstants.URLS.OTP_GENERATE, {username: this.username, email: this.email})
+				.toPromise()
+				.then(() => this.navigate())
+		}
 			else if (choice == 2){
-				// this.http.post("/otp/generate", {phone: this.phone})
-			}
-			else {
-				// Do nothing
-				return
-			}
-			this.router.navigate(['/otp']);
+				this.http.post(GlobalConstants.URLS.OTP_GENERATE, {username: this.username, phone: this.phone})
+				.toPromise()
+				.then(() => this.navigate())
+		}
+		else {
+			// Do nothing
+			return
+		}
+	}
+
+	navigate(): void {
+		this.router.navigate(['/otp']);
 	}
 }
