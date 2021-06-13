@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
 		"brand": "Breitling",
 		"collection": "Navitimer",
 		"series": "Automatic 35",
-		"modelno": "U17395211A1P2",
+		"modelNo": "U17395211A1P2",
 		"movement": "Automatic",
 		"gender": "Women",
 		"star_rating": 4.3,

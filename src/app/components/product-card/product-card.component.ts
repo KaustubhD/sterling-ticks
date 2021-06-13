@@ -17,6 +17,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   specification(){
-    this.router.navigate(['/home'],{queryParams : { product: this.product.name}});
+    this.router.navigate([`/product/${this.product.modelNo}`]);
   }
 }

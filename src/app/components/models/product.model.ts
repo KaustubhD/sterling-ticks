@@ -5,7 +5,7 @@ export class Product{
     public brand: string;
     public collection: string;
     public series: string;
-    public modelno: string;
+    public modelNo: string;
     public movement: string;
     public gender: string;
     public star_rating: number;
