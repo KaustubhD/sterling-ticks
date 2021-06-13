@@ -1,5 +1,12 @@
-<div class="card">
-    <img src="assets/images/{{product.img}}" alt="product image">
-    <p>{{product.name}}</p>
-    <p>{{product.price}}</p>
+<div class="card product-card-container">
+    <div class="card product-card" (click)="specification()">
+        <p>{{product.name}}</p>
+        <img class="product-img" src="assets/images/{{product.img}}" alt="product image">
+
+        <p>{{product.price | currency: 'INR'}}</p>
+        <p>
+            <app-rating [rating]="product.rating"></app-rating>
+        </p>
+
+    </div>
 </div>

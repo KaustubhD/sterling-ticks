@@ -9,35 +9,29 @@
             </button>
         </div>
         <div class="group">
-            <input type="text" name="uname" id="username" autocomplete="off" placeholder="Username"
-                [(ngModel)]="user.userName" #uid=ngModel><i class="fa fa-envelope" required></i>
+            <input type="text" name="uname" id="username" autocomplete="off" placeholder="Username" [(ngModel)]="user.userName" #uid=ngModel><i class="fa fa-envelope" required></i>
         </div>
         <div class="group">
-            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" [(ngModel)]="user.email"
-                #mail=ngModel><i class="fa fa-user" required></i>
+            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" [(ngModel)]="user.email" #mail=ngModel><i class="fa fa-user" required></i>
 
         </div>
         <div class="group">
-            <input type="password" name="password" id="password" autocomplete="off" placeholder="Password"
-                [(ngModel)]="user.password" #pass=ngModel required> <i class="fa fa-unlock-alt"></i>
+            <input type="password" name="password" id="password" autocomplete="off" placeholder="Password" [(ngModel)]="user.password" #pass=ngModel required> <i class="fa fa-unlock-alt"></i>
 
         </div>
         <div class="group">
-            <input type="password" name="confirmpassword" id="confirmpassword" autocomplete="off"
-                placeholder="Confirm Password" [(ngModel)]="user.confirmpwd"  required #cnfpwd="ngModel"><i
-                class="fa fa-unlock-alt"></i>
+            <input type="password" name="confirmpassword" id="confirmpassword" autocomplete="off" placeholder="Confirm Password" [(ngModel)]="user.confirmpwd" required #cnfpwd="ngModel"><i class="fa fa-unlock-alt"></i>
         </div>
         <div class="group">
-            <input type="tel" name="phonenumber" id="phonenumber" autocomplete="off" placeholder="Phone Number"
-                [(ngModel)]="user.phoneNo" #phn=ngModel> <i class="fa fa-unlock-alt"></i>
+            <input type="tel" name="phonenumber" id="phonenumber" autocomplete="off" placeholder="Phone Number" [(ngModel)]="user.phoneNo" #phn=ngModel> <i class="fa fa-unlock-alt"></i>
         </div>
         <div class="group">
             <input [disabled]=!frm.valid type="submit" class="btnn" value="CONTINUE">
         </div>
     </form>
-        <p *ngIf="!success" class="para">Already have an account?<a routerLink="login">Login</a></p>
-        <div *ngIf="success" class="sucess  fade show" role="success">
-            <strong> <h2> Registered Successfully! </h2></strong> 
-        </div>
+    <p *ngIf="!success" class="para">Already have an account?<a routerLink="/login">Login</a></p>
+    <div *ngIf="success" class="sucess  fade show" role="success">
+        <strong> <h2> Registered Successfully! </h2></strong>
+    </div>
 
 </div>

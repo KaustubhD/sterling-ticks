@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         let errorMessage = error.message;
         this.alert = true;
       }
-    });;
+    });
   }
 
   onSuccess(){
