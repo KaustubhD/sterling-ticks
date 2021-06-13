@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-sm-12 no-margin rating-container">
+        <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+            <li (click)="fetchRating(star)" [ngClass]="{'selected': (star <= rating)}">
+                <i class="bi bi-star-fill"></i>
+            </li>
+        </ul>
+    </div>
+</div>

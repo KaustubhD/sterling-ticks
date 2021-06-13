@@ -1,30 +1,44 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { RatingComponent } from './components/rating/rating.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 
-
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    OtpComponent,
-    EmailPhoneComponent,
-   
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent,
-  OtpComponent,
-EmailPhoneComponent]
+	declarations: [
+		AppComponent,
+    	ProductDetailComponent,
+		ProductCardComponent,
+		RegisterComponent,
+		LoginComponent,
+		HomeComponent,
+		ProductListComponent,
+		HeaderComponent,
+		FooterComponent,
+  		RatingComponent,
+		OtpComponent,
+		EmailPhoneComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		ReactiveFormsModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
