@@ -31,11 +31,9 @@
 #featured{
 	width: 100%;
 	max-height: 700px;
-    /* width: 600px; */
     height: 700px;
 	object-fit: cover;
 	cursor: pointer;
-	/* border: 2px solid black; */
 }
 
 .thumbnail{
@@ -47,7 +45,6 @@
 	cursor: pointer;
 	opacity: 0.5;
 	margin: 5px;
-	/* border: 2px solid black; */
 
 }
 
@@ -61,7 +58,6 @@
 
 #slide-wrapper{
 	max-width: 100%;
-	/* width: 620px; */
 	display: flex;
 	min-height: 130px;
 	align-items: center;
@@ -75,15 +71,15 @@
 }
 
 #slider::-webkit-scrollbar {
-		width: 8px;
-        height: 7px;
-        border-radius: 10px;
+	width: 8px;
+	height: 7px;
+	border-radius: 10px;
 }
  
 #slider::-webkit-scrollbar-thumb {
-  background-color:black;
-  outline: 1px solid slategrey;
-   border-radius: 100px;
+  	background-color:black;
+  	outline: 1px solid slategrey;
+   	border-radius: 100px;
 }
 
 #slider::-webkit-scrollbar-thumb:hover{
@@ -99,8 +95,6 @@
 
 .arrow:hover{
 	opacity: .5;
-	/* width: 35px;
-	height: 35px; */
 }
 
 .card-img-top{

@@ -1,71 +1,67 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Product } from 'src/product.model';
-
-declare var changeImage: any;
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/components/models/product.model';
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+	selector: 'app-product-detail',
+	templateUrl: './product-detail.component.html',
+	styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product = 
-    {
-      "id": 123,
-      "name": "BREITLING Navitimer",
-      "price": 484710,
-      "brand": "Breitling",
-      "collection": "Navitimer",
-      "series": "Automatic 35",
-      "modelno": "U17395211A1P2",
-      "movement": "Automatic",
-      "gender": "Women",
-      "star_rating": 4.3,
-      "discount": 20,
-      "case": [{"size": 35,
-        "shape": "Round",
-        "material": "Steel"
-      }],
-      "glass_material": "Sapphire Crystal",
-      "dial_colour": "Mop",
-      "strap": [{"material": "Leather",
-        "colour": "Brown"
-      }],
-      "water_resistance": 30,
-      "warranty_period": 2,
-      "features": "Bi-directional Rotating Bezel",
-      "img": ["navitimer1.webp", "navitimer2.webp", "navitimer3.webp", "navitimer4.webp"],
-    
-    }
-  
+	product: Product = Product.build({
+		"id": 123,
+		"name": "BREITLING Navitimer",
+		"price": 484710,
+		"brand": "Breitling",
+		"collection": "Navitimer",
+		"series": "Automatic 35",
+		"modelno": "U17395211A1P2",
+		"movement": "Automatic",
+		"gender": "Women",
+		"star_rating": 4.3,
+		"discount": 20,
+		"case": [{
+			"size": 35,
+			"shape": "Round",
+			"material": "Steel"
+		}],
+		"glass_material": "Sapphire Crystal",
+		"dial_colour": "Mop",
+		"strap": [{
+			"material": "Leather",
+			"colour": "Brown"
+		}],
+		"water_resistance": 30,
+		"warranty_period": 2,
+		"features": "Bi-directional Rotating Bezel",
+		"img": ["navitimer1.webp", "navitimer2.webp", "navitimer3.webp", "navitimer4.webp"]
+	})
+	similarProducts: Product[] = (new Array(4)).fill(this.product)
+	featureImage: String = "../../../assets/images/" + this.product.img[0]
+	modelNo: String
 
-  featureImage: string = "../../../assets/images/" + this.product.img[0]
-  sellingPrice: number = this.getDiscountedPrice();
+	@ViewChild("slider") slider: ElementRef
 
-  @ViewChild("slider")slider: ElementRef  
+	constructor(private aRoute: ActivatedRoute, private productService: ProductService) {
+		this.modelNo = aRoute.snapshot.paramMap.get('model') as String
+		// this.productService.getByModel(this.modelNo).then(product => {
+		// 	this.product = product
+		// })
+	}
 
-  constructor() { }
+	ngOnInit(): void { }
 
-  ngOnInit(): void {
-    new changeImage();
-  }
+	changeImg(event: Event) {
+		this.featureImage = (event.currentTarget as HTMLImageElement).src;
+	}
 
-  changeImg(event: Event){
-    this.featureImage = (event.currentTarget as HTMLImageElement).src;
-  }
+	scrollLeft() {
+		this.slider.nativeElement.scrollTo({ left: (this.slider.nativeElement.scrollLeft - 180), behavior: 'smooth' })
+	}
 
-  scrollLeft(){
-    console.log('Left')
-    this.slider.nativeElement.scrollTo({ left: (this.slider.nativeElement.scrollLeft - 180), behavior: 'smooth' })
-  }
-
-  scrollRight(){
-    this.slider.nativeElement.scrollTo({ left: (this.slider.nativeElement.scrollLeft + 180), behavior: 'smooth' })
-  }
-
-  getDiscountedPrice(){
-    return this.product.price - (this.product.price * this.product.discount / 100);
-  }
-
+	scrollRight() {
+		this.slider.nativeElement.scrollTo({ left: (this.slider.nativeElement.scrollLeft + 180), behavior: 'smooth' })
+	}
 }

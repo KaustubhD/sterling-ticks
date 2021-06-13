@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product.model';
-import { Time } from '@angular/common';
+import { ProductListModel } from '../models/productList.model';
 import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Brand } from '../models/brand.model';
@@ -14,7 +13,7 @@ export class ProductListComponent implements OnInit {
   page: number = 1;
   maxItem: number = 12;
   brandSelect: boolean = false;
-  products: Product[] = [];
+  products: ProductListModel[] = [];
   brands: Brand[] = [];
   categories: string[] = [];
   lastPage: number;
@@ -104,12 +103,12 @@ export class ProductListComponent implements OnInit {
   }
 
   priceSort() {
-    this.products.sort((a: Product, b: Product) => (a.price > b.price ? 1 : -1));
+    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.price > b.price ? 1 : -1));
     console.log(this.products);
   }
 
   ratingSort() {
-    this.products.sort((a: Product, b: Product) => (a.rating > b.rating) ? -1 : 1);
+    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.rating > b.rating) ? -1 : 1);
   }
 
 }
