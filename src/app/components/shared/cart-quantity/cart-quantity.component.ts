@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 import { CartItemsService } from 'src/app/services/shared/cart-item/cart-items.service';
 
 @Component({
@@ -12,12 +11,13 @@ export class CartQuantityComponent implements OnInit {
 
 	@Input() quantity: number
 	@Input() productId: number
+	@Output() quantityChange = new EventEmitter<number>()
 
 	quantity$: BehaviorSubject<number>
 
 	constructor(private cartItemsService: CartItemsService) {}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
 	ngOnChanges(changes: SimpleChanges){
 		if(changes.quantity.isFirstChange())
@@ -33,6 +33,7 @@ export class CartQuantityComponent implements OnInit {
 		this.quantity$
 			.subscribe((newQuantity) => {
 				this.quantity = newQuantity
+				this.quantityChange.emit(this.quantity)
 				// this.cartItemsService.updateQuantity(this.productId, this.quantity)
 			})
 	}
