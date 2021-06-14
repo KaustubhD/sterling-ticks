@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product.model';
-import { Time } from '@angular/common';
+import { ProductListModel } from '../models/productList.model';
 import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Brand } from '../models/brand.model';
@@ -14,120 +13,15 @@ export class ProductListComponent implements OnInit {
   page: number = 1;
   maxItem: number = 12;
   brandSelect: boolean = false;
-  products: Product[] = [
-    {
-      "name": "Product 1",
-      "price": 500,
-      "rating": 1,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 2",
-      "price": 120,
-      "rating": 2,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 3",
-      "price": 6078,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 4",
-      "price": 973,
-      "rating": 5,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 5",
-      "price": 800,
-      "rating": 5,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 6",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 7",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 8",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 9",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    }, {
-      "name": "Product 10",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 11",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 12",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 13",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    }, {
-      "name": "Product 14",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 15",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    },
-    {
-      "name": "Product 16",
-      "price": 800,
-      "rating": 4,
-      "brand": "Helio",
-      "img": "testimg.webp"
-    }
-  ];
-  brands: Brand[] = [{name: "helio",description: "Premium watch brand. Estd. 1980, London"},{name: "Titan",description: ""},{name: "Breguet",description: ""}];
-  categories: string[] = ["Rich", "Expensive","Sell Kidneys"];
+  products: ProductListModel[] =  [    {
+    "modelNo" : "mdl001", "name": "Product 2",
+    "price": 120,
+    "rating": 2.5,
+    "brand": "Helio",
+    "img": "testimg.webp"
+  }];
+  brands: Brand[] = [];
+  collections: string[] = [];
   lastPage: number;
   aBrand: Brand;
   constructor(private service: ProductService, private router: Router, private aroute: ActivatedRoute) { }
@@ -146,7 +40,7 @@ export class ProductListComponent implements OnInit {
       }
     });
     this.getAllBrands();
-    this.getAllCategories();
+    this.getAllCollections();
     this.lastPage = this.products.length / this.maxItem;
   }
 
@@ -154,8 +48,8 @@ export class ProductListComponent implements OnInit {
     this.service.getAllBrands().then((data) => this.brands = data);
   }
 
-  getAllCategories(){
-    this.service.getAllCategories().then((data) => this.categories = data);
+  getAllCollections(){
+    this.service.getAllCollections().then((data) => this.collections = data);
   }
 
   sort() {
@@ -174,9 +68,9 @@ export class ProductListComponent implements OnInit {
       if (params.filterBy == 'brand') {
         this.filterByBrand(params.brand);
       }
-      if (params.filterBy == 'category') {
+      if (params.filterBy == 'collection') {
         this.brandSelect=false;
-        this.filterByCategory(params.category);
+        this.filterByCollection(params.collection);
       }
     });
   }
@@ -209,18 +103,18 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  filterByCategory(category: string) {
-    let res = this.service.getByCategory(category).then(
+  filterByCollection(collection: string) {
+    let res = this.service.getByCollection(collection).then(
   data => this.products = data);
   }
 
   priceSort() {
-    this.products.sort((a: Product, b: Product) => (a.price > b.price ? 1 : -1));
+    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.price > b.price ? 1 : -1));
     console.log(this.products);
   }
 
   ratingSort() {
-    this.products.sort((a: Product, b: Product) => (a.rating > b.rating) ? -1 : 1);
+    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.rating > b.rating) ? -1 : 1);
   }
 
 }
