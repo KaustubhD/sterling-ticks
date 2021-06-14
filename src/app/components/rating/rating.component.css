@@ -3,13 +3,13 @@
 }
 
 .rating-container {
-    width: 100%;
+    width: 100%; 
     min-width: 200px;
     margin: 0 auto;
 }
 
 .rating-list li {
-    float: right;
+    /* float: right; */
     color: #ddd;
     width: fit-content;
     padding: 2px 3px;

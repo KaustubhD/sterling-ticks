@@ -20,20 +20,21 @@ export class ProductDetailComponent implements OnInit {
 		"modelNo": "U17395211A1P2",
 		"movement": "Automatic",
 		"gender": "Women",
-		"star_rating": 4,
+		"starRating": 4.3,
 		"discount": 20,
-		"case_size": 35,
-		"case_shape": "Round",
-		"case_material": "Steel",
-		"glass_material": "Sapphire Crystal",
-		"dial_colour": "Mop",
-		"strap_material": "Leather",
-		"strap_colour": "Brown",
-		"water_resistance": 30,
-		"warranty_period": 2,
+		"caseSize": 35,
+		"caseShape": "Round",
+		"caseMaterial": "Steel",
+		"glassMaterial": "Sapphire Crystal",
+		"dialColour": "Mop",
+		"strapMaterial": "Leather",
+		"strapColour": "Brown",
+		"waterResistance": 30,
+		"warrantyPeriod": 2,
 		"features": "Bi-directional Rotating Bezel",
 		"img": ["navitimer1.webp", "navitimer2.webp", "navitimer3.webp", "navitimer4.webp"]
 	})
+
 	similarProducts: Product[] = (new Array(4)).fill(this.product)
 	featureImage: String = "../../../assets/images/" + this.product.img[0]
 	modelNo: String
