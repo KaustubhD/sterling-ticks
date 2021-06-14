@@ -1,22 +1,46 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { OtpComponent } from './components/otp/otp.component';
+import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-  CartComponent
+    	ProductDetailComponent,
+		ProductCardComponent,
+		RegisterComponent,
+		LoginComponent,
+		HomeComponent,
+		ProductListComponent,
+		HeaderComponent,
+		FooterComponent,
+  		RatingComponent,
+		OtpComponent,
+		EmailPhoneComponent,
+		CartComponent
 	],
 	imports: [
 		BrowserModule,
+		AppRoutingModule,
 		FormsModule,
-		ReactiveFormsModule,
-		RouterModule
+		HttpClientModule,
+		ReactiveFormsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
