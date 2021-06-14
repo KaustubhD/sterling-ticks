@@ -1,6 +1,14 @@
 <div class="container">
-<div class="card">
-    <img src="assets/images/{{cart.img}}" alt="product image">
+<div class="card card-container">
+    <img src="assets/images/{{cartItems.img}}" alt="product image">
 </div>
-<p>Welocme to cart page</p>
+<div class="cart-conatiner">
+    <p>{{cartItems.name}}</p>
+    <p>{{cartItems.price | currency:'INR'}}</p>
+    <p>{{cartItems.rating}}</p>
+    <p>{{cartItems.brand}}</p>
+    <p>{{cartItems.quantity}}</p>
+    <p>{{cartItems.deliveryTime}}</p>
+    <p>welcome to cart page</p>
+</div>
 </div>

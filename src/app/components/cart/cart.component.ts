@@ -8,7 +8,7 @@ import { Cart } from '../models/cart.model';
 })
 export class CartComponent implements OnInit {
 
-  @Input() cart : Cart;
+  @Input() cartItems : Cart;
   constructor() { }
 
   ngOnInit(): void {

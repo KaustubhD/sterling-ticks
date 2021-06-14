@@ -8,7 +8,7 @@ import { Cart } from '../models/cart.model';
 })
 export class CartListComponent implements OnInit {
 
-  carts:Cart[]=[
+  cartItems:Cart[]=[
     {
       "name": "Product 1",
       "price": 5000,
