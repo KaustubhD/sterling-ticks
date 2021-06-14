@@ -23,14 +23,14 @@ export class RegisterComponent implements OnInit {
       this.flag = true;
       let res = this.service.register(this.user).subscribe({
         next: data => {
-          data = this.user;
+          this.user = data as User;
           this.onSuccess();
         },
         error: error => {
           let errorMessage = error.message;
           this.alert = true;
         }
-      });;
+      });
     }
     else {
       this.alert = true;
@@ -39,6 +39,8 @@ export class RegisterComponent implements OnInit {
 
   onSuccess(){
     this.success = true;
-    setTimeout(()=>{ this.router.navigate(['home']) }, 700);
+    setTimeout(()=>{
+		this.router.navigate(['/email-phone'])
+	}, 700);
   }
 }

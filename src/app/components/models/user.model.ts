@@ -1,7 +1,7 @@
 export class UserModel{
-    public userName: String='';
-    public email: String='';
-    public password: String='';
-    public confirmpwd: String='';
-    public phoneNo: String='';
+    public userName: string;
+    public email: string;
+    public password: string;
+    public confirmpwd: string;
+    public phoneNo: string;
 }

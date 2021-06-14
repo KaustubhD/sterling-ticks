@@ -2,18 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel as User } from '../components/models/user.model';
 import { GlobalConstants } from '../common/global-constants';
+import { share } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class RegisterService {
+	public registeredUser: User;
 
-  url: string = GlobalConstants.apiUrl+'register';
+	constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
-
-
-  register(user: User) {
-    return this.http.post(this.url,user);
-  }
+	register(user: User) {
+		let obs = this.http.post(GlobalConstants.URLS.REGISTER, user).pipe(share())
+		this.registeredUser = user
+		obs.subscribe(_ => {
+			this.registeredUser = user
+		})
+		return obs
+	}
 }

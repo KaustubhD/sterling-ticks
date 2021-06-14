@@ -13,15 +13,122 @@ export class ProductListComponent implements OnInit {
   page: number = 1;
   maxItem: number = 12;
   brandSelect: boolean = false;
-  products: ProductListModel[] =  [    {
-    "modelNo" : "mdl001", "name": "Product 2",
-    "price": 120,
-    "rating": 2.5,
-    "brand": "Helio",
-    "img": "testimg.webp"
-  }];
-  brands: Brand[] = [];
-  collections: string[] = [];
+  products: ProductListModel[] =  [
+    {
+      "modelNo" : "mdl001",
+      "name": "Product 1",
+      "price": 500,
+      "rating": 1.5,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 2",
+      "price": 120,
+      "rating": 2.8,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 3",
+      "price": 6078,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 4",
+      "price": 973,
+      "rating": 5,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 5",
+      "price": 800,
+      "rating": 5,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 6",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 7",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 8",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 9",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    }, {
+      "modelNo" : "mdl001", "name": "Product 10",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 11",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 12",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 13",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    }, {
+      "modelNo" : "mdl001", "name": "Product 14",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+    {
+      "modelNo" : "mdl001", "name": "Product 15",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    },
+
+    {
+      "modelNo" : "mdl001", "name": "Product 16",
+      "price": 800,
+      "rating": 4,
+      "brand": "Helio",
+      "img": "testimg.webp"
+    }
+  ];
+  brands: Brand[] = [{name: "helio",description: "Premium watch brand. Estd. 1980, London"},{name: "Titan",description: ""},{name: "Breguet",description: ""}];
+  collections: string[] = ["Rich","Expensive","Zubair likes"];
   lastPage: number;
   aBrand: Brand;
   constructor(private service: ProductService, private router: Router, private aroute: ActivatedRoute) { }
