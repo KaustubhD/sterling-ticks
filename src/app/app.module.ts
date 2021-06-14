@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { OtpComponent } from './components/otp/otp.component';
+import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 
 @NgModule({
 	declarations: [
@@ -25,13 +27,16 @@ import { RatingComponent } from './components/rating/rating.component';
 		ProductListComponent,
 		HeaderComponent,
 		FooterComponent,
-  		RatingComponent
+  		RatingComponent,
+		OtpComponent,
+		EmailPhoneComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule,
-		HttpClientModule
+		HttpClientModule,
+		ReactiveFormsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
