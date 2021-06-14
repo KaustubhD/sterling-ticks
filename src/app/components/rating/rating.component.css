@@ -15,10 +15,10 @@
     padding: 2px 3px;
 }
 
-.rating-list li:hover,
+/* .rating-list li:hover,
 .rating-list li:hover~li {
     color: #ffd700;
-}
+} */
 
 .rating-list {
     display: inline-block;

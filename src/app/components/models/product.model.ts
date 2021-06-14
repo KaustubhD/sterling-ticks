@@ -10,17 +10,13 @@ export class Product{
     public gender: string;
     public star_rating: number;
     public discount: number;
-    public case: {
-        size: number,
-        shape: string,
-        material: string
-    }[];
+    public case_size: number;
+    public case_shape: string;
+    public case_material: string;
     public glass_material: string;
     public dial_colour: string;
-    public strap:{
-        material: string,
-        colour: string
-    }[];
+    public strap_material: string;
+    public strap_colour: string;
     public water_resistance: number;
     public warranty_period: number;
     public features: string;

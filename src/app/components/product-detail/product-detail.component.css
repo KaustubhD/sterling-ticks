@@ -1,6 +1,7 @@
 .rating{
 	border:1px solid silver;
-	border-radius: 5px;;
+	border-radius: 5px;
+	object-fit: cover;
 }
 
 .text-gray{

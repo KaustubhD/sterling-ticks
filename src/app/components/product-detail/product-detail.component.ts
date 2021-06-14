@@ -20,19 +20,15 @@ export class ProductDetailComponent implements OnInit {
 		"modelNo": "U17395211A1P2",
 		"movement": "Automatic",
 		"gender": "Women",
-		"star_rating": 4.3,
+		"star_rating": 4,
 		"discount": 20,
-		"case": [{
-			"size": 35,
-			"shape": "Round",
-			"material": "Steel"
-		}],
+		"case_size": 35,
+		"case_shape": "Round",
+		"case_material": "Steel",
 		"glass_material": "Sapphire Crystal",
 		"dial_colour": "Mop",
-		"strap": [{
-			"material": "Leather",
-			"colour": "Brown"
-		}],
+		"strap_material": "Leather",
+		"strap_colour": "Brown",
 		"water_resistance": 30,
 		"warranty_period": 2,
 		"features": "Bi-directional Rotating Bezel",

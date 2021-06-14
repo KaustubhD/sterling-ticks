@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +14,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { CartQuantityComponent } from './components/shared/cart-quantity/cart-quantity.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +27,8 @@ import { RatingComponent } from './components/rating/rating.component';
 		ProductListComponent,
 		HeaderComponent,
 		FooterComponent,
-  		RatingComponent
+  		RatingComponent,
+		CartQuantityComponent
 	],
 	imports: [
 		BrowserModule,
