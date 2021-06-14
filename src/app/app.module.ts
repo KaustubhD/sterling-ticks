@@ -5,13 +5,12 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CartListComponent } from './components/cart-list/cart-list.component';
+
 
 @NgModule({
 	declarations: [
 		AppComponent,
-  CartComponent,
-  CartListComponent
+  CartComponent
 	],
 	imports: [
 		BrowserModule,
