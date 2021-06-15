@@ -17,7 +17,7 @@
 
     <div class=" mt-3  col-sm-12 col-md-6 p-4">
         <h1>{{product.name}}</h1>
-        <h2 class="text-gray">{{product.gender | titlecase}} {{product.strapColor}} {{product.glassMaterial}} Watch</h2>
+        <h2 class="text-gray">{{product.gender | titlecase}} {{product.strap.color}} {{product.glassMaterial}} Watch</h2>
 
         <div>
             <app-rating [rating]="product.starRating"></app-rating>
@@ -74,14 +74,14 @@
                         <h5>{{product.dialColor}}</h5>
 						<hr />
                     </div>
-                    <div *ngIf="product.caseSize">
+                    <div *ngIf="product.casing?.size">
                         <h6>Case Size</h6>
-                        <h5>{{product.caseSize}} mm</h5>
+                        <h5>{{product.casing.size}} mm</h5>
 						<hr />
                     </div>
-                    <div *ngIf="product.caseMaterial">
+                    <div *ngIf="product.casing?.material">
                         <h6>Case Material</h6>
-                        <h5>{{product.caseMaterial}}</h5>
+                        <h5>{{product.casing.material}}</h5>
 						<hr />
                     </div>
                     <div *ngIf="product.waterResistance">
@@ -97,19 +97,19 @@
                         <h5>{{product.glassMaterial}}</h5>
 						<hr />
                     </div>
-                    <div *ngIf="product.strapColor">
+                    <div *ngIf="product.strap?.color">
                         <h6>Strap Colour</h6>
-                        <h5>{{product.strapColor}}</h5>
+                        <h5>{{product.strap.color}}</h5>
 						<hr />
                     </div>
-                    <div *ngIf="product.caseShape">
+                    <div *ngIf="product.casing?.shape">
                         <h6>Case Shape</h6>
-                        <h5>{{product.caseShape}}</h5>
+                        <h5>{{product.casing.shape}}</h5>
 						<hr />
                     </div>
-                    <div *ngIf="product.strapMaterial">
+                    <div *ngIf="product.strap?.material">
                         <h6>Strap Material</h6>
-                        <h5>{{product.strapMaterial}}</h5>
+                        <h5>{{product.strap.material}}</h5>
 						<hr />
                     </div>
                     <div *ngIf="product.warrantyPeriod">
@@ -123,7 +123,7 @@
         <div>
             <h5>Complete The Look</h5>
             <p>This {{product.brand.name}} {{product.collection.name}} watch will quickly become your favourite staple accessory.
-                This {{product.strapColor}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for
+                This {{product.strap?.color}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for
                 a chic brunch outfit.</p>
         </div>
 
@@ -139,7 +139,7 @@
                     <img src="./{{similarProduct.images[0]}}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{similarProduct.name}}</h5>
-                        <p class="card-text text-gray">{{similarProduct.gender| titlecase}} {{similarProduct.strapColor}}
+                        <p class="card-text text-gray">{{similarProduct.gender| titlecase}} {{similarProduct.strap.color}}
                             {{similarProduct.glassMaterial}} Watch</p>
 
                         <span>
