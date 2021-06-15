@@ -13,9 +13,15 @@ export class ProductListComponent implements OnInit {
   page: number = 1;
   maxItem: number = 12;
   brandSelect: boolean = false;
-  products: ProductListModel[] = [];
+  products: ProductListModel[] =  [    {
+    "modelNo" : "mdl001", "name": "Product 2",
+    "price": 120,
+    "rating": 2.5,
+    "brand": "Helio",
+    "img": "testimg.webp"
+  }];
   brands: Brand[] = [];
-  categories: string[] = [];
+  collections: string[] = [];
   lastPage: number;
   aBrand: Brand;
   constructor(private service: ProductService, private router: Router, private aroute: ActivatedRoute) { }
@@ -34,7 +40,7 @@ export class ProductListComponent implements OnInit {
       }
     });
     this.getAllBrands();
-    this.getAllCategories();
+    this.getAllCollections();
     this.lastPage = this.products.length / this.maxItem;
   }
 
@@ -42,8 +48,8 @@ export class ProductListComponent implements OnInit {
     this.service.getAllBrands().then((data) => this.brands = data);
   }
 
-  getAllCategories(){
-    this.service.getAllCategories().then((data) => this.categories = data);
+  getAllCollections(){
+    this.service.getAllCollections().then((data) => this.collections = data);
   }
 
   sort() {
@@ -62,9 +68,9 @@ export class ProductListComponent implements OnInit {
       if (params.filterBy == 'brand') {
         this.filterByBrand(params.brand);
       }
-      if (params.filterBy == 'category') {
+      if (params.filterBy == 'collection') {
         this.brandSelect=false;
-        this.filterByCategory(params.category);
+        this.filterByCollection(params.collection);
       }
     });
   }
@@ -97,8 +103,8 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  filterByCategory(category: string) {
-    let res = this.service.getByCategory(category).then(
+  filterByCollection(collection: string) {
+    let res = this.service.getByCollection(collection).then(
   data => this.products = data);
   }
 

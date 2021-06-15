@@ -15,4 +15,16 @@ export class RatingComponent implements OnInit {
     //method not implemented.
     //this.rating = star;
   }
+
+  starFill(star: number){
+    return (this.starFull(star)||(this.starHalf(star)));
+  }
+
+  starFull(star: number){
+    return ((star<=this.rating));
+  }
+
+  starHalf(star: number){
+    return (star<(this.rating+1))&&(star>(this.rating))&&(this.rating%1!=0);
+  }
 }

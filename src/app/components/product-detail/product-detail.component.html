@@ -7,8 +7,7 @@
 
             <i id="slideLeft" class="bi bi-arrow-left-circle-fill arrow" (click)="scrollLeft()"></i>
             <div id="slider" #slider>
-                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}"
-                    alt="Watch" (mouseover)="changeImg($event)">
+                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}" alt="Watch" (mouseover)="changeImg($event)">
             </div>
             <i id="slideRight" class="bi bi-arrow-right-circle-fill arrow " (click)="scrollRight()"></i>
 
@@ -21,9 +20,9 @@
         <!-- <span class="bg-light p-2 rating"> {{product.star_rating}}
             <i class="bi bi-star-fill" style="color: green;"></i> | 1.1k Ratings
         </span> -->
-		<p>
-			<app-rating [rating]="product.star_rating"></app-rating>
-		</p>
+        <p>
+            <app-rating [rating]="product.star_rating"></app-rating>
+        </p>
 
         <br />
         <hr>
@@ -45,8 +44,7 @@
 
             <h5>100% original products</h5><br />
 
-            <button type="submit" class="btn btn-info btn-lg p-3 text-center"
-                style="font-weight: 700; border-radius: 6px;">Add
+            <button type="submit" class="btn btn-info btn-lg p-3 text-center" style="font-weight: 700; border-radius: 6px;">Add
                 to Cart <i class="bi bi-cart2 navbar-icon"></i></button>
         </div>
         <br />
@@ -139,8 +137,7 @@
                     <img src="../../../assets/images/{{similarProduct.img[0]}}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{similarProduct.name}}</h5>
-                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strap[0].colour}}
-                            {{similarProduct.glass_material}} Watch</p>
+                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strap[0].colour}} {{similarProduct.glass_material}} Watch</p>
                         <span class="bg-light p-2 rating"> {{similarProduct.star_rating}}
                             <i class="bi bi-star-fill" style="color: green;"></i>
                         </span>&nbsp;&nbsp;
