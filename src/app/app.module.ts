@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { CartQuantityComponent } from './components/shared/cart-quantity/cart-quantity.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
@@ -29,6 +30,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 		HeaderComponent,
 		FooterComponent,
   		RatingComponent,
+		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
 		FileUploadComponent
