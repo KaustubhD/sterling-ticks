@@ -16,6 +16,7 @@ import { RatingComponent } from './components/rating/rating.component';
 import { CartQuantityComponent } from './components/shared/cart-quantity/cart-quantity.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
 	declarations: [
@@ -32,6 +33,7 @@ import { EmailPhoneComponent } from './components/email-phone/email-phone.compon
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
+		FileUploadComponent
 	],
 	imports: [
 		BrowserModule,
