@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from '../common/global-constants';
 import { Brand } from '../components/models/brand.model';
 import { Product } from 'src/app/components/models/product.model';
+import { Collection } from '../components/models/collection.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ProductService {
   }
 
   async getAllCollections() {
-    return await this.http.get<string[]>(this.url+'categories').toPromise();  
+    return await this.http.get<Collection[]>(this.url+'categories').toPromise();  
   }
 
   async getByBrand(brand: string){

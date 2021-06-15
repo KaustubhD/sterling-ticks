@@ -12,8 +12,8 @@ export class RatingComponent implements OnInit {
   ngOnInit() {
   }
   fetchRating(star: number) {
-    //method not implemented.
-    //this.rating = star;
+    this.rating = star;
+    //this.service.ratingUpdate();
   }
 
   starFill(star: number){

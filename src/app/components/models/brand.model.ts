@@ -1,4 +1,5 @@
 export class Brand{
-    public name: string='';
-    public description: string='';
+    public name: string = '';
+    public imageUrl : string = '';
+    public shortDesc: string = '';
 }
