@@ -8,6 +8,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 const routes: Routes = [
   {path: '', component: ProductCardComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'otp',component : OtpComponent},
   {path: 'email-phone',component:EmailPhoneComponent},
   {path: 'products' , component: ProductListComponent},
-  {path: 'product/:model', component: ProductDetailComponent}
+  {path: 'product/:model', component: ProductDetailComponent},
+  {path: 'upload', component: FileUploadComponent}
 ];
 
 
