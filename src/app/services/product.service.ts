@@ -21,7 +21,7 @@ export class ProductService {
     return await this.http.get<Brand[]>(this.url+'brands').toPromise();  
   }
 
-  async getAllCategories() {
+  async getAllCollections() {
     return await this.http.get<string[]>(this.url+'categories').toPromise();  
   }
 
@@ -29,7 +29,7 @@ export class ProductService {
     return await this.http.get<ProductListModel[]>(this.url+'brand/'+brand).toPromise();
   }
 
-  async getByCategory(category: string){
+  async getByCollection(category: string){
     return await this.http.get<ProductListModel[]>(this.url+'category/'+category).toPromise();
   }
   

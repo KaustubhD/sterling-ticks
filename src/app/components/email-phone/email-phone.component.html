@@ -1,0 +1,14 @@
+<form class="form-container">
+	<div class="row mb-3" *ngIf="email">
+		<h2 class="col-12">Email: {{ email }}</h2>
+		<div class="col-sm-12">
+			<button (click)="onSend(1)" type="button" class="btn btn-secondary">Send OTP here</button>
+		</div>
+	</div>
+	<div class="row mb-3" *ngIf="phone">
+		<h2 class="col-12">Phone: {{ phone }}</h2>
+		<div class="col-sm-12">
+			<button (click)="onSend(2)" type="button" class="btn btn-secondary">Send OTP here</button>
+		</div>
+	</div>
+</form>

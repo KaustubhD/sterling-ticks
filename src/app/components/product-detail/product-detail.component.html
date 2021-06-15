@@ -7,8 +7,7 @@
 
             <i id="slideLeft" class="bi bi-arrow-left-circle-fill arrow" (click)="scrollLeft()"></i>
             <div id="slider" #slider>
-                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}"
-                    alt="Watch" (mouseover)="changeImg($event)">
+                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}" alt="Watch" (mouseover)="changeImg($event)">
             </div>
             <i id="slideRight" class="bi bi-arrow-right-circle-fill arrow " (click)="scrollRight()"></i>
 

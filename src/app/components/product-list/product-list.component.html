@@ -1,6 +1,6 @@
 <div id="top" class="sub-nav">
     <div class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Collections</a>
+        <a class="navbar-brand">Products</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,11 +29,11 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter By Category
+                Filter By Collections
                 </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li *ngFor="let category of categories">
-                            <a class="dropdown-item" [routerLink]="['/products']" [queryParams]="{filterBy: 'category', category: category}">{{category}}</a>
+                        <li *ngFor="let collection of collections">
+                            <a class="dropdown-item" [routerLink]="['/products']" [queryParams]="{filterBy: 'collection', collection: collection}">{{collection}}</a>
                         </li>
                     </ul>
                 </li>
@@ -46,8 +46,8 @@
         <p class="name">{{aBrand.name}}</p>
         <p class="description">{{aBrand.description}}</p>
     </div>
-    <div class="container product-containerv box-container">
-        <div class="row">
+    <div class="container product-container box-container">
+        <div class="row box-container">
             <div *ngFor="let product of products | slice : ((page-1)*maxItem):((page)*maxItem); let j = index" class="col-12 col-sm-6 col-md-3 col-lg-2 col  box-container">
                 <app-product-card [product]="product" class="response"></app-product-card>
             </div>

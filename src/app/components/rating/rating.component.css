@@ -6,13 +6,14 @@
     width: 100%; 
     min-width: 200px;
     margin: 0 auto;
+    height: 1.5em;
 }
 
 .rating-list li {
     /* float: right; */
     color: #ddd;
     width: fit-content;
-    padding: 2px 3px;
+    padding: 2px 2px;
 }
 
 /* .rating-list li:hover,
