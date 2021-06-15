@@ -17,6 +17,8 @@ import { CartQuantityComponent } from './components/shared/cart-quantity/cart-qu
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { AuthGuard } from './guards/AuthGuard/auth.guard';
+import { AdminGuard } from './guards/AdminGuard/admin.guard';
 
 @NgModule({
 	declarations: [
@@ -42,7 +44,10 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 		HttpClientModule,
 		ReactiveFormsModule
 	],
-	providers: [],
+	providers: [
+		AuthGuard,
+		AdminGuard
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
