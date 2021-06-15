@@ -39,11 +39,11 @@ export class ProductDetailComponent implements OnInit {
 
 	init(): void {
 		this.modelNo = this.aRoute.snapshot.paramMap.get('model') as string
-		this.productService.getByModel(this.modelNo).then(product => {
+		this.productService.getByModel(this.modelNo).then((product: Product) => {
 			this.product = Product.build(product)
 			this.featureImage = product.images[0]
 		})
-		this.productService.getSimilarProducts(this.modelNo).then(products => {
+		this.productService.getSimilarProducts(this.modelNo).then((products: Product[]) => {
 			this.similarProducts = products
 		})
 	}
