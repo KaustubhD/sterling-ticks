@@ -2,18 +2,26 @@ import { Injectable } from '@angular/core';
 import { CredentialModel as user } from '../components/models/credential.model';
 import { HttpClient } from '@angular/common/http';
 import { GlobalConstants } from '../common/global-constants';
+import { UserModel } from '../components/models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  url : string = GlobalConstants.apiUrl+'login';
-
+  private authenticatedUser : UserModel;
+  public getAuthenticatedUser(){
+    return this.authenticatedUser;
+  }
+  loggedIn : boolean= false;
   constructor(private http: HttpClient) { }
   
 
   authenticate(user: user) {
-    return this.http.post(this.url + "login", user);
+    return this.http.post<UserModel>(GlobalConstants.URLS.LOGIN, user);
+  }
+  saveAuthenticatedUser(user: UserModel) {
+    this.loggedIn = true;
+    this.authenticatedUser = user;
   }
 }
