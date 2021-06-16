@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { CredentialModel as User} from '../models/credential.model';
 import { delay } from "rxjs/operators";
+import { UserModel } from '../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,10 @@ export class LoginComponent implements OnInit {
 
   }
   authenticate() {
-    let res = this.service.authenticate(this.cred).subscribe({
+    this.service.authenticate(this.cred).subscribe({
       next: data => {
-        data = this.cred;
-        this.onSuccess();
+        this.success = true;
+        this.onSuccess(data);
       },
       error: error => {
         let errorMessage = error.message;
@@ -31,9 +32,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSuccess(){
-    this.success = true;
+  onSuccess(user: UserModel){
+    
+    this.service.saveAuthenticatedUser(user);
     setTimeout(()=>{ this.router.navigate(['home']) }, 700);
+
   }
 }
 

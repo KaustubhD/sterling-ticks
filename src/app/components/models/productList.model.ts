@@ -1,8 +1,10 @@
+import { Brand } from './brand.model';
+
 export class ProductListModel{
     public name: String = '';
-    public brand: string= '' ;
+    public modelNo: string;
+    public brand: Brand;
     public starRating: number = 0;
     public price: number = 999;
-    public img: string = '';
-	public modelNo: string='';
+    public images: string[] = [];
 }

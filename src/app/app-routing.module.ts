@@ -7,9 +7,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
-import { AdminAddComponent } from './components/admin/admin-add/admin-add.component';
-import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
+import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
+import { AdminAddComponent } from './components/admin/admin-add/admin-add.component';
 import { BybrandComponent } from './components/admin/bybrand/bybrand.component';
 import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
 
@@ -24,9 +25,10 @@ const routes: Routes = [
   {path: 'otp',component : OtpComponent},
   {path: 'email-phone',component:EmailPhoneComponent},
   {path: 'products' , component: ProductListComponent},
-  {path: 'bybrand' , component: BybrandComponent},
-  {path: 'bymodelno' , component: BymodelnoComponent},
-  {path: 'product/:model', component: ProductDetailComponent}
+  {path: 'product/:model', component: ProductDetailComponent},
+  {path: 'upload', component: FileUploadComponent},
+  {path: 'bybrand', component: BybrandComponent},
+  {path: 'bymodelNo', component: BymodelnoComponent}
 ];
 
 

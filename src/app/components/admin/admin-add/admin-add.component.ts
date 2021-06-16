@@ -21,12 +21,15 @@ export class AdminAddComponent implements OnInit {
     if(localStorage.getItem('user')==null){
       this.router.navigate(['admin-login']);
     }
+    this.service.getAllBrands().then(brands =>{this.brands = brands})
   }
 
   add(){
 console.log(this.product);
 this.service.addProduct(this.product);
-this.router.navigate(['admin-list']);
+  this.router.navigate(['admin-list']);
+
+
   }
  
   

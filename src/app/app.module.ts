@@ -16,13 +16,13 @@ import { RatingComponent } from './components/rating/rating.component';
 import { CartQuantityComponent } from './components/shared/cart-quantity/cart-quantity.component';
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
 import { AdminAddComponent } from './components/admin/admin-add/admin-add.component';
 import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
 import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
-import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
 import { BybrandComponent } from './components/admin/bybrand/bybrand.component';
-import { AdminComponent } from './components/admin/admin/admin.component';
-
+import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
 
 @NgModule({
 	declarations: [
@@ -39,12 +39,14 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
-        AdminAddComponent,
-        AdminEditComponent,
-        AdminListComponent,
-		BymodelnoComponent,
+		FileUploadComponent,
+		AdminComponent,
+		AdminAddComponent,
+		AdminEditComponent,
+		AdminListComponent,
 		BybrandComponent,
-  AdminComponent
+		BymodelnoComponent
+		
 	],
 	imports: [
 		BrowserModule,

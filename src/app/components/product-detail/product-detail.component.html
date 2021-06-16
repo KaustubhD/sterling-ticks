@@ -7,8 +7,7 @@
 
             <i id="slideLeft" class="bi bi-arrow-left-circle-fill arrow" (click)="scrollLeft()"></i>
             <div id="slider" #slider>
-                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}"
-                    alt="Watch" (mouseover)="changeImg($event)">
+                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}" alt="Watch" (mouseover)="changeImg($event)">
             </div>
             <i id="slideRight" class="bi bi-arrow-right-circle-fill arrow " (click)="scrollRight()"></i>
 
@@ -48,16 +47,8 @@
         <h4>PRODUCT DETAILS&nbsp;&nbsp;<i class="bi bi-card-text"></i></h4>
 
         <p>
-            Brand: {{product.brand}} <br />
-            Collection: {{product.collection}} <br />
-            Series: {{product.series}} <br />
-            Model Number: {{product.modelNo}} <br />
-            Movement: {{product.movement}} <br />
-            Features: {{product.features}} <br />
-            Water Resistance: {{product.waterResistance}} M<br />
-            Warranty: {{product.warrantyPeriod}} years<br />
-            Warranty provided by brand/ manufacturer <br />
-            Comes in a signature {{product.name}} case <br />
+            Brand: {{product.brand}} <br /> Collection: {{product.collection}} <br /> Series: {{product.series}} <br /> Model Number: {{product.modelNo}} <br /> Movement: {{product.movement}} <br /> Features: {{product.features}} <br /> Water Resistance:
+            {{product.waterResistance}} M<br /> Warranty: {{product.warrantyPeriod}} years<br /> Warranty provided by brand/ manufacturer <br /> Comes in a signature {{product.name}} case <br />
         </p>
 
         <div>
@@ -122,9 +113,7 @@
         </div>
         <div>
             <h5>Complete The Look</h5>
-            <p>This {{product.brand}} {{product.collection}} watch will quickly become your favourite staple accessory.
-                This {{product.strapColour}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for
-                a chic brunch outfit.</p>
+            <p>This {{product.brand}} {{product.collection}} watch will quickly become your favourite staple accessory. This {{product.strapColour}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for a chic brunch outfit.</p>
         </div>
 
     </div>
@@ -139,8 +128,7 @@
                     <img src="../../../assets/images/{{similarProduct.img[0]}}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{similarProduct.name}}</h5>
-                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strapColour}}
-                            {{similarProduct.glassMaterial}} Watch</p>
+                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strapColour}} {{similarProduct.glassMaterial}} Watch</p>
 
                         <span>
                             <app-rating [rating]="product.starRating"></app-rating>

@@ -13,8 +13,8 @@ export class AdminListComponent implements OnInit {
     "modelNo" : "mdl001", "name": "Product 2",
     "price": 120,
     "starRating": 2.5,
-    "brand": "Helio",
-    "img": "testimg.webp"}];
+    "brand": {name:"Helio",shortDesc:"",imageUrl:""},
+    "images": ["testimg.webp"]}];
   logged: boolean = false;
 
   constructor(private service: ProductService, private router: Router) {
