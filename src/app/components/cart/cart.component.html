@@ -1,14 +1,14 @@
 <div class="container-fluid">
-    <div class="row">
-        <aside class="col-lg-9">
+    <div class="row mt-5">
+        <div class="col col-md-8"><div class="col-md-12 col-sm-12 col-12 mb-3 col-lg-12"  *ngFor="let cart of cartItems, let i=index">
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table table-borderless table-shopping-cart">
+                    <table class="table table-borderless table-shopping-cart" >
                         <thead class="text-muted">
                             <tr class="small text-uppercase">
                                 <th scope="col">Product</th>
-                                <th scope="col" width="120">Quantity</th>
-                                <th scope="col" width="120">Price</th>
+                                <th scope="col" class="mr-3">Quantity</th>
+                                <th scope="col">Price</th>
                                 <th scope="col" class="text-right d-none d-md-block" width="200"></th>
                             </tr>
                         </thead>
@@ -17,52 +17,38 @@
                                 <td>
                                     <figure class="itemside align-items-center">
                                         <div class="aside"><img src="../../../assets/images/watch.webp" class="img-sm"></div>
-                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{cartItems[0].name}}</a>
-                                            <p class="text-muted small">Brand : {{cartItems[0].brand}} <br>{{cartItems[0].gender}}  {{cartItems[0].color}}   {{cartItems[0].glassMaterial}}</p>
+                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{cart.name}}</a>
+                                            <p class="text-muted small">Brand : {{cart.brand}} <br>{{cart.gender}}  {{cart.color}}   {{cart.glassMaterial}}</p>
                                         </figcaption>
                                     </figure>
                                 </td>
-                                <td><select name="Quantity">
+                                <td>
+                                    <!-- <select  name="Quantity" class="box">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
-                                  </select>
+                                  </select> -->
+                                   <app-cart-quantity [productId]="cart.id" [quantity]="1"></app-cart-quantity>
+                                  <!-- <span *ngIf="cart.quantity > 0"> -->
+                                      <!-- <span>
+                                    <button id="decrease" (click)="subtractQuantity(cart.id)">-</button>
+                                    <span>{{ cart.quantity }}</span>
+                                    <button id="increase" (click)="addQuantity(cart.id)">+</button>
+                                </span> -->
                                  </td>
                                 <td>
-                                    <div class="price-wrap"> <var class="price">{{cartItems[0].price | currency:'INR'}}</var> </div>
+                                    <div class="price-wrap"> <var class="price">{{cart.price | currency:'INR'}}</var> </div>
                                 </td>
-                                <td class="text-right d-none d-md-block"> <a href="" class="btn btn-light" data-abc="true"> Remove</a> </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <figure class="itemside align-items-center">
-                                        <div class="aside"><img src="../../../assets/images/watch.webp" class="img-sm"></div>
-                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Flower Formal T-shirt</a>
-                                            <p class="text-muted small">Brand : {{cartItems[0].brand}}<br>{{cartItems[0].gender}}  {{cartItems[0].color}}   {{cartItems[0].glassMaterial}} </p>
-                                        </figcaption>
-                                    </figure>
-                                </td>
-                                <td>
-                                    <select name="Quantity">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                      </select>
-                                 </td>
-                                <td>
-                                    <div class="price-wrap"> <var class="price">{{cartItems[0].price | currency:'INR'}}</var> </div>
-                                </td>
-                                <td class="text-right d-none d-md-block"> <a href="" class="btn btn-light btn-round" data-abc="true"> Remove</a> </td>
+                                <td class="text-right d-none d-md-block"> <a href="" class="btn btn-light" data-abc="true" (click)="removeItem(i)"> Remove</a> </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </aside>
-        <aside class="col-lg-3">
-            <div class="card mb-3">
+        </div></div>
+        <div class="col col-md-4"><div class="col-md-12 col-sm-12 col-12 col-lg-12">
+            <div class="card mb-5">
                 <div class="card-body">
                     <form>
                         <div class="form-group"> <label>Have coupon?</label>
@@ -75,19 +61,21 @@
                 <div class="card-body">
                     <dl class="dlist-align">
                         <dt>Total price: </dt>
-                        <dd class="text-right ml-3">{{cartItems[0].price | currency:'INR'}}</dd>
+                        <dd class="text-right ml-3">{{getTotalPrice() | currency:'INR'}}</dd>
                     </dl>
                     <dl class="dlist-align">
                         <dt>Discount: </dt>
-                        <dd class="text-right text-danger ml-3">678</dd>
+                        
+                        <dd class="text-right text-danger ml-3">{{getDiscountPrice() | currency : 'INR'}}</dd>
                     </dl>
                     <dl class="dlist-align">
                         <dt>Total: </dt>
-                        <dd class="text-right text-dark b ml-3"><strong>5723</strong></dd>
+                        <dd class="text-right text-dark b ml-3"><strong>{{getTotalAmount()  | currency : 'INR'}}</strong></dd>
                     </dl>
                     <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
                 </div>
             </div>
-        </aside>
+        </div></div>
+        
     </div>
 </div>

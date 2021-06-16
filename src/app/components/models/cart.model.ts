@@ -1,6 +1,7 @@
 import { Time } from "@angular/common";
 
-export class Cart{
+export class CartModel {
+    public id:number =0;
     public name: String = '';
     public brand: String= '' ;
     public rating: number = 0;
@@ -11,4 +12,5 @@ export class Cart{
     public glassMaterial:String ="";
     public gender:String ="";
     public color:String="";
+    public discount:number=0;
 }
