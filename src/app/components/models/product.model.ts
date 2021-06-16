@@ -1,29 +1,35 @@
+import { Brand } from "./brand.model";
+import { Collection } from "./collection.model";
+
 export class Product{
     public id: number;
     public name: string;
     public price: number;
-    public brand: string;
-    public collection: string;
+    public brand: Brand;
+    public collection: Collection;
     public series: string;
     public modelNo: string;
     public movement: string;
     public gender: string;
     public starRating: number;
     public discount: number;
-    public caseSize: number;
-    public caseShape: string;
-    public caseMaterial: string;
+    public casing: {
+		size: number,
+    	shape: string,
+    	material: string
+	};
     public glassMaterial: string;
-    public dialColour: string;
-    public strapMaterial: string;
-    public strapColour: string;
+    public dialColor: string;
+    public strap: {
+		material: string,
+		color: string
+	};
     public waterResistance: number;
     public warrantyPeriod: number;
     public features: string;
-    public img: string[] = [];
+    public images: string[] = [];
 
 	getDiscountedPrice(): number {
-		console.log("Price:" + this.price)
 		return this.price - (this.price * this.discount / 100);
 	}
 	static build(fields: Partial<Product>): Product {
