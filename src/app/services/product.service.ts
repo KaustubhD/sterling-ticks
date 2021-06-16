@@ -16,7 +16,7 @@ export class ProductService {
   async getAllProducts(){
     return await this.http.get<ProductListModel[]>(this.url).toPromise();
   }
-
+  
   async getAllBrands() {
     return await this.http.get<Brand[]>(this.url+'brands').toPromise();  
   }
@@ -36,5 +36,15 @@ export class ProductService {
   getByModel(model: String): Promise<Product> {
 	return this.http.get<Product>(`${this.url}model/${model}`).toPromise()
   }
-  
+  addProduct(product: Product){
+    console.log("add");
+    this.http.post(GlobalConstants.URLS.ADD_PRODUCT+"/",product).subscribe(data => data = product);
+  }
+  editProduct(product : Product) {
+    console.log("update :"+ product);
+    this.http.put(GlobalConstants.URLS.EDIT_PRODUCT+"/",product).subscribe(data => data = product);
+  }
+  delProduct(modelNo: string){
+    return this.http.delete(GlobalConstants.URLS.DELETE_PRODUCT+"/"+modelNo).subscribe();
+  }
 }

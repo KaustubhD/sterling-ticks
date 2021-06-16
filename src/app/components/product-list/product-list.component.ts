@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
   products: ProductListModel[] =  [    {
     "modelNo" : "mdl001", "name": "Product 2",
     "price": 120,
-    "rating": 2.5,
+    "starRating": 2.5,
     "brand": "Helio",
     "img": "testimg.webp"
   }];
@@ -114,7 +114,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ratingSort() {
-    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.rating > b.rating) ? -1 : 1);
+    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.starRating > b.starRating) ? -1 : 1);
   }
 
 }

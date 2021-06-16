@@ -1,0 +1,27 @@
+<app-admin></app-admin>
+       
+    <table class="table table-bordered table-dark">
+        <thead class="thead-dark">
+        <tr class="table table-dark ">
+            <th>Product Id</th>
+            <th (click)='orderByName()'>Product Name</th>
+            <th (click)='orderByBrand()'>Product Brand</th>
+            <th (click)='orderByPrice()'>Product Price</th>
+            <th>Product Rating</th>
+            <th>Product Image</th>
+            <th>Edit Entry</th>
+            <th>Delete Entry</th>
+        </tr>
+        </thead>
+        
+        <tr class='table-dark' *ngFor="let p of products, let i = index">
+            <td class='table-primary'>{{p.modelNo}}</td>
+            <td class='table-primary'>{{p.name}}</td>
+            <td class='table-primary'>{{p.brand}}</td>
+            <td class='table-primary'>{{p.price}}</td>
+            <td class='table-primary'>{{p.starRating}}</td>
+            <td class='table-primary'>{{p.img}}</td>
+            <td class='table-primary'><button class="btn btn-success btn-sm btn-block" (click)=edit(p.modelNo)> Edit</button></td>
+            <td class='table-primary'><button class="btn btn-danger btn-sm btn-block" (click)=remove(p.modelNo)> Delete</button></td>
+        </tr>
+    </table>

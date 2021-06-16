@@ -1,7 +1,6 @@
 <div class="register">
     <form *ngIf="!success" (ngSubmit)="register()" #frm=ngForm action="">
-        <i class="fa fa-empire"></i>
-        <h2>Sign Up to Sterling Ticks</h2>
+        <h2>Sign In</h2>
         <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>SignUp Failed !</strong> Invalid User Details
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -9,21 +8,21 @@
             </button>
         </div>
         <div class="group">
-            <input type="text" name="uname" id="username" autocomplete="off" placeholder="Username" [(ngModel)]="user.userName" #uid=ngModel><i class="fa fa-envelope" required></i>
+            <input type="text" name="uname" id="username" autocomplete="off" placeholder="Username" [(ngModel)]="user.userName" #uid=ngModel><i class="bi bi-person-fill"></i>
         </div>
         <div class="group">
-            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" [(ngModel)]="user.email" #mail=ngModel><i class="fa fa-user" required></i>
+            <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" [(ngModel)]="user.email" #mail=ngModel><i class="bi bi-envelope-fill"></i>
 
         </div>
         <div class="group">
-            <input type="password" name="password" id="password" autocomplete="off" placeholder="Password" [(ngModel)]="user.password" #pass=ngModel required> <i class="fa fa-unlock-alt"></i>
+            <input type="password" name="password" id="password" autocomplete="off" placeholder="Password" [(ngModel)]="user.password" #pass=ngModel required><i class="bi bi-unlock-fill"></i>
 
         </div>
         <div class="group">
-            <input type="password" name="confirmpassword" id="confirmpassword" autocomplete="off" placeholder="Confirm Password" [(ngModel)]="user.confirmpwd" required #cnfpwd="ngModel"><i class="fa fa-unlock-alt"></i>
+            <input type="password" name="confirmpassword" id="confirmpassword" autocomplete="off" placeholder="Confirm Password" [(ngModel)]="user.confirmpwd" required #cnfpwd="ngModel"><i class="bi bi-lock-fill"></i>
         </div>
         <div class="group">
-            <input type="tel" name="phonenumber" id="phonenumber" autocomplete="off" placeholder="Phone Number" [(ngModel)]="user.phoneNo" #phn=ngModel> <i class="fa fa-unlock-alt"></i>
+            <input type="tel" name="phonenumber" id="phonenumber" autocomplete="off" placeholder="Phone Number" [(ngModel)]="user.phoneNo" #phn=ngModel><i class="bi bi-telephone-fill"></i>
         </div>
         <div class="group">
             <input [disabled]=!frm.valid type="submit" class="btnn" value="CONTINUE">

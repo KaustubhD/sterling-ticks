@@ -75,8 +75,16 @@ i.fa.fa-empire {
 }
 
 h2 {
-    margin-top: 90px;
-    margin-bottom: 15px;
+
+    font-weight: bold;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid  #193d72;
+    width: 150px;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input:focus,

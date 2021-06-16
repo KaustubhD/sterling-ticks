@@ -3,7 +3,7 @@
         <p>{{product.name}}</p>
         <img class="product-img" src="assets/images/{{product.img}}" alt="product image">
         <p>
-            <app-rating [rating]="product.rating"></app-rating>
+            <app-rating [rating]="product.starRating"></app-rating>
         </p>
         <p>{{product.price | currency: 'INR'}}</p>
 
