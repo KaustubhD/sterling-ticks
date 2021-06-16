@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CredentialModel as user } from '../components/models/credential.model';
 import { HttpClient } from '@angular/common/http';
-import { GlobalConstants } from '../common/global-constants';
+import { URLS } from '../common/global-constants';
 import { UserModel } from '../components/models/user.model';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class LoginService {
   
 
   authenticate(user: user) {
-    return this.http.post<UserModel>(GlobalConstants.URLS.LOGIN, user);
+    return this.http.post<UserModel>(URLS.LOGIN, user);
   }
   saveAuthenticatedUser(user: UserModel) {
     this.loggedIn = true;
