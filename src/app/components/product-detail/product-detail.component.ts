@@ -34,6 +34,7 @@ export class ProductDetailComponent implements OnInit {
 		"features": "Bi-directional Rotating Bezel",
 		"img": ["navitimer1.webp", "navitimer2.webp", "navitimer3.webp", "navitimer4.webp"]
 	})
+
 	similarProducts: Product[] = (new Array(4)).fill(this.product)
 	featureImage: String = "../../../assets/images/" + this.product.img[0]
 	modelNo: String

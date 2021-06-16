@@ -1,6 +1,6 @@
 <div id="top" class="sub-nav">
     <div class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Collections</a>
+        <a class="navbar-brand">Products</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,11 +29,11 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter By Category
+                Filter By Collections
                 </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li *ngFor="let category of categories">
-                            <a class="dropdown-item" [routerLink]="['/products']" [queryParams]="{filterBy: 'category', category: category}">{{category}}</a>
+                        <li *ngFor="let collection of collections">
+                            <a class="dropdown-item" [routerLink]="['/products']" [queryParams]="{filterBy: 'collection', collection: collection.name}">{{collection.name}}</a>
                         </li>
                     </ul>
                 </li>
@@ -42,12 +42,13 @@
     </div>
 </div>
 <div class="container box-container">
-    <div *ngIf="brandSelect" class="brand-banner" style="background-image: linear-gradient(to right bottom, rgba(0, 135, 147, 0.7), rgba(3, 124, 134,0.7), rgba(5, 113, 122, 0.7), rgba(6, 102, 110,0.7), rgba(7, 91, 98, 0.7), rgba(2, 87, 97, 0.7), rgba(0, 82, 95, 0.7), rgba(0, 78, 93, 0.7), rgba(0, 79, 101, 0.7), rgba(0, 79, 109, 0.7), rgba(0, 78, 116, 0.7), rgba(0, 77, 122, 0.7)), url('/assets/images/{{aBrand.name}}.jpg');">
+    <div *ngIf="brandSelect" class="brand-banner" style="background-image: linear-gradient(to right bottom, rgba(0, 135, 147, 0.7), rgba(3, 124, 134,0.7), rgba(5, 113, 122, 0.7), rgba(6, 102, 110,0.7), rgba(7, 91, 98, 0.7), rgba(2, 87, 97, 0.7), rgba(0, 82, 95, 0.7), rgba(0, 78, 93, 0.7), rgba(0, 79, 101, 0.7), rgba(0, 79, 109, 0.7), rgba(0, 78, 116, 0.7), rgba(0, 77, 122, 0.7)),
+     url({{aBrand.imageUrl}});">
         <p class="name">{{aBrand.name}}</p>
-        <p class="description">{{aBrand.description}}</p>
+        <p class="description">{{aBrand.shortDesc}}</p>
     </div>
-    <div class="container product-containerv box-container">
-        <div class="row">
+    <div class="container product-container box-container">
+        <div class="row box-container">
             <div *ngFor="let product of products | slice : ((page-1)*maxItem):((page)*maxItem); let j = index" class="col-12 col-sm-6 col-md-3 col-lg-2 col  box-container">
                 <app-product-card [product]="product" class="response"></app-product-card>
             </div>

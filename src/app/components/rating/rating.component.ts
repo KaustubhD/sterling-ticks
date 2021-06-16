@@ -12,7 +12,19 @@ export class RatingComponent implements OnInit {
   ngOnInit() {
   }
   fetchRating(star: number) {
-    //method not implemented.
-    //this.rating = star;
+    this.rating = star;
+    //this.service.ratingUpdate();
+  }
+
+  starFill(star: number){
+    return (this.starFull(star)||(this.starHalf(star)));
+  }
+
+  starFull(star: number){
+    return ((star<=this.rating));
+  }
+
+  starHalf(star: number){
+    return (star<(this.rating+1))&&(star>(this.rating))&&(this.rating%1!=0);
   }
 }

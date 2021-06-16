@@ -3,6 +3,7 @@ import { ProductListModel } from '../models/productList.model';
 import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Brand } from '../models/brand.model';
+import { Collection } from '../models/collection.model';
 
 @Component({
   selector: 'app-product-list',
@@ -13,9 +14,9 @@ export class ProductListComponent implements OnInit {
   page: number = 1;
   maxItem: number = 12;
   brandSelect: boolean = false;
-  products: ProductListModel[] = [];
+  products: ProductListModel[] =  [];
   brands: Brand[] = [];
-  categories: string[] = [];
+  collections: Collection[] = [];
   lastPage: number;
   aBrand: Brand;
   constructor(private service: ProductService, private router: Router, private aroute: ActivatedRoute) { }
@@ -34,7 +35,7 @@ export class ProductListComponent implements OnInit {
       }
     });
     this.getAllBrands();
-    this.getAllCategories();
+    this.getAllCollections();
     this.lastPage = this.products.length / this.maxItem;
   }
 
@@ -42,8 +43,8 @@ export class ProductListComponent implements OnInit {
     this.service.getAllBrands().then((data) => this.brands = data);
   }
 
-  getAllCategories(){
-    this.service.getAllCategories().then((data) => this.categories = data);
+  getAllCollections(){
+    this.service.getAllCollections().then((data) => this.collections = data);
   }
 
   sort() {
@@ -62,9 +63,9 @@ export class ProductListComponent implements OnInit {
       if (params.filterBy == 'brand') {
         this.filterByBrand(params.brand);
       }
-      if (params.filterBy == 'category') {
+      if (params.filterBy == 'collection') {
         this.brandSelect=false;
-        this.filterByCategory(params.category);
+        this.filterByCollection(params.collection);
       }
     });
   }
@@ -84,21 +85,21 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  filterByBrand(brand: string) {
+  filterByBrand(brand: Brand) {
     this.brandSelect=true;
-    let res = this.service.getByBrand(brand).then(
+    let res = this.service.getByBrand(brand.name).then(
       data => {
         data = this.products;
       });
     this.brands.forEach(el => {
-      if(el.name==brand){
+      if(el.name==brand.name){
         this.aBrand = el;
       }
     });
   }
 
-  filterByCategory(category: string) {
-    let res = this.service.getByCategory(category).then(
+  filterByCollection(collection: string) {
+    let res = this.service.getByCollection(collection).then(
   data => this.products = data);
   }
 
@@ -108,7 +109,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ratingSort() {
-    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.rating > b.rating) ? -1 : 1);
+    this.products.sort((a: ProductListModel, b: ProductListModel) => (a.starRating > b.starRating) ? -1 : 1);
   }
 
 }
