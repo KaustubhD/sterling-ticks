@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
     let brand: string | undefined;
     let collection: string | undefined;
     this.aroute.queryParams.subscribe(params => {
-      if (params.filterBy == 'brand') {
+      if (params.brand!=null) {
         brand = params.brand;
         setTimeout(() => {
         this.brandSelect = true;
@@ -43,7 +43,7 @@ export class ProductListComponent implements OnInit {
         brand = undefined;
         this.brandSelect = false;
       } 
-      collection = (params.filterBy == 'collection') ? params.collection : undefined;
+      collection = (params.collection!=null) ? params.collection : undefined;
 
       this.service.getProductList(brand, collection).then(data => {
         this.products = data;
@@ -55,8 +55,32 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  sortSearch(sortBy: string) {
-
+  sortUrl(sortBy: string) {
+    this.router.navigate(
+      [], 
+      {
+        relativeTo:this.aroute,
+        queryParams: {"sortBy" : sortBy}, 
+        queryParamsHandling: 'merge',
+      });
+  }
+  brandUrl(brandName: string){
+    this.router.navigate(
+      [], 
+      {
+        relativeTo:this.aroute,
+        queryParams: {"brand" : brandName},
+        queryParamsHandling: 'merge',
+      });
+  }
+  collectionUrl(collectionName: string){
+    this.router.navigate(
+      [], 
+      {
+        relativeTo:this.aroute,
+        queryParams: {"collection" : collectionName},
+        queryParamsHandling: 'merge',
+      });
   }
   getAllBrands() {
     this.service.getAllBrands().then((data) => this.brands = data);
@@ -93,5 +117,4 @@ export class ProductListComponent implements OnInit {
   ratingSort() {
     this.products.sort((a: ProductListModel, b: ProductListModel) => (a.starRating > b.starRating) ? -1 : 1);
   }
-
 }
