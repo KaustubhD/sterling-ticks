@@ -4,6 +4,31 @@ nav{
 }
 
 .navbar-brand img{
-    width: 150px;
-    height: 105px;
+    width: 110px;
+    height: 75px;
+    margin: 0;
 }
+
+.me-1{
+    width: 13em;
+    font-size: 10px;
+}
+.me-1:focus{
+    transition-delay: .3s;
+    font-size: 11px;
+}
+.ml-1{
+    width: 24px;
+    height: 25px;
+    margin: auto;
+    padding: 0;
+}
+.bi-search{
+    font-size: 10px;
+    margin: auto;
+}
+
+.nav-item> a{
+    text-transform: uppercase;
+}
+

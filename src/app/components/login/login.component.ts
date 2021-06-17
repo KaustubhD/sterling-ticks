@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import { CredentialModel as User} from '../models/credential.model';
+import { CredentialModel as User } from '../models/credential.model';
 import { delay } from "rxjs/operators";
 import { UserModel } from '../models/user.model';
+import { HeaderComponent } from '../shared/header/header.component';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,12 @@ import { UserModel } from '../models/user.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  cred : User = new User();
+  cred: User = new User();
   alert: boolean = false;
   success: boolean = false;
   constructor(private router: Router, private service: LoginService) { }
 
   ngOnInit(): void {
-
   }
   authenticate() {
     this.service.authenticate(this.cred).subscribe({
@@ -32,10 +32,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSuccess(user: UserModel){
-    
+  onSuccess(user: UserModel) {
+
     this.service.saveAuthenticatedUser(user);
-    setTimeout(()=>{ this.router.navigate(['home']) }, 700);
+    setTimeout(() => {
+      let head = new HeaderComponent(this.service);
+      this.router.navigate(['home']);
+    }, 700);
 
   }
 }
