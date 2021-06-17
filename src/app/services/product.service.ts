@@ -35,8 +35,12 @@ export class ProductService {
     return await this.http.get<ProductListModel[]>("").toPromise();
   }
   
-  getByModel(model: String): Promise<Product> {
-	return this.http.get<Product>(`${this.url}model/${model}`).toPromise()
+  getByModel(model: string): Promise<Product> {
+	return this.http.get<Product>(GlobalConstants.URLS.GET_PRODUCT(model)).toPromise()
+  }
+  
+  getSimilarProducts(model: string): Promise<Product[]> {
+	return this.http.get<Product[]>(GlobalConstants.URLS.GET_SIMILAR_PRODUCTS(model)).toPromise()
   }
   
 }
