@@ -52,8 +52,10 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group"> <label>Have coupon?</label>
-                            <div class="input-group"> <input type="text" class="form-control coupon" name="" placeholder="Coupon code"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
+                            <div class="input-group"> <input type="text" class="form-control coupon" name="coupon" placeholder="Coupon code" [(ngModel)]="voucherInput"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon" (click)="check()">Apply</button> </span> </div>
                         </div>
+                        <div *ngIf=voucherApplied>Voucher is successfully applied</div>
+                        <div *ngIf=!voucherApplied>Voucher is not applied</div>
                     </form>
                 </div>
             </div>

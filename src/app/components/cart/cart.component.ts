@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { vouchers } from 'src/app/common/vouchers';
 import { LoginService } from 'src/app/services/login.service';
 import { CartItemsService } from 'src/app/services/shared/cart-item/cart-items.service';
 import { CartModel } from '../models/cart.model';
@@ -64,6 +65,9 @@ export class CartComponent implements OnInit {
 
   totalPrice : number=0;
   discountPrice :number=0;
+  voucherInput : String;
+  voucherDiscount : number=0;
+  voucherApplied:boolean;
 
   getDiscountPrice(){
 		this.cartItems.forEach((item, index) => {
@@ -104,7 +108,31 @@ export class CartComponent implements OnInit {
        
   }
 
-  
+//   selectedProduct : CartModel = new CartModel();
+//   addQuantity(id : number){
+//      this.selectedProduct = this.cartItems.find(product => product.id === id) as CartModel;
+//     this.selectedProduct.quantity+=1;
+//   }
+
+//   subtractQuantity(id : number){
+//     this.selectedProduct = this.cartItems.find(product => product.id === id) as CartModel;
+//     this.selectedProduct.quantity<1?0:this.selectedProduct.quantity-=1;
+//  }
+
+
+  check(){
+    this.voucherApplied=false;  
+    vouchers.forEach(voucher => {
+      if(voucher.name==this.voucherInput){
+          this.voucherDiscount=voucher.discount;
+          this.voucherApplied=true;
+     }
+  });
+    if(this.voucherApplied){
+      console.log("voucher applied successfully");
+    }
+  }
+   
   handleChange(productId: number, quantity: number){
     console.log(this.cartItems)
     
