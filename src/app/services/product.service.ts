@@ -11,27 +11,28 @@ import { Collection } from '../components/models/collection.model';
 })
 export class ProductService {
   
-  url:string = GlobalConstants.apiUrl+'products/';
+  url="";
+  URLS = GlobalConstants.URLS;
   constructor(private http: HttpClient) { }
 
   async getAllProducts(){
-    return await this.http.get<ProductListModel[]>(this.url).toPromise();
+    return await this.http.get<ProductListModel[]>(this.URLS.PRODUCTS).toPromise();
   }
 
   async getAllBrands() {
-    return await this.http.get<Brand[]>(this.url+'brands').toPromise();  
+    return await this.http.get<Brand[]>(this.URLS.BRANDS).toPromise();  
   }
 
   async getAllCollections() {
-    return await this.http.get<Collection[]>(this.url+'categories').toPromise();  
+    return await this.http.get<Collection[]>(this.URLS.COLLECTIONS).toPromise();  
   }
 
   async getByBrand(brand: string){
-    return await this.http.get<ProductListModel[]>(this.url+'brand/'+brand).toPromise();
+    return await this.http.get<ProductListModel[]>("").toPromise();
   }
 
   async getByCollection(category: string){
-    return await this.http.get<ProductListModel[]>(this.url+'category/'+category).toPromise();
+    return await this.http.get<ProductListModel[]>("").toPromise();
   }
   
   getByModel(model: String): Promise<Product> {

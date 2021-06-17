@@ -1,8 +1,8 @@
 <div class="login">
     <form *ngIf="!success" (ngSubmit)="authenticate()" class="was-validated" #frm=ngForm>
-        <div class="logo">
+        <!-- <div class="logo">
             <img src="../freeLogo.jpeg">
-        </div>
+        </div> -->
         <h2>Login</h2>
         <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Login Failed !</strong> Invalid User Details
@@ -10,14 +10,21 @@
               <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        <div class="alert alert-danger alert-dismissible fade show" *ngIf="(user.dirty&&user.invalid) || (pass.dirty&&pass.invalid)" role="alert">
+            <span class="danger" *ngIf="user.dirty && user.invalid">Invalid Username</span>
+            <span class="danger" *ngIf="(user.dirty&&pass.dirty) && (user.invalid&&pass.invalid)">&nbsp;and&nbsp;</span>
+            <span class="danger" *ngIf="pass.dirty && pass.invalid"> Invalid Password</span>
+        </div>
         <div class="group">
-            <input type="text" placeholder="Username" name="username" id="username" [(ngModel)]="cred.username" #user=ngModel><i class="fa fa-envelope"></i></div>
+            <input type="text" placeholder="Username" name="username" id="username" [(ngModel)]="cred.username" #user=ngModel required pattern="[A-Za-z0-9]{5,}"><i class="fa fa-envelope"></i>
+        </div>
         <div class="group">
-            <input type="password" placeholder="Password" name="pwd" id="password" [(ngModel)]="cred.password" #pass=ngModel><span class="eye" onclick="myFunction();"><i id="hide1" class="fa fa-eye" style='font-size: 19px'></i><i id="hide2"
-                    class="fa fa-eye-slash" style='font-size: 19px'></i></span></div>
+            <input type="password" placeholder="Password" name="pwd" id="password" [(ngModel)]="cred.password" #pass=ngModel  required minlength="6"><span class="eye" onclick="myFunction();"><i id="hide1" class="fa fa-eye" style='font-size: 19px'></i><i id="hide2"
+                    class="fa fa-eye-slash" style='font-size: 19px'></i></span>
+        </div>
 
         <div class="group">
-            <input type="submit" class="btnn" value="Login">
+            <input type="submit" class="btnn" value="Login" [disabled]=!frm.valid||!frm.dirty>
         </div>
     </form>
     <p class="para">Forgot ? <a routerLink="forgotpassword">Password</a></p>

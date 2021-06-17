@@ -31,12 +31,17 @@ export class ProductListComponent implements OnInit {
         this.getAllProducts();
       }
       if(params.sortBy!=null){
-        this.sort();
+        setTimeout(() => {this.sort()}, 500);
       }
     });
     this.getAllBrands();
     this.getAllCollections();
-    this.lastPage = this.products.length / this.maxItem;
+    setTimeout(() => {
+        this.lastPage = this.products.length as number / this.maxItem;
+    }, 800);
+    
+    console.log("last Page: "+ this.lastPage);
+
   }
 
   getAllBrands(){
