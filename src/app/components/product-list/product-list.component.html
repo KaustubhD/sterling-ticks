@@ -12,7 +12,7 @@
                 Sort By
               </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" (click)="sortSearch('price')">Price</a>
+                        <a class="dropdown-item" [routerLink]="[]" [queryParams]="{sortBy: 'price'}">Price</a>
                         <a class="dropdown-item" [routerLink]="[]" [queryParams]="{sortBy: 'rating'}">Rating</a>
                         <!-- <a class="dropdown-item" href="#">Popularity</a> -->
                     </div>
