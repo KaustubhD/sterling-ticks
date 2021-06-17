@@ -11,8 +11,7 @@ import { Collection } from '../components/models/collection.model';
 })
 export class ProductService {
   
-  url="";
-  
+ 
   constructor(private http: HttpClient) { }
 
   async getAllProducts(){
