@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalConstants } from 'src/app/common/global-constants';
+import { GlobalConstants, URLS } from 'src/app/common/global-constants';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
@@ -23,12 +23,12 @@ export class EmailPhoneComponent implements OnInit {
 
 	onSend(choice: Number) {
 		if(choice == 1) {
-			this.http.post(GlobalConstants.URLS.OTP_GENERATE, {username: this.username, email: this.email})
+			this.http.post(URLS.OTP_GENERATE, {username: this.username, email: this.email})
 				.toPromise()
 				.then(() => this.navigate())
 		}
 			else if (choice == 2){
-				this.http.post(GlobalConstants.URLS.OTP_GENERATE, {username: this.username, phone: this.phone})
+				this.http.post(URLS.OTP_GENERATE, {username: this.username, phone: this.phone})
 				.toPromise()
 				.then(() => this.navigate())
 		}

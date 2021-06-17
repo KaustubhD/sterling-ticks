@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GlobalConstants } from 'src/app/common/global-constants';
+import { GlobalConstants, URLS } from 'src/app/common/global-constants';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
@@ -49,7 +49,7 @@ export class OtpComponent implements OnInit {
 
 	onSubmit() {
 		const value: string = Object.values(this.form.value).join('')
-		this.http.post(GlobalConstants.URLS.OTP_VALIDATE,
+		this.http.post(URLS.OTP_VALIDATE,
 				{username: this.username, value},
 				{observe: 'body'})
 			.subscribe((data) => {

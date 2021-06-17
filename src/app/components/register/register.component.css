@@ -6,22 +6,17 @@
     font-family: calibri;
 }
 
-input:disabled {
-    background: linear-gradient(to right top, #555, #bbb, #ddd);
-    text-align: center;
-}
-
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     height: 100vh;
     width: 100vw;
 }
 
 .register {
     margin: auto;
+    
     text-align: center;
     position: relative;
     width: 320px;
@@ -60,7 +55,6 @@ a {
     right: 20px;
 }
 
-
 /*button{
 padding: 12px;
 background-image: linear-gradient(57deg,#ff1464,purple);
@@ -73,7 +67,6 @@ color: #fff;
 button i{
 margin-right: 5px;
 }*/
-
 p {
     margin-bottom: 20px;
 }
@@ -88,12 +81,10 @@ i.fa.fa-empire {
     font-size: 60px;
     margin-bottom: 20px;
 }
-
-.alert {
+.alert{
     padding: 3.7%;
     height: 47px;
 }
-
 h2 {
     font-weight: bold;
     margin-top: 35px;
@@ -102,8 +93,9 @@ h2 {
 
 input:focus,
 input:focus::placeholder,
-input:focus {
+input:focus{
     color: #193d72;
+
 }
 
 input:focus {
@@ -115,6 +107,7 @@ body::before {
     position: absolute;
     height: 300px;
     width: 500px;
+
 }
 
 body::after {
@@ -125,14 +118,16 @@ body::after {
 }
 
 body::before {
-    /* background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);*/
-    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72);
-    bottom: 0;
+   /* background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);*/
+   
+   background-image: linear-gradient(to right top, #051937, #004d7a, #008793,#00bf72);
+   bottom: 0;
     left: 0;
     clip-path: polygon(0 0, 0 100%, 100% 100%);
 }
 
 body::after {
+    
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793);
     top: 0;
     right: 0;
@@ -140,6 +135,7 @@ body::after {
 }
 
 .btnn {
+    
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793);
     color: white;
 }
@@ -149,6 +145,7 @@ body::after {
 }
 
 @media (max-width: 767px) {
+
     body::before,
     body:after {
         height: 150px;

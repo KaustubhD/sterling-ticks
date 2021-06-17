@@ -114,7 +114,7 @@
         </div>
         <div>
             <h5>Complete The Look</h5>
-            <p>This {{product.brand}} {{product.collection}} watch will quickly become your favourite staple accessory. This {{product.strapColour}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for a chic brunch outfit.</p>
+            <p>This {{product.brand}} {{product.collection}} watch will quickly become your favourite staple accessory. This {{product.strap.color}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for a chic brunch outfit.</p>
         </div>
 
     </div>
@@ -129,7 +129,7 @@
                     <img src="./{{similarProduct.images[0]}}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{similarProduct.name}}</h5>
-                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strapColour}} {{similarProduct.glassMaterial}} Watch</p>
+                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strap.color}} {{similarProduct.glassMaterial}} Watch</p>
 
                         <span>
                             <app-rating [rating]="product.starRating"></app-rating>

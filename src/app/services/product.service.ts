@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductListModel } from '../components/models/productList.model';
 import { HttpClient } from '@angular/common/http';
-import { GlobalConstants } from '../common/global-constants';
+import { GlobalConstants, URLS } from '../common/global-constants';
 import { Brand } from '../components/models/brand.model';
 import { Product } from 'src/app/components/models/product.model';
 import { Collection } from '../components/models/collection.model';
@@ -12,35 +12,37 @@ import { Collection } from '../components/models/collection.model';
 export class ProductService {
   
   url="";
-  URLS = GlobalConstants.URLS;
+  
   constructor(private http: HttpClient) { }
 
   async getAllProducts(){
-    return await this.http.get<ProductListModel[]>(this.URLS.PRODUCTS).toPromise();
+    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST()).toPromise();
   }
 
   async getAllBrands() {
-    return await this.http.get<Brand[]>(this.URLS.BRANDS).toPromise();  
+    return await this.http.get<Brand[]>(URLS.BRANDS).toPromise();  
   }
 
   async getAllCollections() {
-    return await this.http.get<Collection[]>(this.URLS.COLLECTIONS).toPromise();  
+    return await this.http.get<Collection[]>(URLS.COLLECTIONS).toPromise();  
   }
 
   async getByBrand(brand: string){
-    return await this.http.get<ProductListModel[]>("").toPromise();
+    console.log(brand);
+    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(brand,undefined)).toPromise();
   }
 
-  async getByCollection(category: string){
-    return await this.http.get<ProductListModel[]>("").toPromise();
+  async getByCollection(collection: string){
+    console.log(URLS.PRODUCT_LIST(undefined,collection=collection));
+    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(undefined,collection)).toPromise();
   }
   
   getByModel(model: string): Promise<Product> {
-	return this.http.get<Product>(GlobalConstants.URLS.GET_PRODUCT(model)).toPromise()
+	return this.http.get<Product>(URLS.GET_PRODUCT(model)).toPromise()
   }
   
   getSimilarProducts(model: string): Promise<Product[]> {
-	return this.http.get<Product[]>(GlobalConstants.URLS.GET_SIMILAR_PRODUCTS(model)).toPromise()
+	return this.http.get<Product[]>(URLS.GET_SIMILAR_PRODUCTS(model)).toPromise()
   }
   
 }
