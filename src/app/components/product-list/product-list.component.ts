@@ -24,28 +24,28 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllBrands();
     this.getAllCollections();
-    let promise: Promise<ProductListModel[]>;
+    this.brandSelect = false;
+    let brand: string | undefined;
+    let collection: string | undefined;
     this.aroute.queryParams.subscribe(params => {
-      if (params.filterBy != null) {
-        if (params.filterBy == 'brand') {
-          promise = this.filterByBrand(params.brand);
-          setTimeout(() => { this.brandSelect = true;
-            this.brands.forEach(el => {
-              if (el.name == params.brand) {
-                this.aBrand = el;
-              } },400);
-          });
-        }
-        if (params.filterBy == 'collection') {
-          this.brandSelect = false;
-          promise = this.filterByCollection(params.collection);
-        }
+      if (params.filterBy == 'brand') {
+        brand = params.brand;
+        setTimeout(() => {
+        this.brandSelect = true;
+          this.brands.forEach(el => {
+            if (el.name == params.brand) {
+              this.aBrand = el;
+            }
+          }, 400);
+        });
       }
       else {
+        brand = undefined;
         this.brandSelect = false;
-        promise = this.getAllProducts();
-      }
-      promise.then(data => {
+      } 
+      collection = (params.filterBy == 'collection') ? params.collection : undefined;
+
+      this.service.getProductList(brand, collection).then(data => {
         this.products = data;
         if (params.sortBy != null) {
           this.sort();
@@ -55,6 +55,9 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  sortSearch(sortBy: string) {
+
+  }
   getAllBrands() {
     this.service.getAllBrands().then((data) => this.brands = data);
   }
@@ -73,26 +76,14 @@ export class ProductListComponent implements OnInit {
       }
     });
   }
-  getAllProducts() {
-    return this.service.getAllProducts();
-  }
-
-  next() {
+   next() {
     if (this.page < this.lastPage)
-    this.page = this.page + 1;
+      this.page = this.page + 1;
   }
   prev() {
     if (this.page > 1) {
       this.page = this.page - 1;
     }
-  }
-
-  filterByBrand(brand: string) {
-    return this.service.getByBrand(brand);
-  }
-
-  filterByCollection(collection: string) {
-    return this.service.getByCollection(collection);
   }
 
   priceSort() {

@@ -33,6 +33,10 @@ export class ProductService {
   async getByCollection(category: string){
     return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(undefined, category)).toPromise();
   }
+  async getProductList(brand: string|undefined, category: string|undefined){
+    console.log(URLS.PRODUCT_LIST(brand, category));
+    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(brand, category)).toPromise();
+  }
   
   getByModel(model: string): Promise<Product> {
 	return this.http.get<Product>(URLS.GET_PRODUCT(model)).toPromise()
