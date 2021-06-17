@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalConstants, URLS } from 'src/app/common/global-constants';
+import { URLS } from 'src/app/common/global-constants';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({

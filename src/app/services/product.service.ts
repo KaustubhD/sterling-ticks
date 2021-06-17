@@ -28,13 +28,11 @@ export class ProductService {
   }
 
   async getByBrand(brand: string){
-    console.log(brand);
-    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(brand,undefined)).toPromise();
+    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(brand)).toPromise();
   }
 
-  async getByCollection(collection: string){
-    console.log(URLS.PRODUCT_LIST(undefined,collection=collection));
-    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(undefined,collection)).toPromise();
+  async getByCollection(category: string){
+    return await this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(undefined, category)).toPromise();
   }
   
   getByModel(model: string): Promise<Product> {

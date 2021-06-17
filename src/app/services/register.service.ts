@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel as User } from '../components/models/user.model';
-import { GlobalConstants, URLS } from '../common/global-constants';
+import { URLS } from '../common/global-constants';
 import { share } from 'rxjs/operators';
 
 @Injectable({

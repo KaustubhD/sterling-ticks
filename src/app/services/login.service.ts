@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CredentialModel as user } from '../components/models/credential.model';
 import { HttpClient } from '@angular/common/http';
-import { GlobalConstants, URLS } from '../common/global-constants';
+import { URLS } from '../common/global-constants';
 import { UserModel } from '../components/models/user.model';
 
 @Injectable({

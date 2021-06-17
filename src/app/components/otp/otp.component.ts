@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GlobalConstants, URLS } from 'src/app/common/global-constants';
+import { URLS } from 'src/app/common/global-constants';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({

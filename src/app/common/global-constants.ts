@@ -11,8 +11,8 @@ export const URLS = {
 	COLLECTIONS: GlobalConstants.apiUrl + "/collections",
 	PRODUCT_LIST: (brand?: string, collection?: string) => {
 		let url = new URL(GlobalConstants.apiUrl + "/products")
-		collection && url.searchParams.append("collectionName", collection)
 		brand && url.searchParams.append("brandName", brand)
+		collection && url.searchParams.append("collectionName", collection)
 		return url.toString()
 	},
 	GET_PRODUCT: (modelNo: string) => GlobalConstants.apiUrl + "/products/" + modelNo,
