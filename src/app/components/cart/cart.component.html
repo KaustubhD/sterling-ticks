@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col col-md-8"><div class="col-md-12 col-sm-12 col-12 mb-3 col-lg-12"  *ngFor="let cart of cartItems, let i=index">
+    <div class="row mt-5" *ngIf="cartItems.length > 0">
+        <div class="col col-md-8"><div class="col-md-12 col-sm-12 col-12 mb-3 col-lg-12"  *ngFor="let cart of cartItems">
             <div class="card">
                 <div class="table-responsive">
                     <table class="table table-borderless table-shopping-cart" >
@@ -29,7 +29,7 @@
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                   </select> -->
-                                   <app-cart-quantity [productId]="cart.id" [quantity]="1"></app-cart-quantity>
+                                   <app-cart-quantity [productId]="cart.id" [(quantity)]="cart.quantity" (quantityChange)="handleChange(cart.id, $event)"></app-cart-quantity>
                                   <!-- <span *ngIf="cart.quantity > 0"> -->
                                       <!-- <span>
                                     <button id="decrease" (click)="subtractQuantity(cart.id)">-</button>
@@ -40,7 +40,7 @@
                                 <td>
                                     <div class="price-wrap"> <var class="price">{{cart.price | currency:'INR'}}</var> </div>
                                 </td>
-                                <td class="text-right d-none d-md-block"> <a href="" class="btn btn-light" data-abc="true" (click)="removeItem(i)"> Remove</a> </td>
+                                <td class="text-right d-none d-md-block"> <button class="btn btn-light"  (click)="removeItem(cart.id)"> Remove</button> </td>
                             </tr>
                         </tbody>
                     </table>
@@ -77,5 +77,9 @@
             </div>
         </div></div>
         
+    </div>
+    <div class="text-center mb-3" *ngIf="cartItems.length <= 0">
+        <h2 >Oops!! No items in the cart.</h2>
+        <button class="btn btn-success " routerLink="/products">Continue Shopping</button>
     </div>
 </div>

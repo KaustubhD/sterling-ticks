@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
+import { LoginService } from 'src/app/services/login.service';
+import { CartItemsService } from 'src/app/services/shared/cart-item/cart-items.service';
 import { CartModel } from '../models/cart.model';
 
 @Component({
@@ -54,16 +55,22 @@ export class CartComponent implements OnInit {
     }
 
   ];
-   totalPrice : number=0;
-   discountPrice :number=0;
-  //  product:CartModel=new Cart();
+
+  constructor(private service:CartItemsService, private loginService:LoginService) {
+    //this.service.getUserCart(loginService.)
+  }
+
+  ngOnInit(): void { }
+
+  totalPrice : number=0;
+  discountPrice :number=0;
+
   getDiscountPrice(){
-		// console.log("Price:" + this.cartItems.price)
-		this.cartItems.forEach(item => {
-        if(item.quantity<=0){
-       this.discountPrice += (item.price * item.discount / 100); 
-        }
-        else{
+		this.cartItems.forEach((item, index) => {
+      if(index == 0){
+        this.discountPrice = 0;
+      }
+        if(item.quantity>=1){
           this.discountPrice += (item.price*item.discount*item.quantity/100);
         }
     }); 
@@ -71,8 +78,11 @@ export class CartComponent implements OnInit {
 	}
 
   getTotalPrice(){
+    this.totalPrice -= this.totalPrice ;
     this.cartItems.forEach(item => {
-      this.totalPrice += item.price;
+      if(item.quantity >= 1){
+        this.totalPrice += (item.price*item.quantity);
+      }
     });
 
     return this.totalPrice;
@@ -83,34 +93,27 @@ export class CartComponent implements OnInit {
     
   }
 
-  removeItem(index : number){
+  removeItem(productId : number){
     var ans = confirm('Are you sure you want to delete?')
-     if(ans)
-       this.service.removeItem(index)
+     if(ans){
+      let product = this.cartItems.find((product) => product.id === productId) 
+      if(product){
+        product.quantity = 0
+      }
+     }
+       
   }
 
-//   selectedProduct : CartModel = new CartModel();
-//   addQuantity(id : number){
-//      this.selectedProduct = this.cartItems.find(product => product.id === id) as CartModel;
-//     this.selectedProduct.quantity+=1;
-//   }
-
-//   subtractQuantity(id : number){
-//     this.selectedProduct = this.cartItems.find(product => product.id === id) as CartModel;
-//     this.selectedProduct.quantity<1?0:this.selectedProduct.quantity-=1;
-//  }
-
-
-
   
-  
-  constructor(private service:CartService) { }
-
-  ngOnInit(): void {
-
+  handleChange(productId: number, quantity: number){
+    console.log(this.cartItems)
+    
+    if(quantity <= 0){
+      this.cartItems.forEach((item,index)=>{
+        if(item.id==productId) this.cartItems.splice(index,1);
+     });
+    }
     
   }
-
-  
 
 }
