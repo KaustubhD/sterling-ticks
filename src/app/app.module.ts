@@ -17,6 +17,8 @@ import { CartQuantityComponent } from './components/shared/cart-quantity/cart-qu
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 @NgModule({
 	declarations: [
@@ -33,6 +35,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
+		CartComponent,
+		CartQuantityComponent,
 		FileUploadComponent
 	],
 	imports: [
