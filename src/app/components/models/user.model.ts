@@ -4,4 +4,6 @@ export class UserModel{
     public password: string;
     public confirmpwd: string;
     public phoneNo: string;
+    public dateCreated: string;
+    public roles: string[];
 }

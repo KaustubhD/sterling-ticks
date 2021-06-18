@@ -37,10 +37,10 @@
                             {{user.userName}}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" >Your Account</a></li>
-                            <li><a class="dropdown-item" >Your Orders</a></li>
-                            <li><a class="dropdown-item" >Your Wishlist</a></li>
-                            <li><a class="dropdown-item" >Your Coupons</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/account/',user.userName]">Your Account</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/orders/',user.userName]">Your Orders</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/wishlist/',user.userName]">Your Wishlist</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/coupons/',user.userName]">Your Coupons</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

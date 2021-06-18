@@ -1,0 +1,68 @@
+<div class="">
+    <section class="main">
+        <div class="row">
+            <div class="col-12 col-md-3 left">
+                <div class="logged" *ngIf=islogged>
+                    <!---->
+                    <div class=" container profile">
+                        <div class="img-container">
+                            <img [src]="" alt="profile-img" class="profile-img">
+                        </div>
+                        <table>
+                            <tr>
+                                <td>Username : </td>
+                                <td>{{user.userName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email ID : </td>
+                                <td>{{user.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone No :</td>
+                                <td>{{user.phoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td>Created : </td>
+                                <td>{{user.dateCreated.substr(0,10)}}</td>
+                            </tr>
+                            <!-- <tr>
+                                    <td>Saved Addresses : </td>
+                                    <td>
+                                        <div *ngFor="let address of addresses">
+                                            <p>{{address.name}}</p>
+                                        </div>
+                                    </td>
+                                </tr> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 main-body">
+                <div class="container">
+                    <div class="head">
+                        <h1 *ngIf=islogged>Hello {{user.userName}}!</h1>
+                        <h1 *ngIf!=islogged>Hello Guest!</h1>
+                        <h2 *ngIf=!islogged [routerLink]="['/login']"><a>Sign in to your account now!</a></h2>
+                        <h3 *ngIf=!islogged [routerLink]="['/products']"> <a>Checkout our collection!</a></h3>
+                    </div>
+                    <div class="row">
+                        <div class="col col-12 col-sm-6 col-md-3">
+                            Track Orders
+                        </div>
+                        <div class="col col-12 col-sm-6 col-md-3">
+                            past orders
+                        </div>
+                        <div class="col col-12 col-sm-6 col-md-3">
+                            wishlist
+                        </div>
+                        <div class="col col-12 col-sm-6 col-md-3">
+                            add new address
+                        </div>
+                        <div class="col col-12 col-sm-6 col-md-3">saved payment methods</div>
+                        <div class="col col-12 col-sm-6 col-md-3">add new payment method</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

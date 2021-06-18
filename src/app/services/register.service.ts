@@ -18,7 +18,6 @@ export class RegisterService {
 		obs.subscribe(_ => {
 			this.registeredUser = user
 		})
-		console.log("req");
-		return obs
+		return obs;
 	}
 }

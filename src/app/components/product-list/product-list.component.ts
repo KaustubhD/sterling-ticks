@@ -55,30 +55,12 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  sortUrl(sortBy: string) {
+  urlUpdate(key: string ,value: string) {
     this.router.navigate(
       [], 
       {
         relativeTo:this.aroute,
-        queryParams: {"sortBy" : sortBy}, 
-        queryParamsHandling: 'merge',
-      });
-  }
-  brandUrl(brandName: string){
-    this.router.navigate(
-      [], 
-      {
-        relativeTo:this.aroute,
-        queryParams: {"brand" : brandName},
-        queryParamsHandling: 'merge',
-      });
-  }
-  collectionUrl(collectionName: string){
-    this.router.navigate(
-      [], 
-      {
-        relativeTo:this.aroute,
-        queryParams: {"collection" : collectionName},
+        queryParams: { [key] : value}, 
         queryParamsHandling: 'merge',
       });
   }

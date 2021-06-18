@@ -18,11 +18,12 @@ import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { LoginService } from './services/login.service';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-    	ProductDetailComponent,
+		ProductDetailComponent,
 		ProductCardComponent,
 		RegisterComponent,
 		LoginComponent,
@@ -30,11 +31,12 @@ import { LoginService } from './services/login.service';
 		ProductListComponent,
 		HeaderComponent,
 		FooterComponent,
-  		RatingComponent,
+		RatingComponent,
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
-		FileUploadComponent
+		FileUploadComponent,
+		UserAccountComponent
 	],
 	imports: [
 		BrowserModule,

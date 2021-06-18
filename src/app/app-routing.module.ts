@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path: 'email-phone',component:EmailPhoneComponent},
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
-  {path: 'upload', component: FileUploadComponent}
+  {path: 'account/:username', component: UserAccountComponent}
 ];
 
 

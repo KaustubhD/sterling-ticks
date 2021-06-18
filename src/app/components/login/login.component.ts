@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
 
     this.service.saveAuthenticatedUser(user);
     setTimeout(() => {
-      let head = new HeaderComponent(this.service);
       this.router.navigate(['home']);
     }, 700);
 
