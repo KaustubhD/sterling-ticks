@@ -23,19 +23,7 @@
                                     </figure>
                                 </td>
                                 <td>
-                                    <!-- <select  name="Quantity" class="box">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                  </select> -->
                                    <app-cart-quantity [productId]="cart.id" [(quantity)]="cart.quantity" (quantityChange)="handleChange(cart.id, $event)"></app-cart-quantity>
-                                  <!-- <span *ngIf="cart.quantity > 0"> -->
-                                      <!-- <span>
-                                    <button id="decrease" (click)="subtractQuantity(cart.id)">-</button>
-                                    <span>{{ cart.quantity }}</span>
-                                    <button id="increase" (click)="addQuantity(cart.id)">+</button>
-                                </span> -->
                                  </td>
                                 <td>
                                     <div class="price-wrap"> <var class="price">{{cart.price | currency:'INR'}}</var> </div>
@@ -52,10 +40,12 @@
                 <div class="card-body">
                     <form>
                         <div class="form-group"> <label>Have coupon?</label>
-                            <div class="input-group"> <input type="text" class="form-control coupon" name="coupon" placeholder="Coupon code" [(ngModel)]="voucherInput"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon" (click)="check()">Apply</button> </span> </div>
+                            <div class="input-group"> <input type="text" class="form-control coupon" name="coupon" placeholder="Coupon code" [(ngModel)]="voucherInput" #voucher=ngModel (input)="hideMessage()"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon" (click)="check()">Apply</button> </span> </div>
                         </div>
-                        <div *ngIf=voucherApplied>Voucher is successfully applied</div>
-                        <div *ngIf=!voucherApplied>Voucher is not applied</div>
+						<div class="voucher-message" *ngIf="voucherApplied != undefined">
+							<span *ngIf="voucherApplied" class="valid">Voucher successfully applied</span>
+							<span *ngIf="!voucherApplied" class="invalid">Invalid voucher</span>
+						</div>
                     </form>
                 </div>
             </div>
@@ -69,6 +59,11 @@
                         <dt>Discount: </dt>
                         
                         <dd class="text-right text-danger ml-3">{{getDiscountPrice() | currency : 'INR'}}</dd>
+                    </dl>
+                    <dl class="dlist-align" *ngIf="voucherApplied">
+                        <dt>Voucher Discount: </dt>
+                        
+                        <dd class="text-right text-danger ml-3">{{voucherDiscount | currency : 'INR'}}</dd>
                     </dl>
                     <dl class="dlist-align">
                         <dt>Total: </dt>

@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CartComponent } from './components/cart/cart.component';
-
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -10,6 +8,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,8 +19,8 @@ const routes: Routes = [
   {path: 'email-phone',component:EmailPhoneComponent},
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
+  {path: 'upload', component: FileUploadComponent},
   {path: 'cart',component:CartComponent},
-  {path: 'upload', component: FileUploadComponent}
 ];
 
 
