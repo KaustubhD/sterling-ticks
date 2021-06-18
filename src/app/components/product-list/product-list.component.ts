@@ -14,36 +14,62 @@ export class ProductListComponent implements OnInit {
   page: number = 1;
   maxItem: number = 12;
   brandSelect: boolean = false;
-  products: ProductListModel[] =  [];
+  products: ProductListModel[] = [];
   brands: Brand[] = [];
   collections: Collection[] = [];
-  lastPage: number;
+  lastPage: number = 1;
   aBrand: Brand;
   constructor(private service: ProductService, private router: Router, private aroute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.aroute.queryParams.subscribe(params => {
-      if(params.filterBy!=null){
-        this.filter();
-      }
-      else{
-        this.brandSelect=false;
-        this.getAllProducts();
-      }
-      if(params.sortBy!=null){
-        this.sort();
-      }
-    });
     this.getAllBrands();
     this.getAllCollections();
-    this.lastPage = this.products.length / this.maxItem;
+    this.brandSelect = false;
+    let brand: string | undefined;
+    let collection: string | undefined;
+    this.aroute.queryParams.subscribe(params => {
+      if (params.brand!=null) {
+        brand = params.brand;
+        setTimeout(() => {
+        this.brandSelect = true;
+          this.brands.forEach(el => {
+            if (el.name == params.brand) {
+              this.aBrand = el;
+            }
+          }, 400);
+        });
+      }
+      else {
+        brand = undefined;
+        this.brandSelect = false;
+      } 
+      collection = (params.collection!=null) ? params.collection : undefined;
+
+      this.service.getProductList(brand, collection).then(data => {
+        this.products = data;
+        if (params.sortBy != null) {
+          this.sort();
+        }
+        this.lastPage = this.products.length as number / this.maxItem;
+      });
+    });
   }
 
-  getAllBrands(){
+  updateUrl(key: string , value: string) {
+    this.router.navigate(
+      [], 
+      {
+        relativeTo:this.aroute,
+        queryParams: {[key] : value}, 
+        queryParamsHandling: 'merge',
+      });
+  }
+
+  getAllBrands() {
     this.service.getAllBrands().then((data) => this.brands = data);
   }
 
-  getAllCollections(){
+  getAllCollections() {
     this.service.getAllCollections().then((data) => this.collections = data);
   }
 
@@ -57,50 +83,14 @@ export class ProductListComponent implements OnInit {
       }
     });
   }
-
-  filter(){
-    this.aroute.queryParams.subscribe(params => {
-      if (params.filterBy == 'brand') {
-        this.filterByBrand(params.brand);
-      }
-      if (params.filterBy == 'collection') {
-        this.brandSelect=false;
-        this.filterByCollection(params.collection);
-      }
-    });
-  }
-
-  getAllProducts() {
-    this.service.getAllProducts().then((data) => this.products = data);
-  }
-
-  next() {
+   next() {
     if (this.page < this.lastPage)
-      console.log("next page");
-    this.page = this.page + 1;
+      this.page = this.page + 1;
   }
   prev() {
     if (this.page > 1) {
       this.page = this.page - 1;
     }
-  }
-
-  filterByBrand(brand: Brand) {
-    this.brandSelect=true;
-    let res = this.service.getByBrand(brand.name).then(
-      data => {
-        data = this.products;
-      });
-    this.brands.forEach(el => {
-      if(el.name==brand.name){
-        this.aBrand = el;
-      }
-    });
-  }
-
-  filterByCollection(collection: string) {
-    let res = this.service.getByCollection(collection).then(
-  data => this.products = data);
   }
 
   priceSort() {
@@ -110,5 +100,4 @@ export class ProductListComponent implements OnInit {
   ratingSort() {
     this.products.sort((a: ProductListModel, b: ProductListModel) => (a.starRating > b.starRating) ? -1 : 1);
   }
-
 }

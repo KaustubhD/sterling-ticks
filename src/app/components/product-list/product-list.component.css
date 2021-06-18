@@ -26,7 +26,7 @@ a {
         text-transform: capitalize;
         text-shadow: 4px 4px #ddd;
         letter-spacing: 0.5em;
-        font-size: 4em;
+        font-size: 250%;
     }
     .brand-banner>.name:focus {
         outline: none;
@@ -68,7 +68,7 @@ a {
         text-transform: capitalize;
         text-shadow: 3px 3px #ddd;
         letter-spacing: 0.5em;
-        font-size: 200%;
+        font-size: 120%;
     }
     .brand-banner>.description {
         color: #ccc;
