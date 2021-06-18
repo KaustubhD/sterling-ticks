@@ -105,7 +105,6 @@ export class ProductListComponent implements OnInit {
 
   priceSort() {
     this.products.sort((a: ProductListModel, b: ProductListModel) => (a.price > b.price ? 1 : -1));
-    console.log(this.products);
   }
 
   ratingSort() {

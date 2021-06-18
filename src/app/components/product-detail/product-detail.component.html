@@ -1,4 +1,4 @@
-<div id="content-wrapper" class="row px-5">
+<div id="content-wrapper" class="row px-5" *ngIf="product">
 
     <div class=" mt-5 col-sm-12 col-md-6 ">
         <img id="featured" src="{{featureImage}}" class="mt-1" alt="Watch">
@@ -7,7 +7,8 @@
 
             <i id="slideLeft" class="bi bi-arrow-left-circle-fill arrow" (click)="scrollLeft()"></i>
             <div id="slider" #slider>
-                <img class="thumbnail" *ngFor="let img of product.img; index as i" src="../../../assets/images/{{img}}" alt="Watch" (mouseover)="changeImg($event)">
+                <img class="thumbnail" *ngFor="let img of product.images; index as i" src="./{{img}}"
+                    alt="Watch" (mouseover)="changeImg($event)">
             </div>
             <i id="slideRight" class="bi bi-arrow-right-circle-fill arrow " (click)="scrollRight()"></i>
 
@@ -16,7 +17,7 @@
 
     <div class=" mt-3  col-sm-12 col-md-6 p-4">
         <h1>{{product.name}}</h1>
-        <h2 class="text-gray">{{product.gender}} {{product.strapColour}} {{product.glassMaterial}} Watch</h2>
+        <h2 class="text-gray">{{product.gender | titlecase}} {{product.strap.color}} {{product.glassMaterial}} Watch</h2>
 
         <div>
             <app-rating [rating]="product.starRating"></app-rating>
@@ -55,65 +56,65 @@
             <h5>Specifications</h5><br />
             <div class="row row-cols-2">
                 <div class="col">
-                    <div>
+                    <div *ngIf="product.movement">
                         <h6>Movement</h6>
                         <h5>{{product.movement}}</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.dialColor">
                         <h6>Dial Colour</h6>
-                        <h5>{{product.dialColour}}</h5>
+                        <h5>{{product.dialColor}}</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.casing?.size">
                         <h6>Case Size</h6>
-                        <h5>{{product.caseSize}} mm</h5>
+                        <h5>{{product.casing.size}} mm</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.casing?.material">
                         <h6>Case Material</h6>
-                        <h5>{{product.caseMaterial}}</h5>
+                        <h5>{{product.casing.material}}</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.waterResistance">
                         <h6>Water Resistance</h6>
                         <h5>{{product.waterResistance}} M</h5>
+						<hr />
                     </div>
-                    <hr />
 
                 </div>
                 <div class="col">
-                    <div>
+                    <div *ngIf="product.glassMaterial">
                         <h6>Glass Material</h6>
                         <h5>{{product.glassMaterial}}</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.strap?.color">
                         <h6>Strap Colour</h6>
-                        <h5>{{product.strapColour}}</h5>
+                        <h5>{{product.strap.color}}</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.casing?.shape">
                         <h6>Case Shape</h6>
-                        <h5>{{product.caseShape}}</h5>
+                        <h5>{{product.casing.shape}}</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.strap?.material">
                         <h6>Strap Material</h6>
-                        <h5>{{product.strapMaterial}}</h5>
+                        <h5>{{product.strap.material}}</h5>
+						<hr />
                     </div>
-                    <hr />
-                    <div>
+                    <div *ngIf="product.warrantyPeriod">
                         <h6>Warranty Period</h6>
                         <h5>{{product.warrantyPeriod}} years</h5>
+						<hr />
                     </div>
-                    <hr />
                 </div>
             </div>
         </div>
         <div>
             <h5>Complete The Look</h5>
-            <p>This {{product.brand}} {{product.collection}} watch will quickly become your favourite staple accessory. This {{product.strapColour}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for a chic brunch outfit.</p>
+            <p>This {{product.brand}} {{product.collection}} watch will quickly become your favourite staple accessory. This {{product.strap.color}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for a chic brunch outfit.</p>
         </div>
 
     </div>
@@ -124,11 +125,11 @@
         </div><br />
         <div class="row row-cols-1 row-cols-md-4 mb-2">
             <div class="col" *ngFor="let similarProduct of similarProducts">
-                <div class="card">
-                    <img src="../../../assets/images/{{similarProduct.img[0]}}" class="card-img-top" alt="...">
+                <div class="card" routerLink="/product/{{similarProduct.modelNo}}">
+                    <img src="./{{similarProduct.images[0]}}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{similarProduct.name}}</h5>
-                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strapColour}} {{similarProduct.glassMaterial}} Watch</p>
+                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strap.color}} {{similarProduct.glassMaterial}} Watch</p>
 
                         <span>
                             <app-rating [rating]="product.starRating"></app-rating>
