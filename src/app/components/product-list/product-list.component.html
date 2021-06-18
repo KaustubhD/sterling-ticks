@@ -12,8 +12,8 @@
                 Sort By
               </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" (click)="sortUrl('price')">Price</a>
-                        <a class="dropdown-item" (click)="sortUrl('rating')">Rating</a>
+                        <a class="dropdown-item" (click)="updateUrl('sortBy','price')">Price</a>
+                        <a class="dropdown-item" (click)="updateUrl('sortBy','rating')">Rating</a>
                         <!-- <a class="dropdown-item" href="#">Popularity</a> -->
                     </div>
                 </li>
@@ -23,7 +23,7 @@
               </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li *ngFor="let brand of brands">
-                            <a class="dropdown-item"  (click)="brandUrl(brand.name)">{{brand.name}}</a>
+                            <a class="dropdown-item"  (click)="updateUrl('brand',brand.name)">{{brand.name}}</a>
                         </li>
                     </ul>
                 </li>
@@ -33,7 +33,7 @@
                 </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li *ngFor="let collection of collections">
-                            <a class="dropdown-item"  (click)="collectionUrl(collection.name)">{{collection.name}}</a>
+                            <a class="dropdown-item"  (click)="updateUrl('collection', collection.name)">{{collection.name}}</a>
                         </li>
                     </ul>
                 </li>

@@ -55,33 +55,16 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  sortUrl(sortBy: string) {
+  updateUrl(key: string , value: string) {
     this.router.navigate(
       [], 
       {
         relativeTo:this.aroute,
-        queryParams: {"sortBy" : sortBy}, 
+        queryParams: {[key] : value}, 
         queryParamsHandling: 'merge',
       });
   }
-  brandUrl(brandName: string){
-    this.router.navigate(
-      [], 
-      {
-        relativeTo:this.aroute,
-        queryParams: {"brand" : brandName},
-        queryParamsHandling: 'merge',
-      });
-  }
-  collectionUrl(collectionName: string){
-    this.router.navigate(
-      [], 
-      {
-        relativeTo:this.aroute,
-        queryParams: {"collection" : collectionName},
-        queryParamsHandling: 'merge',
-      });
-  }
+
   getAllBrands() {
     this.service.getAllBrands().then((data) => this.brands = data);
   }

@@ -19,6 +19,6 @@ export class RegisterService {
 			this.registeredUser = user
 		})
 		console.log("req");
-		return obs
+		return obs;
 	}
 }
