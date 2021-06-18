@@ -93,8 +93,10 @@ export class CartComponent implements OnInit {
 	}
 
 	getTotalAmount() {
-		return this.totalPrice - this.discountPrice - this.voucherDiscount
+		if(this.voucherApplied)
+			return this.totalPrice - this.discountPrice - this.voucherDiscount
 
+		return this.totalPrice - this.discountPrice
 	}
 
 	removeItem(productId: number) {
@@ -112,7 +114,7 @@ export class CartComponent implements OnInit {
 		this.voucherApplied = false
 		vouchers.forEach(voucher => {
 			if (voucher.name == this.voucherInput) {
-				this.voucherDiscount = ((this.totalPrice - this.discountPrice) * voucher.discount) / 100
+				this.voucherDiscount = (this.totalPrice  * voucher.discount) / 100
 				this.voucherApplied = true;
 			}
 		})
