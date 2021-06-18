@@ -5,10 +5,12 @@
         <div class="container-fluid">
 
             <!-- logo -->
-            <a class="navbar-brand" href="#"><img src="../../../../assets/images/logo.png" alt="Logo" class="img-fluid"></a>
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <a class="navbar-brand" href="#"><img src="../../../../assets/images/logo.png" alt="Logo"
+                    class="img-fluid"></a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse justify-content-between" id="nav">
                 <ul class="navbar-nav">
@@ -20,37 +22,36 @@
                         <a class="nav-link text-light font-weight-bold px-3" routerLink="products">PRODUCTS</a>
                     </li>
 
-                    <!-- <li class="nav-item dropdown" data-toggle="dropdown">
-                        <a class="nav-link text-light font-weight-bold px-3 dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: whitesmoke;">
-                    BRANDS
-                </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="#">Brand1</a></li>
-                            <li><a class="dropdown-item" href="#">Brand2</a></li>
-                            <li><a class="dropdown-item" href="#">Brand3</a></li>
-                        </ul>
-                    </li> -->
-
-
-                    <li *ngIf=!logged class="nav-item">
+                    <li *ngIf="!logged" class="nav-item">
                         <a class="nav-link text-light font-weight-bold px-3 no-margin nav-link-icon" routerLink="login">
                             <i class="bi bi-person "></i> LOGIN
-
                         </a>
                     </li>
-                    <li *ngIf=logged class="nav-item">
-                        <a class="nav-link text-light font-weight-bold px-3 no-margin nav-link-icon" routerLink="logout">
-                            <i class="bi bi-person mr-1"></i> LOGOUT</a>
+
+                    <li class="nav-item dropdown" data-toggle="dropdown" *ngIf="logged">
+                        <a class="nav-link text-light font-weight-bold px-3 dropdown-toggle" href="#"
+                            id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: whitesmoke;">
+                            <i class="bi bi-person "></i> {{user.userName | uppercase}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" [routerLink]="['/account/',user.userName]">
+                                <i class="bi bi-bag"></i> Your Accounts</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/orders/',user.userName]">
+                                <i class="bi bi-bag"></i> Your Orders</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['/cart/',user.userName]">
+                                <i class="bi bi-bag"></i> Your Cart</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" routerLink="home" (click)="logout()">
+                                <i class="bi bi-person"></i> Logout</a></li>
+                        </ul>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-light font-weight-bold px-3 no-margin" href="#">
-                            <i class="bi bi-cart2 navbar-icon no-margin"></i> CART</a>
-                    </li>
                 </ul>
 
                 <!-- Search bar -->
-
                 <form class="form-inline ml-3 d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-light ml-2" type="submit"><i class="bi bi-search"></i></button>

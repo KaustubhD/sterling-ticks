@@ -18,6 +18,7 @@ import { CartQuantityComponent } from './components/shared/cart-quantity/cart-qu
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { LoginService } from './services/login.service';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 		HttpClientModule,
 		ReactiveFormsModule
 	],
-	providers: [],
+	providers: [LoginService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
