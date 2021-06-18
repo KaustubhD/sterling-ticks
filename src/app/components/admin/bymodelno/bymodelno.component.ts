@@ -26,10 +26,11 @@ export class BymodelnoComponent implements OnInit {
     if(answer)
       this.service.delProduct(modelNo);
   }
-  edit(modelNo : string){
-    this.router.navigate((['admin-edit']),{queryParams : { modelNo: modelNo }}).then(()=>
+  edit(model : string){
+    this.router.navigate((['admin-edit']),{queryParams : { model: model}}).then(()=>
       
       location.reload()
     );
-  }   
+  }
+
 }

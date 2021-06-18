@@ -11,7 +11,7 @@ import { Collection } from '../components/models/collection.model';
 })
 export class ProductService {
   
-  url:string = GlobalConstants.apiUrl+'products/';
+  url:string = GlobalConstants.apiUrl+'/products/';
   constructor(private http: HttpClient) { }
 
   async getAllProducts(){
@@ -46,9 +46,11 @@ export class ProductService {
    this.http.post(GlobalConstants.URLS.ADD_PRODUCT,product).subscribe(data => data = product);
   }
   editProduct(product : Product) {
-    console.log("update :"+ product);
-    this.http.put(GlobalConstants.URLS.EDIT_PRODUCT,product).subscribe(data => data = product);
-  }
+    console.log( product);
+     this.http.put(GlobalConstants.URLS.EDIT_PRODUCT,product).subscribe(data => data = product);
+   }
+
+   
   delProduct(modelNo: string){
     return this.http.delete(GlobalConstants.URLS.DELETE_PRODUCT(modelNo)).subscribe();
   }

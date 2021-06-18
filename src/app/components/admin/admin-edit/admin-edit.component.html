@@ -1,146 +1,180 @@
 <app-admin></app-admin>
-<div class="container-fluid">
-    <h4 class="text-center"> Edit details of the Product: </h4><br>
 
-    <form (ngSubmit)="update()" class="was-validated" #frm=ngForm action="">
+<div class="container-fluid">
+    <form (ngSubmit)="update()" class="was-validated" #frm_edit=ngForm action="">
     
+        <h4 class="text-center"> Edit details to the Product-Cart: </h4><br>
         <div class="row">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="modelNo">Model Number: </label>
-                <input  class="form-control" name='model' [(ngModel)]='product.modelNo' required #modelNo=ngModel readonly>
-               
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="code">Product Name: </label>
-                <input class="form-control is-valid" name='name' [(ngModel)]='product.name' required #ename=ngModel
-                    pattern="[A-Za-z]{2,}">
-                <div class="invalid-feedback">Enter Correct Product Name</div>
-            </div>
-    
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="brand">Product Brand: </label>
-                <select name="brand" [(ngModel)]="product.brand" class="form-control" required>
-                    <option *ngFor="let b of brands" [value]="b"> {{b}}</option>
-                  </select>
-                <div class="invalid-feedback">Enter Correct Product Brand</div>
-            </div>
-    
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="id">Model ID: </label>
+            <input class="form-control is-valid" name='id' [(ngModel)]='product.id' required readonly>
+            <div class="invalid-feedback">Enter Correct Product ModelNo</div>
         </div>
-        <div class="row">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="code">Product Rating: </label>
-                <input class="form-control is-valid" name='starRating' [(ngModel)]='product.starRating' required #rating=ngModel
-                    pattern="[0-9]{1,}">
-                <div class="invalid-feedback">Invalid Rating</div>
-            </div>
-    
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="code">Product Price: </label>
-                <input class="form-control is-valid" name='price' [(ngModel)]='product.price' required #price=ngModel
-                    pattern="[0-9]{3,}">
-                <div class="invalid-feedback">Invalid Rating</div>
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="collection">Product Collection: </label>
-                <input class="form-control is-valid" name='collection' [(ngModel)]='product.collection' required #collection=ngModel
-                    pattern="[A-Za-z]{3,}">
-                <div class="invalid-feedback">Invalid Collection</div>
-            </div>
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="name">Model Name: </label>
+            <input pattern="[A-Za-z]{2,}" class="form-control is-valid" name='name' [(ngModel)]='product.name' required #name=ngModel>
+            <div class="invalid-feedback">Enter Correct Product Name</div>
         </div>
-        <div class="row">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="series">Product Series: </label>
-                <input class="form-control is-valid" name='series' [(ngModel)]='product.series' required #series=ngModel
-                    pattern="[A-Za-z][0-9]{1,}">
-                <div class="invalid-feedback">Invalid Series</div>
-            </div>
-    
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="movement">Product Movement: </label>
-                <input class="form-control is-valid" name='movement' [(ngModel)]='product.movement' required #movement=ngModel
-                    pattern="[A-Za-z]">
-                <div class="invalid-feedback">Invalid Movement</div>
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="collection">Product Gender: </label>
-                <select name="gender" [(ngModel)]="product.gender" class="form-control" required>
-                    <option *ngFor="let gen of genders" [value]="gen"> {{gen}}</option>
-                  </select>
-                <div class="invalid-feedback">Choose Gender</div>
-            </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="price">Product Price: </label>
+            <input type="number" class="form-control is-valid" name='price' [(ngModel)]='product.price' required #price=ngModel
+                pattern="[0-9]{3,}">
+            <div class="invalid-feedback">Invalid Price</div>
         </div>
-        <div class="row">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="discount">Product Discount: </label>
-                <input class="form-control is-valid" name='discount' [(ngModel)]='product.discount' required #discount=ngModel
-                    pattern="[0-9]{1,}">
-                <div class="invalid-feedback">Invalid Discount</div>
-            </div>
-    
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="casesize">Product Case Size: </label>
-                <input class="form-control is-valid" name='casesize' [(ngModel)]='product.caseSize' required #caseSize=ngModel
-                    pattern="[0-9]{3,}">
-                <div class="invalid-feedback">Invalid Case Size</div>
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="caseshape">Product Case Shape: </label>
-                <input class="form-control is-valid" name='caseshape' [(ngModel)]='product.caseShape' required #caseShape=ngModel
-                    pattern="[A-Za-z]">
-                <div class="invalid-feedback">Invalid Case Shape</div>
-            </div>
+      
+        
+
+    </div>
+    <div class="row">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="brand">Product Brand: </label>
+            <select name="brand" [(ngModel)]="product.brand.name" class="form-control" required>
+                <option *ngFor="let b of brands" [value]="b.name"> {{b.name}}</option>
+              </select>
+            <div class="invalid-feedback">Enter Correct Product Brand</div>
         </div>
-        <div class="row">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="glassMaterial">Product Glass Material: </label>
-                <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='product.glassMaterial' required #glassMaterial=ngModel
-                    pattern="[A-Za-z]{3,}">
-                <div class="invalid-feedback">Invalid Glass Material</div>
-            </div>
-    
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="caseMaterial">Product Case Material: </label>
-                <input class="form-control is-valid" name='caseMaterial' [(ngModel)]='product.caseMaterial' required #caseMaterial=ngModel
-                    pattern="[A-Za-z]{3,}">
-                <div class="invalid-feedback">Invalid Case Material</div>
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="dialColour">Product Dial Colour: </label>
-                <input class="form-control is-valid" name='dialColour' [(ngModel)]='product.dialColour' required #dialColour=ngModel
-                    pattern="[A-Za-z]{3,}">
-                <div class="invalid-feedback">Invalid Dial Colour</div>
-            </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="collection">Product Collection: </label>
+            <input class="form-control is-valid" name='collection' [(ngModel)]='product.collection.name' required #collection=ngModel
+                pattern="[A-Za-z]{3,}">
+            <div class="invalid-feedback">Invalid Collection</div>
         </div>
-    
-        <div class="row">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="strapColour">Product Strap Colour: </label>
-                <input class="form-control is-valid" name='strapColour' [(ngModel)]='product.strapColour' required #strapColour=ngModel
-                    pattern="[A-Za-z]{1,}">
-                <div class="invalid-feedback">Invalid Strap Colour</div>
-            </div>
-    
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="features">Product Features: </label>
-                <input class="form-control is-valid" name='features' [(ngModel)]='product.features' required #features=ngModel
-                    pattern="[A-Za-z]{3,}">
-                <div class="invalid-feedback">Invalid Features</div>
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="warrantyPeriod">Product Warranty Period: </label>
-                <input class="form-control is-valid" name='warrantyPeriod' [(ngModel)]='product.warrantyPeriod' required #warrantyPeriod=ngModel
-                    pattern="[0-9]{1,}">
-                <div class="invalid-feedback">Invalid Warranty</div>
-            </div>
+
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="series">Product Series: </label>
+            <input class="form-control is-valid" name='series' [(ngModel)]='product.series' required #series=ngModel
+                pattern="[A-Za-z]{1,}">
+            <div class="invalid-feedback">Invalid Series</div>
         </div>
-        <div class="row col-lg-6 col-md-6 col-sm-12">  
-        <label for="formFileMultiple" class="form-label ">Choose Product Images.....</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple />
+
+      
+       
+       
+    </div>
+    <div class="row">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="ModelNo">Model Number: </label>
+            <input readonly class="form-control is-valid" name='modelNo' [(ngModel)]='product.modelNo' required #modelNo=ngModel>
+            <div class="invalid-feedback">Enter Correct Product ModelNo</div>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="movement">Product Movement: </label>
+            <input class="form-control is-valid" name='movement' [(ngModel)]='product.movement' required #movement=ngModel
+                pattern="[A-Za-z]{2,}">
+            <div class="invalid-feedback">Invalid Movement</div>
+        </div>
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="gender">Product Gender: </label>
+            <select name="gender" [(ngModel)]="product.gender" class="form-control" required>
+                <option *ngFor="let gen of genders" [value]="gen"> {{gen}}</option>
+              </select>
+            <div class="invalid-feedback">Choose Gender</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="starRating">Product Rating: </label>
+            <input type="number" class="form-control is-valid" name='starRating' [(ngModel)]='product.starRating' required #rating=ngModel
+                pattern="[0-9]{1,}">
+            <div class="invalid-feedback">Invalid Rating</div>
+        </div>
+
+      
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="discount">Product Discount: </label>
+            <input type="number" class="form-control is-valid" name='discount' [(ngModel)]='product.discount' required #discount=ngModel
+                pattern="[0-9]{1,}">
+            <div class="invalid-feedback">Invalid Discount</div>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="casingsize">Product Case Size: </label>
+            <input type="number" class="form-control is-valid" name='casingsize' [(ngModel)]='product.casing.size' required #casingSize=ngModel
+                pattern="[0-9]{3,}">
+            <div class="invalid-feedback">Invalid Case Size</div>
         </div>
        
-        <div class="button">
-            <button type="submit" class="btn btn-success btn-block"  [disabled]=!frm.valid>Update</button>
+    </div>
+    <div class="row">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="caseshape">Product Case Shape: </label>
+            <input class="form-control is-valid" name='caseshape' [(ngModel)]='product.casing.shape' required #casingShape=ngModel
+                pattern="[A-Za-z]{3,}">
+            <div class="invalid-feedback">Invalid Case Shape</div>
         </div>
 
-</form>
-</div>
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="casingmaterial">Product Case Material: </label>
+            <input class="form-control is-valid" name='casingmaterial' [(ngModel)]='product.casing.material' required #casingMaterial=ngModel
+                pattern="[A-Za-z]{3,}">
+            <div class="invalid-feedback">Invalid Case Material</div>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="glassMaterial">Product Glass Material: </label>
+            <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='product.glassMaterial' required #glassMaterial=ngModel
+                pattern="[A-Za-z]{3,}">
+            <div class="invalid-feedback">Invalid Glass Material</div>
+        </div>
+       
+    </div>
+
+    <div class="row">
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="dialColor">Product Dial Colour: </label>
+            <input class="form-control is-valid" name='dialColor' [(ngModel)]='product.dialColor' required #dialColor=ngModel
+                pattern="[A-Za-z]{3,}">
+            <div class="invalid-feedback">Invalid Dial Colour</div>
+        </div>
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="strapColor">Product Strap Colour: </label>
+            <input class="form-control is-valid" name='strapColour' [(ngModel)]='product.strap.color' required #strapColour=ngModel
+                pattern="[A-Za-z]{1,}">
+            <div class="invalid-feedback">Invalid Strap Colour</div>
+        </div>
+
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="strapMaterial">Product Strap Material: </label>
+            <input class="form-control is-valid" name='strapMaterial' [(ngModel)]='product.strap.material' required #strapMaterial=ngModel
+                pattern="[A-Za-z]{1,}">
+            <div class="invalid-feedback">Invalid Strap Colour</div>
+        </div>
+    </div>
+
+           <div class="row">
+            <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="features">Product Features: </label>
+            <input class="form-control is-valid" name='features' (input)="assignfeatures($event)" required 
+               >
+            <div class="invalid-feedback">Invalid Features</div>
+        </div>
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="waterResistance">Product Water-Resistance: </label>
+            <input type="number" class="form-control is-valid" name='waterResistance' [(ngModel)]='product.waterResistance'  required #waterResistance=ngModel
+                pattern="[0-9]{1,}">
+            <div class="invalid-feedback">Invalid Warranty</div>
+        </div>
+        <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <label for="warrantyPeriod">Product Warranty Period: </label>
+            <input type="number" class="form-control is-valid" name='warrantyPeriod' [(ngModel)]='product.warrantyPeriod' required #warrantyPeriod=ngModel
+                pattern="[0-9]{1,}">
+            <div class="invalid-feedback">Invalid Warranty</div>
+        </div>
+
+    </div>
+ <file-upload></file-upload>
+  <!--- <div class="row col-lg-6 col-md-6 col-sm-12">  
+<label for="formFileMultiple" class="form-label ">Choose Multiple Images...</label>
+<input class="form-control is-valid" type="file" id="formFileMultiple" multiple />
+    </div>-->
+
+<div class="button">
+            <button type="submit" class="btn btn-success btn-block">Submit</button>
+        </div>
+
+    </form>
+    </div>

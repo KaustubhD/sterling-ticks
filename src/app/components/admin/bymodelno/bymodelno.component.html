@@ -5,8 +5,7 @@
     <button type="submit" class="btn btn-info m-3">Search by ModelNo</button>
 </form>
 <br/>
-<table class="table table-dark table-bordered">
-
+<table *ngIf="product.modelNo" class="table table-dark table-bordered">
     <tr>
         <th class="alert-info">Product ModelNo</th>
         <th class="alert-info">Product Name</th>
@@ -14,23 +13,19 @@
         <th class="alert-info">Product Price</th>
         <th class="alert-info">Product Rating</th>
         <th class="alert-info">Product Image</th>
-        
         <th class="alert-info">Edit</th>
         <th class="alert-info">Delete</th>
-        
     </tr>
-
 <!--<tr *ngFor="let product of products">-->
-      <tr>
+      <tr >
         <td class='table-primary'>{{ product.modelNo }}</td>
         <td class='table-primary'>{{ product.name }}</td>
-        <td class='table-primary'>{{ product.brand }}</td>
+        <td class='table-primary'>{{ product.brand.name }}</td>
         <td class='table-primary'>{{ product.price }}</td>
         <td class='table-primary'>{{ product.starRating}}</td>
-        <td>{{product.img}}</td>
-        <td class='table-primary'><button class="btn btn-success btn-sm btn-block" (click)=edit(product.modelNo)> Edit</button></td>
+        <td>{{product.images[0]}}</td>
+       <td class='table-primary'><button class="btn btn-success btn-sm btn-block" (click)=edit(product.modelNo)> Edit</button></td>
          <td class='table-primary'><button class="btn btn-danger btn-sm btn-block" (click)=remove(product.modelNo)> Delete</button></td>
-        
-    </tr>
+      </tr>
 
 </table>

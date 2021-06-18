@@ -11,7 +11,7 @@ export class GlobalConstants{
 		LOGIN: GlobalConstants.apiUrl + "/login",
 		ADD_PRODUCT:GlobalConstants.apiUrl + "/products/add",
 		EDIT_PRODUCT:GlobalConstants.apiUrl + "/products/edit",
-		DELETE_PRODUCT:(modelNo:string)=>GlobalConstants.apiUrl + "/products/delete/"+ modelNo,
+		DELETE_PRODUCT:(modelNo:string)=>GlobalConstants.apiUrl + "/products/"+ modelNo,
         BRAND:GlobalConstants.apiUrl +"/brands"
 	}
 }
