@@ -8,6 +8,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { UserSectionComponent } from './components/user-section/user-section.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,10 +20,9 @@ const routes: Routes = [
   {path: 'email-phone',component:EmailPhoneComponent},
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
-  {path: 'upload', component: FileUploadComponent}
+  {path: 'user/:username', component: UserSectionComponent},
+  {path: 'order/:username', component: OrdersComponent}
 ];
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
 	onSameUrlNavigation: 'reload'

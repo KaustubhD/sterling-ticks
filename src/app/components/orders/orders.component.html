@@ -1,0 +1,27 @@
+
+<div class="container">
+    <section class="main">
+        <div class="header">
+            <h1>Your Orders</h1>
+        </div>
+        <div class="list">
+            <table class="table table-list table-bordered">
+                <tr>
+                    <th>Order No.</th>
+                    <th>Order Date</th>
+                    <th>Order Price</th>
+                    <th>Delivery Address</th>
+                </tr>
+                <tr *ngFor="let order of orders">
+                    <th>{{order.no}}</th>
+                    <th>{{order.date}}</th>
+                    <th>{{order.price}}</th>
+                    <th>{{order.deliveryAddress}}</th>
+                </tr>
+            </table>
+            <div *ngIf="orders.length==0">
+                <p>You don't have any orders yet</p>
+            </div>
+        </div>
+    </section>
+</div>

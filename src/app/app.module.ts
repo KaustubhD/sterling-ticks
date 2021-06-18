@@ -17,11 +17,13 @@ import { CartQuantityComponent } from './components/shared/cart-quantity/cart-qu
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { UserSectionComponent } from './components/user-section/user-section.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-    	ProductDetailComponent,
+		ProductDetailComponent,
 		ProductCardComponent,
 		RegisterComponent,
 		LoginComponent,
@@ -29,11 +31,13 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 		ProductListComponent,
 		HeaderComponent,
 		FooterComponent,
-  		RatingComponent,
+		RatingComponent,
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
-		FileUploadComponent
+		FileUploadComponent,
+		UserSectionComponent,
+		OrdersComponent
 	],
 	imports: [
 		BrowserModule,

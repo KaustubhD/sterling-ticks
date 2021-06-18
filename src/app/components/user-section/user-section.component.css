@@ -1,0 +1,43 @@
+.box{
+    background-color: #eee;
+    text-align: center;
+    padding: 5% 0;
+}
+.profile{
+    text-align: center;
+    justify-content: center;
+}
+.profile-table{
+    margin: auto;
+    text-transform: none;
+}
+.img-container{
+    width: 95%;
+    max-width: 140px;
+    margin: 5px auto;
+    height: 150px;
+    border: 2px solid #ccc;
+    border-radius: 12% 12%;
+    overflow: hidden;
+}
+.item-box{
+    height: 5em;
+    width: 85%;
+    margin: 3% auto;
+    position: relative;
+}
+.item{
+    vertical-align: middle;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.item-container{
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+.item-box:hover{
+    background-color: #ddd;
+}
