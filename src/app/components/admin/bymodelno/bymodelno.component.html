@@ -1,31 +1,41 @@
 <app-admin></app-admin>
-<form (ngSubmit)="findByModelNo()" class="form-inline">
-    <label for="model"> Enter Model Number: </label>
-    <input name="model" [(ngModel)]="model" class="form-control m-2" required/>
-    <button type="submit" class="btn btn-info m-3">Search by ModelNo</button>
-</form>
-<br/>
-<table *ngIf="product.modelNo" class="table table-dark table-bordered">
-    <tr>
-        <th class="alert-info">Product ModelNo</th>
-        <th class="alert-info">Product Name</th>
-        <th class="alert-info">Product Brand</th>
-        <th class="alert-info">Product Price</th>
-        <th class="alert-info">Product Rating</th>
-        <th class="alert-info">Product Image</th>
-        <th class="alert-info">Edit</th>
-        <th class="alert-info">Delete</th>
-    </tr>
-<!--<tr *ngFor="let product of products">-->
-      <tr >
-        <td class='table-primary'>{{ product.modelNo }}</td>
-        <td class='table-primary'>{{ product.name }}</td>
-        <td class='table-primary'>{{ product.brand.name }}</td>
-        <td class='table-primary'>{{ product.price }}</td>
-        <td class='table-primary'>{{ product.starRating}}</td>
-        <td>{{product.images[0]}}</td>
-       <td class='table-primary'><button class="btn btn-success btn-sm btn-block" (click)=edit(product.modelNo)> Edit</button></td>
-         <td class='table-primary'><button class="btn btn-danger btn-sm btn-block" (click)=remove(product.modelNo)> Delete</button></td>
-      </tr>
+<div class="container">
+    <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Sorry!</strong> This Model No watch doesn't exists on Sterling Ticks.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form (ngSubmit)="findByModelNo()" class="form-inline">
+        <label for="model" class="pr-4"> <b>Enter Model Number:</b> </label>
+        <input name="model" [(ngModel)]="model" class="form-control m-3" placeholder="Enter Model No..." required />
+        <button type="submit" class="btn btn-info m-3 pl-5 pr-5">Search..</button>
+    </form>
+    <br />
 
-</table>
+    <table *ngIf="product.modelNo" class="table table-dark table-bordered">
+        <tr>
+            <th class="alert-info"><u>Product ModelNo</u></th>
+            <th class="alert-info"><u>Product Name</u></th>
+            <th class="alert-info"><u>Product Brand</u></th>
+            <th class="alert-info"><u>Product Price</u></th>
+            <th class="alert-info"><u>Product Rating</u></th>
+            <th class="alert-info"><u>Product Image</u></th>
+            <th class="alert-info"><u>Edit</u></th>
+            <th class="alert-info"><u>Delete</u></th>
+        </tr>
+
+        <tr>
+            <td class='table-primary'>{{ product.modelNo }}</td>
+            <td class='table-primary'>{{ product.name }}</td>
+            <td class='table-primary'>{{ product.brand.name }}</td>
+            <td class='table-primary'>{{ product.price }}</td>
+            <td class='table-primary'>{{ product.starRating}}</td>
+            <td class='table-primary'>{{product.images[0]}}</td>
+            <td class='table-primary'><a [routerLink]="['/admin-edit/',product.modelNo]"><button
+                        class="btn btn-info btn-sm btn-block" (click)=edit(product.modelNo)>Edit</button></a></td>
+            <td class='table-primary'><button class="btn btn-danger btn-sm btn-block" (click)=remove(product.modelNo)>
+                    Delete</button></td>
+        </tr>
+    </table>
+</div>

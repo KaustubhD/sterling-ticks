@@ -1,31 +1,27 @@
 <app-admin></app-admin>
-       
-    <table class="table table-bordered table-dark">
+       <div class="container">    <table class="table table-bordered table-dark">
         <thead class="thead-dark">
         <tr class="table table-dark ">
-            <th>Model No</th>
-            <th (click)='orderByName()'>Product Name</th>
-            <th (click)='orderByBrand()'>Product Brand</th>
-            <th (click)='orderByPrice()'>Product Price</th>
-            <th>Product Rating</th>
-            <th>Product Image</th>
-            <th>Edit Entry</th>
-            <th>Delete Entry</th>
+            <th><u>Model No</u></th>
+            <th (click)='orderByName()'><u>Product Name</u></th>
+            <th (click)='orderByBrand()'><u>Product Brand</u></th>
+            <th (click)='orderByPrice()'><u>Product Price</u></th>
+            <th><u>Product Rating</u></th>
+            <th><u>Product Image</u></th>
+            <th><u>Edit Entry</u></th>
+            <th><u>Delete Entry</u></th>
         </tr>
         </thead>
-        <!-- <div *ngFor="let p of products">
-        <p (click)='test("p")'>show product</p>
-        </div> -->
-        <tr class='table-dark' *ngFor="let p of products, let i = index">
+       <tr class='table-dark' *ngFor="let p of products, let i = index">
             <td class='table-primary'>{{p.modelNo}}</td>
             <td class='table-primary'>{{p.name}}</td>
             <td class='table-primary'>{{p.brandName}}</td>
             <td class='table-primary'>{{p.price}}</td>
             <td class='table-primary'>{{p.starRating}}</td>
             <td class='table-primary'><img src="{{p.images[0]}}"></td>
-            
-          <td class='table-primary'><a [routerLink]="['/admin-edit/',p.modelNo]"><button class="btn btn-success btn-sm btn-block" (click)=edit(p.modelNo)>Edit</button></a></td>
+             <td class='table-primary'><a [routerLink]="['/admin-edit/',p.modelNo]"><button class="btn btn-info btn-sm btn-block" (click)=edit(p.modelNo)>Edit</button></a></td>
             <td class='table-primary'><button class="btn btn-danger btn-sm btn-block" (click)=remove(p.modelNo)> Delete</button></td>
         </tr>
     </table>
+    </div>
 

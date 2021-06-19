@@ -15,6 +15,7 @@ import { AdminAddComponent } from './components/admin/admin-add/admin-add.compon
 import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
 import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},

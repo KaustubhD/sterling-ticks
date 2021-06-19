@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <form (ngSubmit)="update()" class="was-validated" #frm_edit=ngForm action="">
     
-        <h4 class="text-center"> Edit details to the Product-Cart: </h4><br>
+        <h4 class="text-center"> Edit details to the  <span>STERLING TICKS</span> Product-Cart: </h4><br>
         <div class="row">
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
             <label for="id">Model ID: </label>
@@ -166,14 +166,29 @@
         </div>
 
     </div>
- <file-upload></file-upload>
-  <!--- <div class="row col-lg-6 col-md-6 col-sm-12">  
-<label for="formFileMultiple" class="form-label ">Choose Multiple Images...</label>
-<input class="form-control is-valid" type="file" id="formFileMultiple" multiple />
-    </div>-->
 
+<div class="row">
+    <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <label for="strapMaterial">Product Glass Material: </label>
+        <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='product.glassMaterial' required #strapMaterial=ngModel
+            pattern="[A-Za-z]{1,}">
+        <div class="invalid-feedback">Invalid Glass Material</div>
+    </div>
+    <div class="form-group col-lg-4 col-md-6 col-sm-12">
+        <label for="deliverySpeed">Product Delivery Speed: </label>
+        <select name="deliverSpeed" [(ngModel)]="product.deliverySpeed" class="form-control" required>
+            <option *ngFor="let speed of speeds" [value]="speed"> {{speed}}</option>
+          </select>
+        <div class="invalid-feedback">Choose Deliver Speed</div>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-lg-4 col-sm-12 col-md-12">
+        <file-upload></file-upload>
+    </div>
+     </div> -->
 <div class="button">
-            <button type="submit" class="btn btn-success btn-block">Submit</button>
+            <button type="submit" class="btn btn-info btn-block">Update</button>
         </div>
 
     </form>

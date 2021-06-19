@@ -10,25 +10,27 @@ import { Router } from '@angular/router';
 })
 export class BymodelnoComponent implements OnInit {
   product: Product = new Product()
-  model: string='';
-  
+  model: string = '';
+  alert: boolean = false;
 
-  constructor(private service:ProductService, private router: Router) { }
+
+  constructor(private service: ProductService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  findByModelNo(){
-    this.service.getByModel(this.model).then(data => this.product =data);
+  findByModelNo() {
+    this.service.getByModel(this.model).then(data => this.product = data);
+    this.alert = true;
   }
-  remove(modelNo:string ){
+
+  remove(modelNo: string) {
     var answer = confirm('Are you sure to delete entry?');
-    if(answer)
+    if (answer)
       this.service.delProduct(modelNo);
   }
-  edit(model : string){
-    this.router.navigate((['admin-edit']),{queryParams : { model: model}}).then(()=>
-      
+  edit(model: string) {
+    this.router.navigate((['admin-edit']), { queryParams: { model: model } }).then(() =>
       location.reload()
     );
   }

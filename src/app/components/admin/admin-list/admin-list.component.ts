@@ -15,38 +15,40 @@ export class AdminListComponent implements OnInit {
   logged: boolean = false;
 
   constructor(private service: ProductService, private router: Router) {
-    
-   }
+
+  }
 
   ngOnInit(): void {
-    this.service.getAllProducts().then((data) => {this.products = data;
-    console.log(this.products)});
+    this.service.getAllProducts().then((data) => {
+    this.products = data;
+      console.log(this.products)
+    });
   }
 
-  remove(modelNo:string ){
+  remove(modelNo: string) {
     var answer = confirm('Are you sure to delete entry?');
-    if(answer)
+    if (answer)
       this.service.delProduct(modelNo);
   }
-  orderByName(){
-    this.products.sort((a,b)=> (a.name>b.name)? 1 : ((a.name<b.name)? -1: 0));
+  orderByName() {
+    this.products.sort((a, b) => (a.name > b.name) ? 1 : ((a.name < b.name) ? -1 : 0));
   }
-  orderByBrand(){
-    this.products.sort((a,b)=> (a.brandName>b.brandName)? 1 : ((a.brandName<b.brandName)? -1: 0));
+  orderByBrand() {
+    this.products.sort((a, b) => (a.brandName > b.brandName) ? 1 : ((a.brandName < b.brandName) ? -1 : 0));
   }
-  orderByPrice(){
-    this.products.sort((a,b)=> (a.price>b.price)? 1 : ((a.price<b.price)? -1: 0));
+  orderByPrice() {
+    this.products.sort((a, b) => (a.price > b.price) ? 1 : ((a.price < b.price) ? -1 : 0));
   }
 
-  edit(model : string){
-    this.router.navigate(['admin-edit',model]).then(()=>
-      
+  edit(model: string) {
+    this.router.navigate(['admin-edit', model]).then(() =>
+
       location.reload()
     );
   }
-  test(p:Product){
-console.log(p);
+  test(p: Product) {
+    console.log(p);
   }
-  
-  
+
+
 }

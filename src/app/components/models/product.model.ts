@@ -24,7 +24,7 @@ export class Product{
     public warrantyPeriod: number;
     public features: string[]=[];
     public images: string[] = [];
-  constructor(){
+    constructor(){
     this.brand=new Brand();
     this.collection=new Collection();
     this.casing= new Casing();
@@ -34,6 +34,6 @@ export class Product{
 		return this.price - (this.price * this.discount / 100);
 	}
 	static build(fields: Partial<Product>): Product {
-		return Object.assign(Product.prototype, fields)
+		return Object.assign(new Product(), fields)
 	}
 }

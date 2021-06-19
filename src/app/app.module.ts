@@ -27,6 +27,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 
 import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
 
+
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -45,12 +47,10 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 	    FileUploadComponent,
 		AdminComponent,
 		AdminAddComponent,
-	
-		AdminListComponent,
-	
-		BymodelnoComponent,
- 
-     AdminEditComponent
+	    AdminListComponent,
+	    BymodelnoComponent,
+        AdminEditComponent
+     
 		
 	],
 	imports: [

@@ -16,7 +16,8 @@ export class AdminEditComponent implements OnInit {
   product : Product = new Product()
   modelNo:  string="";
   brands: Brand[] = [];
-  genders: string[] = ["male", "female"]
+  genders: string[] = ["male", "female"];
+  speeds: string[] = ["slow", "slower","fast","faster"]
   constructor(private service : ProductService, private router: Router, private aroute: ActivatedRoute) { 
 
   }
@@ -40,7 +41,7 @@ ngOnDestroy():void{
   
 
   update(){
-    this.product.modelNo="80484D52A761-Ba";
+    
     console.log(this.product);
     this.service.editProduct(this.product);
     this.router.navigate(['admin-list']);
@@ -50,6 +51,7 @@ ngOnDestroy():void{
    this.product.features=value.split(",");
   }
 
+  
  
 
 }
