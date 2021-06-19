@@ -1,5 +1,6 @@
 export class OrderItem{
     modelNo: string;
-    price: string;
-    qty: string;
+    name: string;
+    price: number;
+    qty: number;
 }

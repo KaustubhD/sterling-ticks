@@ -19,6 +19,8 @@ import { EmailPhoneComponent } from './components/email-phone/email-phone.compon
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { UserSectionComponent } from './components/user-section/user-section.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 @NgModule({
 	declarations: [
@@ -37,7 +39,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 		EmailPhoneComponent,
 		FileUploadComponent,
 		UserSectionComponent,
-		OrdersComponent
+		OrdersComponent,
+		CartComponent,
+		CartQuantityComponent,
+		FileUploadComponent
 	],
 	imports: [
 		BrowserModule,

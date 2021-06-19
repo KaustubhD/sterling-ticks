@@ -4,6 +4,6 @@ export class Order{
     public no: String = '';
     public date: string;
     public price: number;
-    public deliveryAddress: number = 0;
+    public deliveryAddress: string;
     public items: OrderItem[];
 }

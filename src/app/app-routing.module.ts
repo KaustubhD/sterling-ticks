@@ -10,6 +10,7 @@ import { EmailPhoneComponent } from './components/email-phone/email-phone.compon
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { UserSectionComponent } from './components/user-section/user-section.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
   {path: 'user/:username', component: UserSectionComponent},
-  {path: 'order/:username', component: OrdersComponent}
+  {path: 'orders', component: OrdersComponent},
+  {path: 'cart',component:CartComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

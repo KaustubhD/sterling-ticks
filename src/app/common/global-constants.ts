@@ -18,4 +18,6 @@ export const URLS = {
 	GET_PRODUCT: (modelNo: string) => GlobalConstants.apiUrl + "/products/" + modelNo,
 	GET_SIMILAR_PRODUCTS: (modelNo: string) => GlobalConstants.apiUrl + "/products/similarProducts?modelNo=" + modelNo,
 	LOGIN: GlobalConstants.apiUrl + "/login",
+	CART : GlobalConstants.apiUrl + "/cart",
+	GET_ORDERS: (username: string) => GlobalConstants.apiUrl + "/orders/" + username,
 }
