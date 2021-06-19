@@ -168,13 +168,13 @@
     </div>
 
 <div class="row">
-    <div class="form-group col-lg-4 col-md-6 col-sm-12">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12">
         <label for="strapMaterial">Product Glass Material: </label>
         <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='product.glassMaterial' required #strapMaterial=ngModel
             pattern="[A-Za-z]{1,}">
         <div class="invalid-feedback">Invalid Glass Material</div>
     </div>
-    <div class="form-group col-lg-4 col-md-6 col-sm-12">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12">
         <label for="deliverySpeed">Product Delivery Speed: </label>
         <select name="deliverSpeed" [(ngModel)]="product.deliverySpeed" class="form-control" required>
             <option *ngFor="let speed of speeds" [value]="speed"> {{speed}}</option>

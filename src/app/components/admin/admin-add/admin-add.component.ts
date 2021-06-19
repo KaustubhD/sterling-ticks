@@ -28,6 +28,7 @@ export class AdminAddComponent implements OnInit {
     this.service.addProduct(this.productAdd);
     console.log(this.productAdd);
     this.router.navigate(['admin-list']);
+   
   }
   assignfeatures(event: Event) {
     const value = (event.target as HTMLInputElement).value;

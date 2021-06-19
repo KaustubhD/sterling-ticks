@@ -13,7 +13,7 @@ export class Product{
     public modelNo: string;
     public movement: string;
     public gender: string;
-    public deliverySpeed:string;
+    public deliverySpeed: string;
     public starRating: number;
     public discount: number;
     public casing: Casing;

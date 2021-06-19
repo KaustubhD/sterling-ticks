@@ -11,6 +11,7 @@ export class CartQuantityComponent implements OnInit {
 
 	@Input() quantity: number
 	@Input() productId: number
+	@Input() showLabel: boolean
 	@Output() quantityChange = new EventEmitter<number>()
 
 	quantity$: BehaviorSubject<number>
@@ -22,6 +23,9 @@ export class CartQuantityComponent implements OnInit {
 	ngOnChanges(changes: SimpleChanges){
 		if(changes.quantity.isFirstChange())
 			this.subscribe()
+		else{
+			this.quantity$.next(changes.quantity.currentValue)
+		}
 	}
 
 	ngOnDestroy(): void {

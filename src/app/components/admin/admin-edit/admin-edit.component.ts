@@ -41,7 +41,6 @@ ngOnDestroy():void{
   
 
   update(){
-    
     console.log(this.product);
     this.service.editProduct(this.product);
     this.router.navigate(['admin-list']);

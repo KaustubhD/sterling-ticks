@@ -10,7 +10,7 @@
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="name">Model Name: </label>
-                <input pattern="[A-Za-z]{2,}" class="form-control is-valid" name='name_add'
+                <input pattern="[a-zA-Z\\s]*{2,}" class="form-control is-valid" name='name_add'
                     [(ngModel)]='productAdd.name' required #name_add=ngModel>
                 <div class="invalid-feedback">Enter Correct Product Name</div>
             </div>
@@ -40,7 +40,7 @@
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="series">Product Series: </label>
                 <input class="form-control is-valid" name='series' [(ngModel)]='productAdd.series' required
-                    #series=ngModel pattern="[A-Za-z]{1,}">
+                    #series=ngModel pattern="[a-zA-Z\\s]*{1,}">
                 <div class="invalid-feedback">Invalid Series</div>
             </div>
         </div>
@@ -48,7 +48,7 @@
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="ModelNo">Model Number: </label>
                 <input class="form-control is-valid" name='modelNo' [(ngModel)]='productAdd.modelNo' required
-                    #modelNo=ngModel>
+                    #modelNo=ngModel pattern="[a-zA-Z\\s]*{2}">
                 <div class="invalid-feedback">Enter Correct Product ModelNo</div>
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
@@ -97,13 +97,13 @@
                 <label for="casingmaterial">Product Case Material: </label>
                 <input class="form-control is-valid" name='casingmaterial' [(ngModel)]='productAdd.casing.material'
                     required #casingMaterial=ngModel pattern="[A-Za-z]{3,}">
-                <div class="invalid-feedback">Invalid Case Color</div>
+                <div class="invalid-feedback">Invalid Case Material</div>
             </div>
 
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="glassMaterial">Product Case colour: </label>
                 <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='productAdd.casing.color' required
-                    #glassMaterial=ngModel pattern="[A-Za-z]{3,}">
+                    #glassMaterial=ngModel pattern="[a-zA-Z\\s]*{3,}">
                 <div class="invalid-feedback">Invalid Case Material</div>
             </div>
 
@@ -113,13 +113,13 @@
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="dialColor">Product Dial Colour: </label>
                 <input class="form-control is-valid" name='dialColor' [(ngModel)]='productAdd.dialColor' required
-                    #dialColor=ngModel pattern="[A-Za-z]{3,}">
+                    #dialColor=ngModel pattern="[a-zA-Z\\s]*{3,}">
                 <div class="invalid-feedback">Invalid Dial Colour</div>
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="strapColor">Product Strap Colour: </label>
                 <input class="form-control is-valid" name='strapColour' [(ngModel)]='productAdd.strap.color' required
-                    #strapColour=ngModel pattern="[A-Za-z]{1,}">
+                    #strapColour=ngModel pattern="[a-zA-Z\\s]*{1,}">
                 <div class="invalid-feedback">Invalid Strap Colour</div>
             </div>
 
@@ -152,13 +152,13 @@
 
         </div>
         <div class="row">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label for="strapMaterial">Product Glass Material: </label>
                 <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='productAdd.glassMaterial'
                     required #strapMaterial=ngModel pattern="[A-Za-z]{1,}">
                 <div class="invalid-feedback">Invalid Glass Material</div>
             </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label for="deliverySpeed">Product Delivery Speed: </label>
                 <select name="deliverySpeed" [(ngModel)]="productAdd.deliverySpeed" class="form-control" required>
                     <option *ngFor="let speed of speeds" [value]="speed"> {{speed}}</option>
@@ -173,7 +173,7 @@
          
          </div> -->
         <div class="button">
-            <button type="submit" class="btn btn-success btn-block" [disabled]=!frm.valid>Submit</button>
+            <button type="submit" class="btn btn-success btn-block">Submit</button>
         </div>
 
     </form>

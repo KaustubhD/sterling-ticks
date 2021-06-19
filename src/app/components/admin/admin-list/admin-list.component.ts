@@ -19,6 +19,7 @@ export class AdminListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
     this.service.getAllProducts().then((data) => {
     this.products = data;
       console.log(this.products)
@@ -26,9 +27,11 @@ export class AdminListComponent implements OnInit {
   }
 
   remove(modelNo: string) {
+
     var answer = confirm('Are you sure to delete entry?');
     if (answer)
       this.service.delProduct(modelNo);
+      location.reload();
   }
   orderByName() {
     this.products.sort((a, b) => (a.name > b.name) ? 1 : ((a.name < b.name) ? -1 : 0));

@@ -24,6 +24,8 @@ import { AdminListComponent } from './components/admin/admin-list/admin-list.com
 
 import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
 
@@ -44,6 +46,7 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
+<<<<<<< HEAD
 	    FileUploadComponent,
 		AdminComponent,
 		AdminAddComponent,
@@ -52,6 +55,11 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
         AdminEditComponent
      
 		
+=======
+		CartComponent,
+		CartQuantityComponent,
+		FileUploadComponent
+>>>>>>> d7ed6862e98164b7902ec229172c2aec0112ae9b
 	],
 	imports: [
 		BrowserModule,
