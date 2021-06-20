@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { CredentialModel as user } from '../components/models/credential.model';
 import { HttpClient } from '@angular/common/http';
 import { URLS } from '../common/global-constants';
-import { UserModel } from '../components/models/user.model';
+import { UserModel } from 'src/app/components/models/user.model';
 import { BehaviorSubject } from 'rxjs';
+import { Roles } from '../components/models/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class LoginService {
   authenticate(user: user) {
     return this.http.post<UserModel>(URLS.LOGIN, user);
   }
-
+  
   saveAuthenticatedUser(user: UserModel) {
 	this.setAuthenticatedUser(user)
 	localStorage.setItem(this.KEY, JSON.stringify(user))
@@ -43,5 +44,9 @@ export class LoginService {
     this.loggedIn.next(false);
     this.authenticatedUser.next(new UserModel());
 	localStorage.removeItem(this.KEY)
+  }
+
+  isAdmin(): boolean {
+	return this.getAuthenticatedUser().value.roles.some(({role}) => role == Roles.AD)
   }
 }
