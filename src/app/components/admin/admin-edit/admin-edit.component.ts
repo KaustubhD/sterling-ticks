@@ -24,10 +24,9 @@ export class AdminEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getAllBrands().then(brands => { this.brands = brands });
-
- this.modelNo= this.aroute.snapshot.paramMap.get('model') as string
- this.service.getByModel(this.modelNo).then((product:Product) => {
-   this.product=Product.build(product);
+    this.modelNo= this.aroute.snapshot.paramMap.get('model') as string
+    this.service.getByModel(this.modelNo).then((product:Product) => {
+    this.product=Product.build(product);
  });
 
 }
@@ -49,7 +48,9 @@ ngOnDestroy():void{
     const value=(event.target as HTMLInputElement).value;
    this.product.features=value.split(",");
   }
-
+  assignFeaturesToInput(features:string[]){
+    return features.join(",");
+  }
   
  
 

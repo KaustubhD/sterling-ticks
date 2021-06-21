@@ -25,9 +25,14 @@ export class AdminAddComponent implements OnInit {
   }
 
   add() {
-    this.service.addProduct(this.productAdd);
-    console.log(this.productAdd);
-    this.router.navigate(['admin-list']);
+    this.service.addProduct(this.productAdd).then(()=>{
+      this.router.navigate(['admin-list']);
+    });
+    // console.log(this.productAdd);
+    // setTimeout(()=>{
+      
+    // }, 500 )
+    
    
   }
   assignfeatures(event: Event) {

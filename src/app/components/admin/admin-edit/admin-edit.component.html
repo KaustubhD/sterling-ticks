@@ -12,7 +12,7 @@
         </div>
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
             <label for="name">Model Name: </label>
-            <input pattern="[A-Za-z]{2,}" class="form-control is-valid" name='name' [(ngModel)]='product.name' required #name=ngModel>
+            <input pattern="[a-zA-Z\s\_-']{2,}" class="form-control is-valid" name='name' [(ngModel)]='product.name' required #name=ngModel>
             <div class="invalid-feedback">Enter Correct Product Name</div>
         </div>
 
@@ -46,7 +46,7 @@
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
             <label for="series">Product Series: </label>
             <input class="form-control is-valid" name='series' [(ngModel)]='product.series' required #series=ngModel
-                pattern="[A-Za-z]{1,}">
+                pattern="[A-Za-z\s\-_]{1,}">
             <div class="invalid-feedback">Invalid Series</div>
         </div>
 
@@ -127,20 +127,20 @@
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
             <label for="dialColor">Product Dial Colour: </label>
             <input class="form-control is-valid" name='dialColor' [(ngModel)]='product.dialColor' required #dialColor=ngModel
-                pattern="[A-Za-z]{3,}">
+                pattern="[A-Za-z\s]{3,}">
             <div class="invalid-feedback">Invalid Dial Colour</div>
         </div>
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
             <label for="strapColor">Product Strap Colour: </label>
             <input class="form-control is-valid" name='strapColour' [(ngModel)]='product.strap.color' required #strapColour=ngModel
-                pattern="[A-Za-z]{1,}">
+                pattern="[A-Za-z\s]{1,}">
             <div class="invalid-feedback">Invalid Strap Colour</div>
         </div>
 
         <div class="form-group col-lg-4 col-md-6 col-sm-12">
             <label for="strapMaterial">Product Strap Material: </label>
             <input class="form-control is-valid" name='strapMaterial' [(ngModel)]='product.strap.material' required #strapMaterial=ngModel
-                pattern="[A-Za-z]{1,}">
+                pattern="[A-Za-z\s]{1,}">
             <div class="invalid-feedback">Invalid Strap Colour</div>
         </div>
     </div>
@@ -148,7 +148,7 @@
            <div class="row">
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
             <label for="features">Product Features: </label>
-            <input class="form-control is-valid" name='features' (input)="assignfeatures($event)" required 
+            <input class="form-control is-valid" name='features' [value]="assignFeaturesToInput(product.features)" (input)="assignfeatures($event)" required 
                >
             <div class="invalid-feedback">Invalid Features</div>
         </div>
@@ -171,7 +171,7 @@
     <div class="form-group col-lg-6 col-md-6 col-sm-12">
         <label for="strapMaterial">Product Glass Material: </label>
         <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='product.glassMaterial' required #strapMaterial=ngModel
-            pattern="[A-Za-z]{1,}">
+            pattern="[A-Za-z\s]{1,}">
         <div class="invalid-feedback">Invalid Glass Material</div>
     </div>
     <div class="form-group col-lg-6 col-md-6 col-sm-12">

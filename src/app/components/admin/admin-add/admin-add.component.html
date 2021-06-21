@@ -1,6 +1,6 @@
 <app-admin></app-admin>
 <div class="container-fluid">
-    <form (ngSubmit)="add()" class="was-validated" #frm=ngForm action="">
+    <form (ngSubmit)="add()" class="was-validated" #frm=ngForm>
         <h4 class="text-center"> Add details to the <span>STERLING TICKS</span> Product-Cart: </h4><br>
         <div class="row">
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
@@ -9,14 +9,14 @@
                 <div class="invalid-feedback">Enter Correct Product ModelNo</div>
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="name">Model Name: </label>
-                <input pattern="[a-zA-Z\\s]*{2,}" class="form-control is-valid" name='name_add'
+                <label for="name">Model Name: <span class="star"> **</span></label>
+                <input pattern="[A-Za-z\s\-_']{2,}" class="form-control is-valid" name='name_add'
                     [(ngModel)]='productAdd.name' required #name_add=ngModel>
                 <div class="invalid-feedback">Enter Correct Product Name</div>
             </div>
 
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="price">Product Price: </label>
+                <label for="price">Product Price:  <span class="star"> **</span></label>
                 <input type="number" class="form-control is-valid" name='price' [(ngModel)]='productAdd.price' required
                     #price=ngModel pattern="[0-9]{3,}">
                 <div class="invalid-feedback">Invalid Price</div>
@@ -24,8 +24,9 @@
         </div>
         <div class="row">
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="brand">Product Brand: </label>
-                <select name="brand" [(ngModel)]="productAdd.brand.name" class="form-control" required>
+                <label for="brand">Product Brand:  <span class="star"> **</span></label>
+                <select name="brand" [(ngModel)]="productAdd.brand.name" class="form-control" [ngClass]="{}" required>
+                  
                     <option *ngFor="let b of brands" [value]="b.name"> {{b.name}}</option>
                 </select>
                 <div class="invalid-feedback">Enter Correct Product Brand</div>
@@ -38,21 +39,21 @@
                 <div class="invalid-feedback">Invalid Collection</div>
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="series">Product Series: </label>
+                <label for="series">Product Series:  <span class="star">**</span> </label>
                 <input class="form-control is-valid" name='series' [(ngModel)]='productAdd.series' required
-                    #series=ngModel pattern="[a-zA-Z\\s]*{1,}">
+                    #series=ngModel pattern="[a-zA-Z\s\_-]{1,}">
                 <div class="invalid-feedback">Invalid Series</div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="ModelNo">Model Number: </label>
+                <label for="ModelNo">Model Number:<span class="star"> **</span>  </label>
                 <input class="form-control is-valid" name='modelNo' [(ngModel)]='productAdd.modelNo' required
-                    #modelNo=ngModel pattern="[a-zA-Z\\s]*{2}">
+                    #modelNo=ngModel pattern="[a-zA-Z0-9\-_]{2,}">
                 <div class="invalid-feedback">Enter Correct Product ModelNo</div>
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="movement">Product Movement: </label>
+                <label for="movement">Product Movement:  </label>
                 <input class="form-control is-valid" name='movement' [(ngModel)]='productAdd.movement' required
                     #movement=ngModel pattern="[A-Za-z]{2,}">
                 <div class="invalid-feedback">Invalid Movement</div>
@@ -67,7 +68,7 @@
         </div>
         <div class="row">
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="starRating">Product Rating: </label>
+                <label for="starRating">Product Rating:  <span class="star"> **</span> </label>
                 <input type="number" class="form-control is-valid" name='starRating' [(ngModel)]='productAdd.starRating'
                     required #rating=ngModel pattern="[0-9]{1,}">
                 <div class="invalid-feedback">Invalid Rating</div>
@@ -103,7 +104,7 @@
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="glassMaterial">Product Case colour: </label>
                 <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='productAdd.casing.color' required
-                    #glassMaterial=ngModel pattern="[a-zA-Z\\s]*{3,}">
+                    #glassMaterial=ngModel pattern="[a-zA-Z\s]{3,}">
                 <div class="invalid-feedback">Invalid Case Material</div>
             </div>
 
@@ -113,13 +114,13 @@
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="dialColor">Product Dial Colour: </label>
                 <input class="form-control is-valid" name='dialColor' [(ngModel)]='productAdd.dialColor' required
-                    #dialColor=ngModel pattern="[a-zA-Z\\s]*{3,}">
+                    #dialColor=ngModel pattern="[a-zA-Z\s]{3,}">
                 <div class="invalid-feedback">Invalid Dial Colour</div>
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="strapColor">Product Strap Colour: </label>
                 <input class="form-control is-valid" name='strapColour' [(ngModel)]='productAdd.strap.color' required
-                    #strapColour=ngModel pattern="[a-zA-Z\\s]*{1,}">
+                    #strapColour=ngModel pattern="[a-zA-Z\s]{1,}">
                 <div class="invalid-feedback">Invalid Strap Colour</div>
             </div>
 
@@ -155,7 +156,7 @@
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label for="strapMaterial">Product Glass Material: </label>
                 <input class="form-control is-valid" name='glassMaterial' [(ngModel)]='productAdd.glassMaterial'
-                    required #strapMaterial=ngModel pattern="[A-Za-z]{1,}">
+                    required #strapMaterial=ngModel pattern="[A-Za-z\s]{1,}">
                 <div class="invalid-feedback">Invalid Glass Material</div>
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12">

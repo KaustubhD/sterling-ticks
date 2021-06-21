@@ -17,17 +17,25 @@ export class BymodelnoComponent implements OnInit {
   constructor(private service: ProductService, private router: Router) { }
 
   ngOnInit(): void {
+ 
   }
 
   findByModelNo() {
-    this.service.getByModel(this.model).then(data => this.product = data);
-    this.alert = true;
+  this.service.getByModel(this.model).then(data => {
+     this.alert=data!=null?false:true;
+      this.product = data;
   }
+  ).catch(error => this.alert=false);
+  
+}
+
 
   remove(modelNo: string) {
     var answer = confirm('Are you sure to delete entry?');
     if (answer)
-      this.service.delProduct(modelNo);
+    this.service.delProduct(modelNo);
+      // this.service.delProduct(modelNo);
+      location.reload();
   }
   edit(model: string) {
     this.router.navigate((['admin-edit']), { queryParams: { model: model } }).then(() =>

@@ -11,9 +11,7 @@
         <input name="model" [(ngModel)]="model" class="form-control m-3" placeholder="Enter Model No..." required />
         <button type="submit" class="btn btn-info m-3 pl-5 pr-5">Search..</button>
     </form>
-    <br />
-
-    <table *ngIf="product.modelNo" class="table table-dark table-bordered">
+    <table *ngIf="!alert && product.modelNo!=null" class="table table-dark table-bordered">
         <tr>
             <th class="alert-info"><u>Product ModelNo</u></th>
             <th class="alert-info"><u>Product Name</u></th>
@@ -31,11 +29,12 @@
             <td class='table-primary'>{{ product.brand.name }}</td>
             <td class='table-primary'>{{ product.price }}</td>
             <td class='table-primary'>{{ product.starRating}}</td>
-            <td class='table-primary'>{{product.images[0]}}</td>
+            <td class='table-primary'>{{ product.images[0]}}</td>
             <td class='table-primary'><a [routerLink]="['/admin-edit/',product.modelNo]"><button
                         class="btn btn-info btn-sm btn-block" (click)=edit(product.modelNo)>Edit</button></a></td>
             <td class='table-primary'><button class="btn btn-danger btn-sm btn-block" (click)=remove(product.modelNo)>
                     Delete</button></td>
         </tr>
     </table>
+   
 </div>

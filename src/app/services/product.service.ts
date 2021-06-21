@@ -11,25 +11,15 @@ import { Collection } from '../components/models/collection.model';
 })
 export class ProductService {
   
-<<<<<<< HEAD
-  url:string = GlobalConstants.apiUrl+'/products/';
-=======
  
->>>>>>> d7ed6862e98164b7902ec229172c2aec0112ae9b
   constructor(private http: HttpClient) { }
 
    getAllProducts(){
     return  this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST()).toPromise();
   }
-<<<<<<< HEAD
-  
-  async getAllBrands() {
-    return await this.http.get<Brand[]>(GlobalConstants.URLS.BRAND).toPromise();  
-=======
 
    getAllBrands() {
     return  this.http.get<Brand[]>(URLS.BRANDS).toPromise();  
->>>>>>> d7ed6862e98164b7902ec229172c2aec0112ae9b
   }
 
    getAllCollections() {
@@ -56,15 +46,15 @@ export class ProductService {
   }
   addProduct(product: Product){
     console.log("add");
-   this.http.post(GlobalConstants.URLS.ADD_PRODUCT,product).subscribe(data => data = product);
+  return this.http.post(URLS.ADD_PRODUCT,product).toPromise();
   }
   editProduct(product : Product) {
     console.log( product);
-     this.http.put(GlobalConstants.URLS.EDIT_PRODUCT,product).subscribe(data => data = product);
+     this.http.put(URLS.EDIT_PRODUCT,product).subscribe(data => data = product);
    }
 
    
   delProduct(modelNo: string){
-    return this.http.delete(GlobalConstants.URLS.DELETE_PRODUCT(modelNo)).subscribe();
+    return this.http.delete(URLS.DELETE_PRODUCT(modelNo)).subscribe();
   }
 }

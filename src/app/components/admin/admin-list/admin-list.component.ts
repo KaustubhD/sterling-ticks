@@ -19,19 +19,28 @@ export class AdminListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    this.updateProducts();
     this.service.getAllProducts().then((data) => {
-    this.products = data;
+      this.products = data;
       console.log(this.products)
     });
   }
-
+  updateProducts() {
+    this.service.getAllProducts().then((data) => {
+      this.products = data;
+      console.log(this.products);
+    });
+  }
   remove(modelNo: string) {
 
     var answer = confirm('Are you sure to delete entry?');
     if (answer)
       this.service.delProduct(modelNo);
-      location.reload();
+    setTimeout(() => {
+      this.updateProducts();
+    }, 600)
+
+
   }
   orderByName() {
     this.products.sort((a, b) => (a.name > b.name) ? 1 : ((a.name < b.name) ? -1 : 0));
@@ -45,8 +54,7 @@ export class AdminListComponent implements OnInit {
 
   edit(model: string) {
     this.router.navigate(['admin-edit', model]).then(() =>
-
-      location.reload()
+    location.reload()
     );
   }
   test(p: Product) {
