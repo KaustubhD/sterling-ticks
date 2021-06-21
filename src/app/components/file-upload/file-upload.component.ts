@@ -5,7 +5,8 @@ import { Cloudinary } from '@cloudinary/angular-5.x';
 
 @Component({
   selector: 'file-upload',
-  templateUrl: './file-upload.component.html'
+  templateUrl: './file-upload.component.html',
+  styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
 
