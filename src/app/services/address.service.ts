@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { URLS } from '../common/global-constants';
 import { AddressModel } from '../components/models/address.model';
 
 @Injectable({
@@ -6,49 +8,24 @@ import { AddressModel } from '../components/models/address.model';
 })
 export class AddressService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  address: AddressModel[] =[
-	// {
-//     "id": 101,
-//     "userName": "Mark Henry",
-//     "phoneNo": 9281127310,
-//     "type": "home",
-//     "defaultType": "home",
-//     "address": "221B, Baker Street",
-//     "city": "Srinagar",
-//     "state": "Jammu & Kashmir",
-//     "country": "India",
-//     "pincode": 123456
-//     },{
-//     "id": 102,
-//     "userName": "Mark Henry",
-//     "phoneNo": 9281127310,
-//     "type": "work",
-//     "defaultType": "home",
-//     "address": "7G, ABC Street, DEF Colony",
-//     "city": "Jaipur",
-//     "state": "Rajasthan",
-//     "country": "India",
-//     "pincode": 654321
-// }
-];
+  address: AddressModel[] =[];
 
   editedAddress: AddressModel = new AddressModel();
-  getAddressList(userName: string){
-    return this.address
+  getAddressList(userName: string): Promise<AddressModel[]>{
+    return this.http.get<AddressModel[]>(URLS.USER_ADDRESS(userName)).toPromise()
   }
 
-  saveAddress(addr: AddressModel){
-    this.address.push(addr)
+  saveAddress(userName: string, addr: AddressModel){
+    return this.http.post<Object>(URLS.USER_ADDRESS(userName), addr).toPromise()
   }
 
-  removeAddress(index: number){
-    this.address.splice(index, 1)
+  removeAddress(userName: string, id: number){
+    return this.http.delete<Object>(URLS.USER_ADDRESS_WITH_ID(userName, id)).toPromise()
   }
 
-  updateAddress(addr: AddressModel){
-   let index = this.address.findIndex(item => item.id == addr.id)
-   this.address[index] = addr;
+  updateAddress(userName: string, addr: AddressModel){
+	return this.http.post<Object>(URLS.USER_ADDRESS(userName), addr).toPromise()
   }
 }

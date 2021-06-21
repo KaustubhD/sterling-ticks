@@ -29,5 +29,7 @@ export const URLS = {
 		userName && url.searchParams.append("userName", userName)
 		modelNo && url.searchParams.append("modelNo", modelNo)
 		return url.toString()
-	}
-}
+	},
+	USER_ADDRESS: (username: string) => `${GlobalConstants.apiUrl}/user/${username}/address`,
+	USER_ADDRESS_WITH_ID: (username: string, addressId: number) => `${GlobalConstants.apiUrl}/user/${username}/address/${addressId}`
+};
