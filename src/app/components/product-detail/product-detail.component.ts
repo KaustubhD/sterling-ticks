@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/components/models/product.model';
+import { LoginService } from 'src/app/services/login.service';
+import { cartQuantity } from 'src/app/components/models/reaponse/cartQuantity.model';
 
 @Component({
 	selector: 'app-product-detail',
@@ -14,15 +16,16 @@ export class ProductDetailComponent implements OnInit {
 	similarProducts: Product[]
 	featureImage: string
 	modelNo: string
+	quantityInCart: number
 
 	@ViewChild("slider") slider: ElementRef
 
-	constructor(private router: Router, private aRoute: ActivatedRoute, private productService: ProductService) {
-		this.init()
+	constructor(private router: Router, private aRoute: ActivatedRoute, private productService: ProductService, private loginService: LoginService) {
 	}
-
+	
 	ngOnInit(): void {
 		this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+		this.init()
 	}
 
 	changeImg(event: Event) {
@@ -43,6 +46,12 @@ export class ProductDetailComponent implements OnInit {
 			this.product = Product.build(product)
 			this.featureImage = product.images[0]
 		})
+		if(this.loginService.loggedIn.value) {
+			const userName: string = this.loginService.getAuthenticatedUser().value?.userName
+			this.productService.getQuantityInCart(userName, this.modelNo).then((res: cartQuantity) => {
+				this.quantityInCart = res.quantityInCart
+			})
+		}
 		this.productService.getSimilarProducts(this.modelNo).then((products: Product[]) => {
 			this.similarProducts = products
 		})

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Product } from '../../models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { Brand } from '../../models/brand.model';
+import { GENDERS, SPEEDS } from 'src/app/common/app.constants';
 
 
 @Component({
@@ -14,24 +15,19 @@ import { Brand } from '../../models/brand.model';
 export class AdminAddComponent implements OnInit {
   productAdd: Product = new Product();
   brands: Brand[] = [];
-  genders: string[] = ["male", "female"]
-  speeds: string[] = ["slow", "slower", "fast", "faster"]
+  genders = GENDERS
+  speeds = SPEEDS
   constructor(private router: Router, private service: ProductService) { }
 
   ngOnInit(): void {
 
     this.service.getAllBrands().then(brands => { this.brands = brands })
-    console.log(this.productAdd);
   }
 
   add() {
     this.service.addProduct(this.productAdd).then(()=>{
       this.router.navigate(['admin-list']);
     });
-    // console.log(this.productAdd);
-    // setTimeout(()=>{
-      
-    // }, 500 )
     
    
   }

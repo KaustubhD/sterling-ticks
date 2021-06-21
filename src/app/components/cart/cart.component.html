@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row mt-5" *ngIf="cartItems.length > 0">
-        <div class="col col-md-8"><div class="col-md-12 col-sm-12 col-12 mb-3 col-lg-12"  *ngFor="let cart of cartItems">
+        <div class="col col-md-8"><div class="col-md-12 col-sm-12 col-12 mb-3 col-lg-12"  *ngFor="let cartItem of cartItems">
             <div class="card">
                 <div class="table-responsive">
                     <table class="table table-borderless table-shopping-cart" >
@@ -17,18 +17,18 @@
                                 <td>
                                     <figure class="itemside align-items-center">
                                         <div class="aside"><img src="../../../assets/images/watch.webp" class="img-sm"></div>
-                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{cart.name}}</a>
-                                            <p class="text-muted small">Brand : {{cart.brand}} <br>{{cart.gender}}  {{cart.color}}   {{cart.glassMaterial}}</p>
+                                        <figcaption class="info"> <a [routerLink]="['/product', cartItem.product.modelNo]" class="title text-dark" data-abc="true">{{cartItem.product.name}}</a>
+                                            <p class="text-muted small">Brand : {{cartItem.product.brand.name}} <br>{{cartItem.product.gender}}  {{cartItem.product.strap.color}}   {{cartItem.product.glassMaterial}}</p>
                                         </figcaption>
                                     </figure>
                                 </td>
                                 <td>
-                                   <app-cart-quantity [productId]="cart.id" [(quantity)]="cart.quantity" (quantityChange)="handleChange(cart.id, $event)"></app-cart-quantity>
+                                   <app-cart-quantity [productId]="cartItem.product.id" [(quantity)]="cartItem.quantity" (quantityChange)="handleChange(cartItem.product.id, $event)"></app-cart-quantity>
                                  </td>
                                 <td>
-                                    <div class="price-wrap"> <var class="price">{{cart.price | currency:'INR'}}</var> </div>
+                                    <div class="price-wrap"> <var class="price">{{cartItem.product.price | currency:'INR'}}</var> </div>
                                 </td>
-                                <td class="text-right d-none d-md-block"> <button class="btn btn-light"  (click)="removeItem(cart.id)"> Remove</button> </td>
+                                <td class="text-right d-none d-md-block"> <button class="btn btn-light"  (click)="removeItem(cartItem.product.id)"> Remove</button> </td>
                             </tr>
                         </tbody>
                     </table>

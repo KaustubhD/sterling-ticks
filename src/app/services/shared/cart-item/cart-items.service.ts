@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import CartRequest from 'src/app/components/models/request/cartRequest.model';
+import { URLS } from 'src/app/common/global-constants';
+import { CartModel } from 'src/app/components/models/cart.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -17,13 +20,17 @@ export class CartItemsService {
 		return this._totalCartItems
 	}
 
-	updateQuantity(productId: number, quantity: number): void {
-		console.log(`Update cart\nProduct: ${productId}, quantity: ${quantity}`)
-		this.http
-			.post<Object>("update cart path", {productId, quantity})
+	updateQuantity(userName: string, productId: number, quantity: number): Promise<any> {
+		const reqBody: CartRequest = {userName, productId, quantity}
+		return this.http
+			.post<Object>(URLS.UPDATE_CART, reqBody)
 			.toPromise()
 			.then((res: any) => {
-				this.totalCartItems = res.cartItemsCount
+				this.totalCartItems = res.cartItems
 			})
+	}
+
+	getUserCart(userName: string): Promise<CartModel> {
+		return this.http.get<CartModel>(URLS.CART(userName)).toPromise()
 	}
 }

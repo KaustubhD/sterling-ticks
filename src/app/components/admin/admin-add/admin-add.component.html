@@ -25,8 +25,7 @@
         <div class="row">
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="brand">Product Brand:  <span class="star"> **</span></label>
-                <select name="brand" [(ngModel)]="productAdd.brand.name" class="form-control" [ngClass]="{}" required>
-                  
+                <select name="brand" [(ngModel)]="productAdd.brand.name" class="form-control" required>
                     <option *ngFor="let b of brands" [value]="b.name"> {{b.name}}</option>
                 </select>
                 <div class="invalid-feedback">Enter Correct Product Brand</div>
@@ -167,12 +166,6 @@
                 <div class="invalid-feedback">Choose Speed</div>
             </div>
         </div>
-        <!-- <div class="row">
-        <div class="col-lg-4 col-sm-12 col-md-12">
-            <file-upload></file-upload>
-        </div>
-         
-         </div> -->
         <div class="button">
             <button type="submit" class="btn btn-success btn-block">Submit</button>
         </div>
