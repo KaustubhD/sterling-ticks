@@ -31,8 +31,8 @@ const routes: Routes = [
   {path: 'email-phone',component:EmailPhoneComponent, canActivate: [NegateAuthGuard]},
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
-  {path: 'account/:username', component: UserSectionComponent},
-  {path: 'orders/:username', component: OrdersComponent},
+  {path: 'account', component: UserSectionComponent},
+  {path: 'orders', component: OrdersComponent},
   {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
   {path: 'bymodelno',component:BymodelnoComponent, canActivate: [AdminGuard]},
 ];
