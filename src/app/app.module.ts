@@ -42,11 +42,11 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 		ProductListComponent,
 		HeaderComponent,
 		FooterComponent,
-    RatingComponent,
+        RatingComponent,
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
-    AddressComponent
+        AddressComponent,
 		CartComponent,
 		CartQuantityComponent,
 		FileUploadComponent,
