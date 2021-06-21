@@ -21,6 +21,14 @@ import { LoginService } from './services/login.service';
 import { CartComponent } from './components/cart/cart.component';
 import { AuthGuard } from './guards/AuthGuard/auth.guard';
 import { AdminGuard } from './guards/AdminGuard/admin.guard';
+import { NegateAuthGuard } from './guards/NegateAuth/negate-auth.guard';
+import { AdminComponent } from './components/admin/admin/admin.component';
+import { AdminAddComponent } from './components/admin/admin-add/admin-add.component';
+import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
+import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
+import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
+
+
 
 @NgModule({
 	declarations: [
@@ -39,7 +47,12 @@ import { AdminGuard } from './guards/AdminGuard/admin.guard';
 		EmailPhoneComponent,
 		CartComponent,
 		CartQuantityComponent,
-		FileUploadComponent
+		FileUploadComponent,
+		AdminAddComponent,
+		AdminEditComponent,
+		AdminListComponent,
+		BymodelnoComponent,
+		AdminComponent
 	],
 	imports: [
 		BrowserModule,
@@ -51,7 +64,8 @@ import { AdminGuard } from './guards/AdminGuard/admin.guard';
 	providers: [
 		LoginService,
 		AuthGuard,
-		AdminGuard
+		AdminGuard,
+		NegateAuthGuard
 	],
 	bootstrap: [AppComponent]
 })

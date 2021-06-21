@@ -16,6 +16,7 @@ export class LoginService {
     return this.authenticatedUser;
   }
   public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private readonly KEY: string = "authUser"
 
   constructor(private http: HttpClient) {
@@ -37,16 +38,14 @@ export class LoginService {
 
   setAuthenticatedUser(user: UserModel): void {
 	this.loggedIn.next(true);
+	this.isAdmin.next(user?.roles?.some(({role}) => role == Roles.AD) || false)
 	this.authenticatedUser.next(user);
   }
 
   logoutUser() {
     this.loggedIn.next(false);
+	this.isAdmin.next(false);
     this.authenticatedUser.next(new UserModel());
 	localStorage.removeItem(this.KEY)
-  }
-
-  isAdmin(): boolean {
-	return this.getAuthenticatedUser().value.roles.some(({role}) => role == Roles.AD)
   }
 }

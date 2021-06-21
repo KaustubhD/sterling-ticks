@@ -212,12 +212,13 @@ transition: transform 2s;
 .brand1 , .brand2,.brand3,.brand4,.brand6,.brand5{
     height: 120px;
     width: 120px;
-    margin: 5px 33px;
+    margin: 5px 35px;
+    
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
 /*Ends Brand Section */
-@media (max-width: 550px) {
+ @media (max-width: 550px) {
     .text-banner-title{
         font-size: 0.8rem;
     margin-left: 73px;
@@ -238,7 +239,7 @@ transition: transform 2s;
     .deal-para h6{
         font-size: 0.8rem;
     }
- .deal-para .btn{
+   .deal-para .btn{
     padding-left: 73px;
     padding-right: 73px;
  }

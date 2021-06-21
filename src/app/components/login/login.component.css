@@ -75,16 +75,21 @@ i.fa.fa-empire {
 }
 
 h2 {
-    margin-bottom: 15px;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid  #193d72;
+    width: 150px;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input:focus,
 input:focus::placeholder,
 input:focus+i {
-    /*color: #ff1464;*/
-
-    color: #193d72;
-
+	color: #193d72;
 }
 
 input:focus {

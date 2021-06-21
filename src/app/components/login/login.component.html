@@ -1,8 +1,6 @@
 <div class="login">
     <form *ngIf="!success" (ngSubmit)="authenticate()" class="was-validated" #frm=ngForm>
-        <!-- <div class="logo">
-            <img src="../freeLogo.jpeg">
-        </div> -->
+       
         <h2>Login</h2>
         <div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Login Failed !</strong> Invalid User Details
@@ -27,19 +25,3 @@
         <strong><h2>Login Success !</h2></strong>
     </div>
 </div>
-<script>
-    function myFunction() {
-        var x = document.getElementById("password");
-        var y = document.getElementById("hide1");
-        var z = document.getElementById("hide2");
-        if (x.type === 'password') {
-            x.type = "text";
-            y.style.display = "block";
-            z.style.display = "none";
-        } else {
-            x.type = "password";
-            y.style.display = "none";
-            z.style.display = "block";
-        }
-    }
-</script>

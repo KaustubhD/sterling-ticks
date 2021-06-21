@@ -45,6 +45,20 @@ export class ProductService {
   getSimilarProducts(model: string): Promise<Product[]> {
 	return this.http.get<Product[]>(URLS.GET_SIMILAR_PRODUCTS(model)).toPromise()
   }
+  
+  addProduct(product: Product){
+    console.log("add");
+    return this.http.post(URLS.ADD_PRODUCT,product).toPromise();
+  }
+  
+  editProduct(product : Product) {
+    console.log( product);
+    this.http.put(URLS.EDIT_PRODUCT,product).subscribe(data => data = product);
+  }
+   
+  delProduct(modelNo: string){
+    return this.http.delete(URLS.DELETE_PRODUCT(modelNo)).subscribe();
+  }
 
   getQuantityInCart(userName: string, modelNo: string): Promise<cartQuantity> {
 	return this.http.get<cartQuantity>(URLS.QUANTITY_IN_CART(userName, modelNo)).toPromise();
