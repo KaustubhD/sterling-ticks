@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CredentialModel as user } from '../components/models/credential.model';
 import { HttpClient } from '@angular/common/http';
-import { GlobalConstants } from '../common/global-constants';
-import { UserModel } from '../components/models/user.model';
+import { URLS } from '../common/global-constants';
+import { UserModel } from 'src/app/components/models/user.model';
 import { BehaviorSubject } from 'rxjs';
+import { Roles } from '../components/models/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +12,41 @@ import { BehaviorSubject } from 'rxjs';
 export class LoginService {
 
   private authenticatedUser: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(new UserModel());
-  public getAuthenticatedUser() {
+  public getAuthenticatedUser(){
     return this.authenticatedUser;
   }
   public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  constructor(private http: HttpClient) { }
+  private readonly KEY: string = "authUser"
 
+  constructor(private http: HttpClient) {
+	  const userInStorage = localStorage.getItem(this.KEY);
+	  if(userInStorage != null) {
+		  this.setAuthenticatedUser(JSON.parse(userInStorage) as UserModel)
+	  }
+  }
+  
 
   authenticate(user: user) {
-    return this.http.post<UserModel>(GlobalConstants.URLS.LOGIN, user);
+    return this.http.post<UserModel>(URLS.LOGIN, user);
+  }
+  
+  saveAuthenticatedUser(user: UserModel) {
+	this.setAuthenticatedUser(user)
+	localStorage.setItem(this.KEY, JSON.stringify(user))
   }
 
-  saveAuthenticatedUser(user: UserModel) {
-    this.loggedIn.next(true);
-    this.authenticatedUser.next(user);
+  setAuthenticatedUser(user: UserModel): void {
+	this.loggedIn.next(true);
+	this.authenticatedUser.next(user);
   }
 
   logoutUser() {
     this.loggedIn.next(false);
     this.authenticatedUser.next(new UserModel());
+	localStorage.removeItem(this.KEY)
+  }
+
+  isAdmin(): boolean {
+	return this.getAuthenticatedUser().value.roles.some(({role}) => role == Roles.AD)
   }
 }

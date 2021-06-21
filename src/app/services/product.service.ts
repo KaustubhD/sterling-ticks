@@ -1,41 +1,52 @@
 import { Injectable } from '@angular/core';
 import { ProductListModel } from '../components/models/productList.model';
 import { HttpClient } from '@angular/common/http';
-import { GlobalConstants } from '../common/global-constants';
+import { GlobalConstants, URLS } from '../common/global-constants';
 import { Brand } from '../components/models/brand.model';
 import { Product } from 'src/app/components/models/product.model';
 import { Collection } from '../components/models/collection.model';
+import { cartQuantity } from '../components/models/reaponse/cartQuantity.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   
-  url:string = GlobalConstants.apiUrl+'products/';
+ 
   constructor(private http: HttpClient) { }
 
-  async getAllProducts(){
-    return await this.http.get<ProductListModel[]>(this.url).toPromise();
+   getAllProducts(){
+    return  this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST()).toPromise();
   }
 
-  async getAllBrands() {
-    return await this.http.get<Brand[]>(this.url+'brands').toPromise();  
+   getAllBrands() {
+    return  this.http.get<Brand[]>(URLS.BRANDS).toPromise();  
   }
 
-  async getAllCollections() {
-    return await this.http.get<Collection[]>(this.url+'categories').toPromise();  
+   getAllCollections() {
+    return  this.http.get<Collection[]>(URLS.COLLECTIONS).toPromise();  
   }
 
-  async getByBrand(brand: string){
-    return await this.http.get<ProductListModel[]>(this.url+'brand/'+brand).toPromise();
+   getByBrand(brand: string){
+    return  this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(brand)).toPromise();
   }
 
-  async getByCollection(category: string){
-    return await this.http.get<ProductListModel[]>(this.url+'category/'+category).toPromise();
+   getByCollection(category: string){
+    return  this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(undefined, category)).toPromise();
+  }
+   getProductList(brand: string|undefined, category: string|undefined){
+    return  this.http.get<ProductListModel[]>(URLS.PRODUCT_LIST(brand, category)).toPromise();
   }
   
-  getByModel(model: String): Promise<Product> {
-	return this.http.get<Product>(`${this.url}model/${model}`).toPromise()
+  getByModel(model: string): Promise<Product> {
+	return this.http.get<Product>(URLS.GET_PRODUCT(model)).toPromise()
   }
   
+  getSimilarProducts(model: string): Promise<Product[]> {
+	return this.http.get<Product[]>(URLS.GET_SIMILAR_PRODUCTS(model)).toPromise()
+  }
+
+  getQuantityInCart(userName: string, modelNo: string): Promise<cartQuantity> {
+	return this.http.get<cartQuantity>(URLS.QUANTITY_IN_CART(userName, modelNo)).toPromise();
+  }
 }

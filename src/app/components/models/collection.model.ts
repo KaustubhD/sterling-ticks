@@ -1,3 +1,3 @@
-export class Collection{
-    public name: string='';
+export class Collection {
+	public name: string;
 }
