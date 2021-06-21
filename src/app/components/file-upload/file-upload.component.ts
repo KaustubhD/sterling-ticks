@@ -113,7 +113,6 @@ export class FileUploadComponent implements OnInit {
     console.log(this.responses);
     this.responses.forEach(el =>{
       console.log(el.data.secure_url);
-    })
+    });
   }
-
 }
