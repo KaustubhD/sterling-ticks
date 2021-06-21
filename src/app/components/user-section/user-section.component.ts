@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class UserSectionComponent implements OnInit {
   islogged: boolean = true;
   user:UserModel;
+  select: string = 'none';
   constructor(private service: LoginService) { }
 
   ngOnInit(): void {
@@ -25,6 +26,17 @@ export class UserSectionComponent implements OnInit {
      logged =>{
        this.islogged=logged;
      }
-   )
+   );
+
+   this.select="none";
+  }
+
+  addressSelected(){
+    this.select="address";
+    //[routerLink]="['/address/',user.userName]"
+  }
+
+  paymentSelected(){
+    this.select="payment";
   }
 }

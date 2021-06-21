@@ -19,6 +19,7 @@ import { EmailPhoneComponent } from './components/email-phone/email-phone.compon
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { UserSectionComponent } from './components/user-section/user-section.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { AddressComponent } from './components/address/address.component';
 import { LoginService } from './services/login.service';
 import { CartComponent } from './components/cart/cart.component';
 import { AuthGuard } from './guards/AuthGuard/auth.guard';
@@ -50,9 +51,8 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 		FileUploadComponent,
 		UserSectionComponent,
 		OrdersComponent,
+		AddressComponent,
 		CartComponent,
-		CartQuantityComponent,
-		FileUploadComponent,
 		AdminAddComponent,
 		AdminEditComponent,
 		AdminListComponent,

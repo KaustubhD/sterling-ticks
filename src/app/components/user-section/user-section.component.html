@@ -12,7 +12,7 @@
                                 </div>
                                 <table class="profile-table">
                                     <tr>
-                                        <td>Username</td>
+                                        <td>Name</td>
                                         <td> : </td>
                                         <td>{{user.userName}}</td>
                                     </tr>
@@ -21,7 +21,7 @@
                                         <td> : </td>
                                         <td>{{user.email}}</td>
                                     </tr>
-                                    <tr>
+                                    <tr *ngIf="user.phoneNo!=null">
                                         <td>Phone No</td>
                                         <td> : </td>
                                         <td>{{user.phoneNo}}</td>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <div class="container main-body">
+                    <div class="container main-body" *ngIf="select=='none'">
                         <div class="head d-none d-md-block">
                             <div *ngIf="islogged" class="logged">
                                 <h2>Hello {{user.userName}}!</h2>
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class=" col col-12 col-md-6">
-                                <div class="item-box card" [routerLink]="['/address/',user.userName]">
+                                <div class="item-box card" (click)="addressSelected()">
                                     <i class="bi bi-geo-alt-fill item-img"></i>
                                     <strong>Addresses</strong>
                                 </div>
@@ -87,6 +87,14 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="address justified" *ngIf="select=='address'">
+                        <app-address [userName]="user.userName"></app-address>
+                        <button class="btn btn-info" (click)="select='none'">Back to Your Account!</button>
+                    </div>
+                    <div class="address justified" *ngIf="select=='payment'">
+                        <!-- <app-address [userName]="user.userName"></app-address> -->
+                        <button class="btn btn-info" (click)="select='none'">Back to Your Account!</button>
                     </div>
                 </div>
             </div>
