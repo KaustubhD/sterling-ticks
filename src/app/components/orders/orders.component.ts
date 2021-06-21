@@ -16,11 +16,11 @@ export class OrdersComponent implements OnInit {
   constructor(private service: OrderService, private router: Router, private authService: LoginService) { }
 
   ngOnInit(): void {
-    // this.authService.getAuthenticatedUser().subscribe(
-    //   user =>{
-    //     this.getOrders(user.userName);
-    //   }
-    // );  
+     this.authService.getAuthenticatedUser().subscribe(
+       user =>{
+         this.getOrders(user.userName);
+       }
+    );  
   }
 
   getOrders(username : string){

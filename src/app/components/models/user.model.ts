@@ -1,3 +1,5 @@
+import { Role } from "./role.model";
+
 export class UserModel{
     public userName: string;
     public email: string;
@@ -6,4 +8,5 @@ export class UserModel{
     public phoneNo: string;
     public dateCreated: string;
     public profileImg: string;
+	public roles: Role[];
 }

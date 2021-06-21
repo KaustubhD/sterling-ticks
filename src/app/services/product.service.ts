@@ -5,6 +5,7 @@ import { GlobalConstants, URLS } from '../common/global-constants';
 import { Brand } from '../components/models/brand.model';
 import { Product } from 'src/app/components/models/product.model';
 import { Collection } from '../components/models/collection.model';
+import { cartQuantity } from '../components/models/reaponse/cartQuantity.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,8 @@ export class ProductService {
   getSimilarProducts(model: string): Promise<Product[]> {
 	return this.http.get<Product[]>(URLS.GET_SIMILAR_PRODUCTS(model)).toPromise()
   }
-  
+
+  getQuantityInCart(userName: string, modelNo: string): Promise<cartQuantity> {
+	return this.http.get<cartQuantity>(URLS.QUANTITY_IN_CART(userName, modelNo)).toPromise();
+  }
 }

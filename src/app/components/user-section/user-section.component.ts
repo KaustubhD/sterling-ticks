@@ -16,7 +16,8 @@ export class UserSectionComponent implements OnInit {
     "phoneNo": '',
     confirmpwd: '',
     "password": '',
-    "profileImg": 'assets/images/user/default.png'
+    "profileImg": 'assets/images/user/default.png',
+    roles: []
 };
   constructor(private service: LoginService) { }
 

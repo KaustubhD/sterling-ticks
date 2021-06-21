@@ -19,8 +19,10 @@ import { EmailPhoneComponent } from './components/email-phone/email-phone.compon
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { UserSectionComponent } from './components/user-section/user-section.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { LoginService } from './services/login.service';
 import { CartComponent } from './components/cart/cart.component';
-
+import { AuthGuard } from './guards/AuthGuard/auth.guard';
+import { AdminGuard } from './guards/AdminGuard/admin.guard';
 
 @NgModule({
 	declarations: [
@@ -51,7 +53,11 @@ import { CartComponent } from './components/cart/cart.component';
 		HttpClientModule,
 		ReactiveFormsModule
 	],
-	providers: [],
+	providers: [
+		LoginService,
+		AuthGuard,
+		AdminGuard
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

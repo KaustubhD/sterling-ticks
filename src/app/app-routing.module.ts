@@ -11,6 +11,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { UserSectionComponent } from './components/user-section/user-section.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AuthGuard } from './guards/AuthGuard/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,9 +22,9 @@ const routes: Routes = [
   {path: 'email-phone',component:EmailPhoneComponent},
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
-  {path: 'user/:username', component: UserSectionComponent},
-  {path: 'orders', component: OrdersComponent},
-  {path: 'cart',component:CartComponent},
+  {path: 'account/:username', component: UserSectionComponent},
+  {path: 'orders/:username', component: OrdersComponent},
+  {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
