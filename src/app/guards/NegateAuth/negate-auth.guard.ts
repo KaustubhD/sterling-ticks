@@ -6,18 +6,16 @@ import { LoginService } from 'src/app/services/login.service';
 @Injectable({
 	providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
-
+export class NegateAuthGuard implements CanActivate {
 	constructor(private authService: LoginService, private router: Router) {
-
 	}
+
 	canActivate(
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-			if (!this.authService.isAdmin.value) {
+			if (this.authService.loggedIn.value) {
 				this.router.navigate(['/'])
 			}
-			return this.authService.isAdmin.value
+			return !this.authService.loggedIn.value
 	}
-
 }

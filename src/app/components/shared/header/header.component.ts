@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   logged: boolean;
+  isAdmin: boolean;
   user: UserModel = new UserModel();
   constructor(private service: LoginService, private router: Router) {
     this.service.loggedIn.subscribe(isLogged => {
@@ -18,6 +19,9 @@ export class HeaderComponent implements OnInit {
     this.service.getAuthenticatedUser().subscribe(user => {
       this.user = user;
     });
+	this.service.isAdmin.subscribe(isAdmin => {
+		this.isAdmin = isAdmin;
+	})
   }
 
   ngOnInit(): void { }

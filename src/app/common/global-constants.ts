@@ -20,6 +20,9 @@ export const URLS = {
 	GET_SIMILAR_PRODUCTS: (modelNo: string) => GlobalConstants.apiUrl + "/products/similarProducts?modelNo=" + modelNo,
 	LOGIN: GlobalConstants.apiUrl + "/login",
 	GET_ORDERS: (username: string) => GlobalConstants.apiUrl + "/orders/" + username,
+	ADD_PRODUCT:GlobalConstants.apiUrl + "/products/add",
+    EDIT_PRODUCT:GlobalConstants.apiUrl + "/products/edit",
+	DELETE_PRODUCT:(modelNo:string) => GlobalConstants.apiUrl + "/products/"+ modelNo,
 	CART : (userName: string) => GlobalConstants.apiUrl + `/orders/cart?userName=${userName}`,
 	UPDATE_CART: GlobalConstants.apiUrl + "/orders/cart",
 	QUANTITY_IN_CART: (userName: string, modelNo: string) => {
