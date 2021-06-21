@@ -17,8 +17,8 @@ import { CartQuantityComponent } from './components/shared/cart-quantity/cart-qu
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { LoginService } from './services/login.service';
 import { CartComponent } from './components/cart/cart.component';
-
 import { AuthGuard } from './guards/AuthGuard/auth.guard';
 import { AdminGuard } from './guards/AdminGuard/admin.guard';
 
@@ -49,6 +49,7 @@ import { AdminGuard } from './guards/AdminGuard/admin.guard';
 		ReactiveFormsModule
 	],
 	providers: [
+		LoginService,
 		AuthGuard,
 		AdminGuard
 	],
