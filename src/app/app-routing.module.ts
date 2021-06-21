@@ -13,6 +13,7 @@ import { AdminAddComponent } from './components/admin/admin-add/admin-add.compon
 import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
 import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
 import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
+import { AuthGuard } from './guards/AuthGuard/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
   {path: 'upload', component: FileUploadComponent},
-  {path: 'cart',component:CartComponent},
+  {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
   {path: 'bymodelno',component:BymodelnoComponent},
 ];
 

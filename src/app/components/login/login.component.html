@@ -9,14 +9,13 @@
             </button>
         </div>
         <div class="group">
-            <input type="text" placeholder="Username" name="username" id="username" [(ngModel)]="cred.username" #user=ngModel><i class="bi bi-person-fill"></i>
-        </div>
-            <div class="group">
-            <input type="password" placeholder="Password" name="pwd" id="password" [(ngModel)]="cred.password" #pass=ngModel><i class="bi bi-lock-fill"></i>
-            </div>   
+            <input type="text" placeholder="Username" name="username" id="username" [(ngModel)]="cred.username" #user=ngModel required pattern="[a-zA-Z0-9]{4,}"><i class="fa fa-envelope"></i></div>
+        <div class="group">
+            <input type="password" placeholder="Password" name="pwd" id="password" [(ngModel)]="cred.password" #pass=ngModel minlength="5" required><span class="eye" onclick="myFunction();"><i id="hide1" class="fa fa-eye" style='font-size: 19px'></i><i id="hide2"
+                    class="fa fa-eye-slash" style='font-size: 19px'></i></span></div>
 
         <div class="group">
-            <input type="submit" class="btnn" value="Login">
+            <input type="submit" class="btnn" value="Login" [disabled]="frm.invalid">
         </div>
     </form>
     <p class="para">Forgot ? <a routerLink="forgotpassword">Password</a></p>
