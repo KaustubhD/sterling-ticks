@@ -14,22 +14,24 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
 import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.component';
 import { AuthGuard } from './guards/AuthGuard/auth.guard';
+import { AdminGuard } from './guards/AdminGuard/admin.guard';
+import { NegateAuthGuard } from './guards/NegateAuth/negate-auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'admin-add', component: AdminAddComponent},
-  {path: 'admin-edit/:model', component: AdminEditComponent},
-  {path: 'admin-list', component: AdminListComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent, canActivate: [NegateAuthGuard]},
+  {path: 'admin-add', component: AdminAddComponent, canActivate: [AdminGuard]},
+  {path: 'admin-edit/:model', component: AdminEditComponent, canActivate: [AdminGuard]},
+  {path: 'admin-list', component: AdminListComponent, canActivate: [AdminGuard]},
+  {path: 'register', component: RegisterComponent, canActivate: [NegateAuthGuard]},
   {path: 'home', component: HomeComponent},
-  {path: 'otp',component : OtpComponent},
-  {path: 'email-phone',component:EmailPhoneComponent},
+  {path: 'otp',component : OtpComponent, canActivate: [NegateAuthGuard]},
+  {path: 'email-phone',component:EmailPhoneComponent, canActivate: [NegateAuthGuard]},
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
   {path: 'upload', component: FileUploadComponent},
   {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
-  {path: 'bymodelno',component:BymodelnoComponent},
+  {path: 'bymodelno',component:BymodelnoComponent, canActivate: [AdminGuard]},
 ];
 
 

@@ -23,7 +23,7 @@
                         <a class="nav-link text-light font-weight-bold px-3" routerLink="products">PRODUCTS</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li *ngIf="isAdmin" class="nav-item">
                         <a class="nav-link text-light font-weight-bold px-3" routerLink="admin-list">Admin</a>
                     </li>
 
