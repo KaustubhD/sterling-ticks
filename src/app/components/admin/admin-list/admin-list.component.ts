@@ -22,13 +22,11 @@ export class AdminListComponent implements OnInit {
     this.updateProducts();
     this.service.getAllProducts().then((data) => {
       this.products = data;
-      console.log(this.products)
     });
   }
   updateProducts() {
     this.service.getAllProducts().then((data) => {
       this.products = data;
-      console.log(this.products);
     });
   }
   remove(modelNo: string) {
@@ -58,7 +56,6 @@ export class AdminListComponent implements OnInit {
     );
   }
   test(p: Product) {
-    console.log(p);
   }
 
 
