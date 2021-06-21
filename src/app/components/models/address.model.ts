@@ -1,9 +1,12 @@
-export class Address{
-    public name: String;
+export class AddressModel{
+    public id: number;
+    public userName: string;
+    public phoneNo: number;
     public type: string;
+    public defaultType: string;
     public address: string;
-    public state: string;
     public city: string;
+    public state: string;
     public country: string;
-    public pin: string;
+    public pincode: number;
 }

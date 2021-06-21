@@ -1,5 +1,5 @@
 import { OrderItem } from './orderItem.model';
-import { Address } from './address.model';
+import { AddressModel as Address } from './address.model';
 
 export class Order{
     public id: String = '';
