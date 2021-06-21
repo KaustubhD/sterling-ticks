@@ -1,6 +1,7 @@
+import { Product } from './product.model';
+
 export class OrderItem{
-    modelNo: string;
-    name: string;
-    price: number;
-    qty: number;
+    product: Product;
+    boughtAtPrice: number;
+    quantity: number;
 }

@@ -30,3 +30,19 @@ a,a:active,a:visited{
 .item-name{
 cursor: pointer;
 }
+
+.centered{
+    justify-content: center;
+    margin: 3% auto;
+}
+
+.pending{
+    color: #942626;
+}
+
+.delivered{
+    color: #0c831c;
+}
+.alert-info.card{
+    cursor: initial;
+}

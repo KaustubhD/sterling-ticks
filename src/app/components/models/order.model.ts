@@ -1,9 +1,12 @@
 import { OrderItem } from './orderItem.model';
+import { Address } from './address.model';
 
 export class Order{
-    public no: String = '';
-    public date: string;
+    public id: String = '';
+    public placedAt: string;
     public price: number;
-    public deliveryAddress: string;
-    public items: OrderItem[];
+    public address: Address;
+    public status: string;
+    public orderItems: OrderItem[];
+    public transaction: {price : number};
 }
