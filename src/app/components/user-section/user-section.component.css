@@ -23,23 +23,25 @@
     width: 99%;
     height: 99%;
 }
+.item-row{
+    height: 100%;
+    width: 100%;
+}
 
 .item-img{
-    width: 85%;
-    height: auto;
-    max-height: 85%;
+   size: 2em;
+   font-size: 2em;
 }
 .item-box{
     height: 5em;
     width: 85%;
     margin: 3% auto;
     overflow: hidden;
-}
-.item{
     justify-content: center;
     text-align: center;
-    margin: auto;
+    color: seagreen;
 }
+
 .item-container{
     margin-top: 3em;
     margin-bottom: 3em;

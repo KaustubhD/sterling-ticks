@@ -9,19 +9,22 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class UserSectionComponent implements OnInit {
   islogged: boolean = true;
-  user:UserModel = {
-    "userName": "Arnab",
-    "email": "user@mail",
-    "dateCreated": "2021-06-17T17:15:30.415+00:00",
-    "phoneNo": '',
-    confirmpwd: '',
-    "password": '',
-    "profileImg": 'assets/images/user/default.png',
-    roles: []
-};
+  user:UserModel;
   constructor(private service: LoginService) { }
 
   ngOnInit(): void {
-
+    this.service.getAuthenticatedUser().subscribe(
+      user =>{
+        this.user = user;
+        if(this.user.profileImg==null){
+          this.user.profileImg='assets/images/user/default.png';
+        }
+      }
+   );  
+   this.service.loggedIn.subscribe(
+     logged =>{
+       this.islogged=logged;
+     }
+   )
   }
 }

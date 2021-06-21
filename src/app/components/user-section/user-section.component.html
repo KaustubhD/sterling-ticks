@@ -2,7 +2,7 @@
     <div class="container">
         <section class="main">
             <div class="row">
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="aside-left">
                         <div class="sub-section logged" *ngIf="islogged">
                             <!---->
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-8">
                     <div class="container main-body">
                         <div class="head d-none d-md-block">
                             <div *ngIf="islogged" class="logged">
@@ -63,39 +63,28 @@
                         </div>
                         <div class="row item-container">
                             <div class=" col col-12 col-md-6">
-                                <a [routerLink]="['/cart']">
-                                    <div class="item-box card container">
-                                        <div class="row">
-                                            <div class="col-4 item-box">
-                                                <img class="item-img" src="assets/images/cart.jpg" alt="">
-                                            </div>
-                                            <div class="col-8 item-box">
-                                                <p class="item">Your Cart</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                <div class="item-box card" [routerLink]="['/cart']">
+                                    <i class="bi bi-cart-fill item-img"></i>
+                                    <strong>Your Cart</strong>
+                                </div>
                             </div>
                             <div class=" col col-12 col-md-6">
-                                <a [routerLink]="['/orders/',user.userName]">
-                                    <div class="item-box card">
-                                        <p class="item">Your Orders</p>
-                                    </div>
-                                </a>
+                                <div class="item-box card" [routerLink]="['/orders/',user.userName]">
+                                    <i class="bi bi-bag-check-fill item-img"></i>
+                                    <strong>Your Orders</strong>
+                                </div>
                             </div>
                             <div class=" col col-12 col-md-6">
-                                <a [routerLink]="['/address/',user.userName]">
-                                    <div class="item-box card">
-                                        <p class="item">Addresses</p>
-                                    </div>
-                                </a>
+                                <div class="item-box card" [routerLink]="['/address/',user.userName]">
+                                    <i class="bi bi-geo-alt-fill item-img"></i>
+                                    <strong>Addresses</strong>
+                                </div>
                             </div>
                             <div class=" col col-12 col-md-6">
-                                <a [routerLink]="['/payment/',user.userName]">
-                                    <div class="item-box card">
-                                        <p class="item">Payment Methods</p>
-                                    </div>
-                                </a>
+                                <div class="item-box card" [routerLink]="['/payment/',user.userName]">
+                                    <i class="bi bi-wallet-fill item-img"></i>
+                                    <strong>Payment Methods</strong>
+                                </div>
                             </div>
                         </div>
                     </div>
