@@ -36,10 +36,17 @@ cursor: pointer;
     margin: 3% auto;
 }
 
-.pending{
+.in_cart{
     color: #942626;
 }
 
+.placed{
+    color: rgb(127, 134, 35);
+}
+
+.in_transit{
+    color: rgb(131, 35, 131);
+}
 .delivered{
     color: #0c831c;
 }
