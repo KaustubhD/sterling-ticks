@@ -40,7 +40,7 @@
             <h4><i class="bi bi-arrow-left-right"></i>&nbsp;&nbsp;&nbsp;Easy 30 days return available</h4><br />
 
             <h5>100% original products</h5><br />
-            <app-cart-quantity [productId]="product.id" [quantity]="0" [showLabel]="true"></app-cart-quantity>
+            <app-cart-quantity [productId]="product.id" [quantity]="quantityInCart" [showLabel]="true"></app-cart-quantity>
         </div>
         <br />
         <hr><br />
@@ -48,7 +48,7 @@
         <h4>PRODUCT DETAILS&nbsp;&nbsp;<i class="bi bi-card-text"></i></h4>
 
         <p>
-            Brand: {{product.brand}} <br /> Collection: {{product.collection}} <br /> Series: {{product.series}} <br /> Model Number: {{product.modelNo}} <br /> Movement: {{product.movement}} <br /> Features: {{product.features}} <br /> Water Resistance:
+            Brand: {{product.brand.name}} <br /> Collection: {{product.collection.name}} <br /> Series: {{product.series}} <br /> Model Number: {{product.modelNo}} <br /> Movement: {{product.movement}} <br /> Features: {{product.features}} <br /> Water Resistance:
             {{product.waterResistance}} M<br /> Warranty: {{product.warrantyPeriod}} years<br /> Warranty provided by brand/ manufacturer <br /> Comes in a signature {{product.name}} case <br />
         </p>
 
@@ -114,7 +114,7 @@
         </div>
         <div>
             <h5>Complete The Look</h5>
-            <p>This {{product.brand}} {{product.collection}} watch will quickly become your favourite staple accessory. This {{product.strap.color}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for a chic brunch outfit.</p>
+            <p>This {{product.brand.name}} {{product.collection.name}} watch will quickly become your favourite staple accessory. This {{product.strap.color}} piece can be matched with dark wash jeans, a trendy top, and ballerinas for a chic brunch outfit.</p>
         </div>
 
     </div>
@@ -129,7 +129,7 @@
                     <img src="./{{similarProduct.images[0]}}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{similarProduct.name}}</h5>
-                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strap.color}} {{similarProduct.glassMaterial}} Watch</p>
+                        <p class="card-text text-gray">{{similarProduct.gender}} {{similarProduct.strap?.color || ''}} {{similarProduct.glassMaterial}} Watch</p>
 
                         <span>
                             <app-rating [rating]="product.starRating"></app-rating>

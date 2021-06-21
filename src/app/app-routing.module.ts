@@ -9,6 +9,7 @@ import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AuthGuard } from './guards/AuthGuard/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
   {path: 'upload', component: FileUploadComponent},
-  {path: 'cart',component:CartComponent},
+  {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
 ];
 
 

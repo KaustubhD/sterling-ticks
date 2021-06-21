@@ -19,6 +19,8 @@ import { EmailPhoneComponent } from './components/email-phone/email-phone.compon
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { CartComponent } from './components/cart/cart.component';
 
+import { AuthGuard } from './guards/AuthGuard/auth.guard';
+import { AdminGuard } from './guards/AdminGuard/admin.guard';
 
 @NgModule({
 	declarations: [
@@ -46,7 +48,10 @@ import { CartComponent } from './components/cart/cart.component';
 		HttpClientModule,
 		ReactiveFormsModule
 	],
-	providers: [],
+	providers: [
+		AuthGuard,
+		AdminGuard
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
