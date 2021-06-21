@@ -10,12 +10,13 @@ import { LoginService } from 'src/app/services/login.service';
 export class UserSectionComponent implements OnInit {
   islogged: boolean = true;
   user:UserModel = {
-    "userName": "user",
+    "userName": "Arnab",
     "email": "user@mail",
     "dateCreated": "2021-06-17T17:15:30.415+00:00",
     "phoneNo": '',
+    confirmpwd: '',
     "password": '',
-    "confirmpwd": ''
+    "profileImg": 'assets/images/user/default.png'
 };
   constructor(private service: LoginService) { }
 
