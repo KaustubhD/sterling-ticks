@@ -6,5 +6,7 @@ export class UserModel{
     public password: string;
     public confirmpwd: string;
     public phoneNo: string;
+    public dateCreated: string;
+    public userImage: string;
 	public roles: Role[];
 }

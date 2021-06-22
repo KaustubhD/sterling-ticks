@@ -1,4 +1,4 @@
-.form-container{
+/* .form-container{
     display: flex;
     flex-flow: column;
     width:100%;
@@ -27,4 +27,51 @@ button{
     display: flex;
     background: -webkit-linear-gradient(to right,rgb(226, 158, 31));
     background: linear-gradient(to right,#57a5a1,#df74af);
+} */
+
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.email-phone {
+    height: 35 vh;
+    width: 26vw;
+    margin: 37px auto;
+}
+
+.card {
+    height: 25%;
+}
+
+.card h2 {
+    font-size: 1rem;
+    padding: 8px 0;
+}
+
+.card-header {
+    background-color: #001526;
+    color: white;
+    height: 230px;
+}
+
+.card-header h5 {
+    margin-top: 7%;
+    letter-spacing: 2px;
+}
+
+.btn {
+    background-color: #001526;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: 500;
+}
+
+img {
+    height: 140px;
+    width: 130px;
 }

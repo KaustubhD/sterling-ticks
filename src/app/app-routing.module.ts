@@ -8,6 +8,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { UserSectionComponent } from './components/user-section/user-section.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminAddComponent } from './components/admin/admin-add/admin-add.component';
 import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.component';
@@ -29,12 +31,11 @@ const routes: Routes = [
   {path: 'email-phone',component:EmailPhoneComponent, canActivate: [NegateAuthGuard]},
   {path: 'products' , component: ProductListComponent},
   {path: 'product/:model', component: ProductDetailComponent},
-  {path: 'upload', component: FileUploadComponent},
+  {path: 'account', component: UserSectionComponent},
+  {path: 'orders', component: OrdersComponent},
   {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
   {path: 'bymodelno',component:BymodelnoComponent, canActivate: [AdminGuard]},
 ];
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
 	onSameUrlNavigation: 'reload'
