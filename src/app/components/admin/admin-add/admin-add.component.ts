@@ -13,6 +13,7 @@ import { GENDERS, SPEEDS } from 'src/app/common/app.constants';
   styleUrls: ['./admin-add.component.css']
 })
 export class AdminAddComponent implements OnInit {
+  responses:Array<any>=new Array<any>();
   productAdd: Product = new Product();
   brands: Brand[] = [];
   genders = GENDERS
@@ -34,5 +35,17 @@ export class AdminAddComponent implements OnInit {
   assignfeatures(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.productAdd.features = value.split(",");
+  }
+  addImage(){
+    if(this.responses.length!=0){
+      this.responses.forEach(response=>{
+        this.productAdd.images.push(response.data.secure_url);
+
+      });
+      console.log(this.productAdd.images);
+
+      // this.productAdd.images=this.responses[this.responses.length-1].data.secure_url;
+     
+    }
   }
 }

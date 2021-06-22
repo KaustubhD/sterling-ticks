@@ -1,0 +1,93 @@
+<body>
+    <label class="checkboxcontainer">
+    <input type="checkbox">
+    <span class="checkmark"></span>
+</label>
+    <h1 class="order">Order Placed Successfully!</h1>
+
+    <div class="p">
+        <p class="id">Order Id:<span> <%= id %> </span></p>
+        <p class="p"> Payment Method:<span class="span"> Cash On Delivery</span></p>
+    </div>
+    <hr class="solid">
+    <div class="box">
+        <h3 class="we">We are processing your order , here are the details.</h3>
+        <div class="row">
+            <div class="column">
+                <div class="grey">
+                    <p>Name:</p>
+                </div>
+                <div class="white">
+                    <p>Phone:</p>
+                </div>
+                <div class="grey">
+                    <p>Quantity:</p>
+                </div>
+                <div class="white">
+                    <p> Price :
+                    </p>
+                </div>
+                <div class="grey">
+                    <p>Quantity:</p>
+                </div>
+                <div class="white">
+                    <p>Order At:</p>
+                </div>
+                <div class="grey">
+                    <p>Order Address:</p>
+                </div>
+            </div>
+            <div class="column1">
+                <div class="grey1">
+                    <p>
+                        <%= username %>
+                    </p>
+                </div>
+                <div class="white1">
+                    <p class="phone">(+91)
+                        <%= phone %>
+                    </p>
+                </div>
+                <div class="grey1">
+                    <p>
+                        <%= choose %>
+                    </p>
+                </div>
+                <div class="white1">
+                    <p>
+                        <%= date %>
+                    </p>
+                </div>
+                <div class="grey1">
+                    <p>
+                        <%= quantity %>
+                    </p>
+                </div>
+                <div class="white1">
+                    <p>
+                        <%=  %>
+                            <%=  %>
+                                <%=  %>
+                    </p>
+                </div>
+                <div class="grey1">
+                    <p>
+                        <%= message %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <h3 class="email">We will email you at <span> <%= email %> </span> for an order confirmation with details.</h3>
+        <div class="href">
+            <div class="row1">
+                <div class="col2">
+                    <a href="/" class="btn">Back to home</a>
+                </div>
+                <div class="col3">
+                    <a href="" class="button"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
