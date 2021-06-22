@@ -102,7 +102,7 @@
                     <div class="img justified" *ngIf="select=='img'">
                         <img class="img-change" [src]="user.userImage">
                         <file-upload [responses]="response"></file-upload>
-                        <button class="btn btn-info" (click)="updateImg()">Upload Image!</button>
+                        <button [disabled]="response.length==0" class="btn btn-info" (click)="updateImg()">Upload Image!</button>
                     </div>
                 </div>
             </div>

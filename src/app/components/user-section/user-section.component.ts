@@ -46,6 +46,10 @@ export class UserSectionComponent implements OnInit {
       this.user.userImage=this.response[this.response.length-1].data.secure_url;
       this.userService.updateProfileImg(this.user);
       this.authService.saveAuthenticatedUser(this.user);
+      setTimeout(() => {
+        this.select = 'none';
+        this.response.length=0;
+      }, 400);
     }
   }
 }
