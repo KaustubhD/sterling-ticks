@@ -1,0 +1,149 @@
+.main-heading{
+    font-weight: 800;
+    font-size: x-large;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.heading{
+    font-size: large;
+    font-weight: 600;
+    color: darkred;
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+/*paypal login form */
+.paypalForm {
+    border: 3px solid #f1f1f1;
+}
+
+.paypal-login {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.paypal-button {
+   background-color: #04AA6D;
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   cursor: pointer;
+   width: 100%;
+}
+
+.paypal-button:hover {
+   opacity: 0.8;
+}
+
+.cancelbtn {
+   width: auto;
+   padding: 10px 18px;
+   background-color: #f44336;
+}
+
+.imgcontainer {
+   text-align: center;
+   margin: 24px 0 12px 0;
+}
+
+img.paypal {
+   width: 40%;
+   border-radius: 50%;
+}
+
+.container {
+   padding: 16px;
+}
+
+span.psw {
+   float: right;
+   padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+
+/* net banking */
+.net-banking{
+    border: 3px solid #f1f1f1;
+}
+
+.net-banking .inner{
+    margin-left: 35%;
+}
+
+.bank-option {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+.bank-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+  
+
+.bank-option:hover input ~ .checkmark {
+    background-color: slategray;
+}
+  
+.bank-option input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.bank-option input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.bank-option .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}

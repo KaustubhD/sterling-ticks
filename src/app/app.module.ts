@@ -33,6 +33,8 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 import { FileUploadModule } from "ng2-file-upload";
 import { CloudinaryModule, CloudinaryConfiguration} from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
+import { PaymentComponent } from './components/payment/payment.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -58,7 +60,8 @@ import { Cloudinary } from 'cloudinary-core';
 		AdminEditComponent,
 		AdminListComponent,
 		BymodelnoComponent,
-		AdminComponent
+		AdminComponent,
+  		PaymentComponent
 	],
 	imports: [
 		BrowserModule,

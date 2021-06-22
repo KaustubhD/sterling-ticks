@@ -37,5 +37,8 @@ export const URLS = {
 		return url.toString()
 	},
 	USER_ADDRESS: (username: string) => `${GlobalConstants.apiUrl}/user/${username}/address`,
-	USER_ADDRESS_WITH_ID: (username: string, addressId: number) => `${GlobalConstants.apiUrl}/user/${username}/address/${addressId}`
+	USER_ADDRESS_WITH_ID: (username: string, addressId: number) => `${GlobalConstants.apiUrl}/user/${username}/address/${addressId}`,
+	CARD: (username: string) => `${GlobalConstants.apiUrl}/user/${username}/cards`,
+	PLACEORDER: `${GlobalConstants.apiUrl}/orders/placeOrder`,
+	ADDVOUCHER: `${GlobalConstants.apiUrl}/orders/cart/addVoucher`
 };
