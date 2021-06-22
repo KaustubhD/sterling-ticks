@@ -17,6 +17,8 @@ import { CartQuantityComponent } from './components/shared/cart-quantity/cart-qu
 import { OtpComponent } from './components/otp/otp.component';
 import { EmailPhoneComponent } from './components/email-phone/email-phone.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { UserSectionComponent } from './components/user-section/user-section.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { AddressComponent } from './components/address/address.component';
 import { LoginService } from './services/login.service';
 import { CartComponent } from './components/cart/cart.component';
@@ -34,7 +36,7 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 @NgModule({
 	declarations: [
 		AppComponent,
-    ProductDetailComponent,
+		ProductDetailComponent,
 		ProductCardComponent,
 		RegisterComponent,
 		LoginComponent,
@@ -42,14 +44,15 @@ import { AdminEditComponent } from './components/admin/admin-edit/admin-edit.com
 		ProductListComponent,
 		HeaderComponent,
 		FooterComponent,
-        RatingComponent,
+		RatingComponent,
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
-        AddressComponent,
-		CartComponent,
-		CartQuantityComponent,
 		FileUploadComponent,
+		UserSectionComponent,
+		OrdersComponent,
+		AddressComponent,
+		CartComponent,
 		AdminAddComponent,
 		AdminEditComponent,
 		AdminListComponent,
