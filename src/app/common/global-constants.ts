@@ -35,5 +35,10 @@ export const URLS = {
 		userName && url.searchParams.append("userName", userName)
 		modelNo && url.searchParams.append("modelNo", modelNo)
 		return url.toString()
-	}
-}
+	},
+	USER_ADDRESS: (username: string) => `${GlobalConstants.apiUrl}/user/${username}/address`,
+	USER_ADDRESS_WITH_ID: (username: string, addressId: number) => `${GlobalConstants.apiUrl}/user/${username}/address/${addressId}`,
+	CARD: (username: string) => `${GlobalConstants.apiUrl}/user/${username}/cards`,
+	PLACEORDER: `${GlobalConstants.apiUrl}/orders/placeOrder`,
+	ADDVOUCHER: `${GlobalConstants.apiUrl}/orders/cart/addVoucher`
+};

@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
 		loginService.getAuthenticatedUser().subscribe(user => {
 			this.userName =  user.userName
 		})
-		this.service.getUserCart(this.userName).then((cart: CartModel) => {
+		this.service.getUserCart(this.userName).subscribe((cart: CartModel) => {
 			this.cartItems = cart.orderItems;
 		})
 	}
@@ -76,8 +76,10 @@ export class CartComponent implements OnInit {
 		this.voucherApplied = false
 		vouchers.forEach(voucher => {
 			if (voucher.name == this.voucherInput) {
-				this.voucherDiscount = (this.totalPrice  * voucher.discount) / 100
-				this.voucherApplied = true;
+				this.service.addVoucher(this.userName, voucher.discount).then(() => {
+					this.voucherDiscount = (this.totalPrice  * voucher.discount) / 100
+					this.voucherApplied = true;
+				})
 			}
 		})
 	}

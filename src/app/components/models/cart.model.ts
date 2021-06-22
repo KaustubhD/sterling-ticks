@@ -4,6 +4,7 @@ import { Product } from "./product.model";
 export class CartModel {
 	public userName: string;
 	public orderItems: CartItemModel[];
+	public voucherDiscount: number;
 }
 
 export class CartItemModel {

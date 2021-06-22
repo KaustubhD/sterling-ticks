@@ -18,6 +18,7 @@ import { BymodelnoComponent } from './components/admin/bymodelno/bymodelno.compo
 import { AuthGuard } from './guards/AuthGuard/auth.guard';
 import { AdminGuard } from './guards/AdminGuard/admin.guard';
 import { NegateAuthGuard } from './guards/NegateAuth/negate-auth.guard';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'orders', component: OrdersComponent},
   {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
   {path: 'bymodelno',component:BymodelnoComponent, canActivate: [AdminGuard]},
+  {path: 'payment', component:PaymentComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

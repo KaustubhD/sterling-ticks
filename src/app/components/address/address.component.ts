@@ -14,15 +14,23 @@ export class AddressComponent implements OnInit {
   address: AddressModel[];
   addr: AddressModel = new AddressModel();
   editAddr: AddressModel = new AddressModel();
-  constructor(private service: AddressService) { }
+  constructor(private service: AddressService) {
+	this.address = []
+  }
 
   ngOnInit(): void { 
-    this.address = this.service.getAddressList(this.userName)
+    this.refreshAddressList()
+  }
+
+  refreshAddressList(): void {
+	this.service.getAddressList(this.userName).then((addresses: AddressModel[]) => {
+		this.address = addresses
+	})
   }
   
   isChecked(e: any, addr: AddressModel){
     if(e.target.checked){
-      addr.defaultType = addr.type
+      addr.isDefault = true
     }
   }
 
@@ -31,31 +39,31 @@ export class AddressComponent implements OnInit {
   }
 
   saveAddress() {
-    if((this.address.indexOf(this.addr)) == -1){
-      this.service.saveAddress(this.addr)
-      setTimeout(()=> {
-        this.address = this.service.getAddressList(this.userName)
-      }, 400);
-    }
-    else{
-      alert("This address is already present!")
-    }
-    this.refresh()
+      this.service.saveAddress(this.userName, this.addr).then(res => {
+		this.address.push(this.addr)
+	  }).catch(_ => {
+		alert("This address is already present!")
+	  }).finally(() => {
+		this.refresh()
+	  })
   }
 
   removeAddress(index: number){
     var ans = confirm('Are you sure you want to delete?')
       if(ans){
-        this.service.removeAddress(index);
+		const addressToDelete = this.address[index]
+        this.service.removeAddress(this.userName, addressToDelete.id).then(_ => {
+			this.address.splice(index, 1)
+		})
     }
   }
 
   updateAddress(index: number){
-    this.service.updateAddress(this.editAddr)
-    setTimeout(()=> {
-      this.address = this.service.getAddressList(this.userName)
-    }, 400);
-    this.refresh()
+    this.service.updateAddress(this.userName, this.editAddr).then(_ => {
+		this.address[index] = this.editAddr
+	}).finally(() => {
+		this.refresh()
+	})
   }
 
   onEdit(index: number){

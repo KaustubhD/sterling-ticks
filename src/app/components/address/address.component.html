@@ -3,11 +3,11 @@
 		<div *ngIf="address.length">
 			<div class="baseBlock" (click)="selectAddress(addr)">
 				<div class="innerBlock">
-					<div class="defaultTitle"  *ngIf="addr.type == addr.defaultType">DEFAULT ADDRESS</div>
-					<div class="defaultTitle"  *ngIf="addr.type != addr.defaultType">OTHER ADDRESS</div>
+					<div class="defaultTitle"  *ngIf="addr.isDefault">DEFAULT ADDRESS</div>
+					<div class="defaultTitle"  *ngIf="!addr.isDefault">OTHER ADDRESS</div>
 					<div class="d-flex">
 						<i class="bi bi-person-circle px-1"></i>
-						<div class="px-1 customerName">{{ addr.userName }}</div>
+						<div class="px-1 customerName">{{ addr.name }}</div>
 						<div class="addressType">{{ addr.type | uppercase }}</div>
 					</div>
 					<div>
@@ -48,7 +48,7 @@
 								</div>
 								<div class="form-group">
 									<label class="form-field">Name</label>
-									<input type="name" class="form-control form-control-input is-valid" name="userName" [(ngModel)]="editAddr.userName" pattern="[a-zA-Z\s]+"
+									<input type="name" class="form-control form-control-input is-valid" name="userName" [(ngModel)]="editAddr.name" pattern="[a-zA-Z\s]+"
 										/>
 									<div *ngIf="name.invalid" class="invalid-feedback">
 										Invalid name
@@ -164,7 +164,7 @@
 
                         <div class="form-group">
                             <label class="form-control-placeholder form-field">Name</label>
-                            <input type="name" class="form-control is-valid" name="userName" #name=ngModel [(ngModel)]="addr.userName" required pattern="[a-zA-Z\s]{3,}"/>
+                            <input type="name" class="form-control is-valid" name="userName" #name=ngModel [(ngModel)]="addr.name" required pattern="[a-zA-Z\s]{3,}"/>
                             <div *ngIf="name.dirty && name.invalid" class="invalid-feedback">
                                 Invalid name
                             </div>

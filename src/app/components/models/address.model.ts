@@ -1,9 +1,9 @@
 export class AddressModel{
     public id: number;
-    public userName: string;
-    public phoneNo: number;
+    public name: string;
+    public phoneNo: string;
     public type: string;
-    public defaultType: string;
+    public isDefault: boolean;
     public address: string;
     public city: string;
     public state: string;

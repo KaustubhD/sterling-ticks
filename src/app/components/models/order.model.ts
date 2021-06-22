@@ -7,5 +7,5 @@ export class Order{
     public address: Address;
     public orderStatus: string;
     public orderItems: OrderItem[];
-    public transaction: {price : number};
+    public transactions: {price : number};
 }
