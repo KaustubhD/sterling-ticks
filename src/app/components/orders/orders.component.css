@@ -54,3 +54,12 @@ cursor: pointer;
 .alert-info.card{
     cursor: initial;
 }
+
+.order-item-img{
+    border: 1px solid gray;
+    border-radius: 5% 5%;
+    width: 95%;
+    max-width: 200px;
+    height: auto;
+    margin: 2% auto;
+}
