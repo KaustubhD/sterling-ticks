@@ -20,7 +20,11 @@ export const URLS = {
 	GET_PRODUCT: (modelNo: string) => GlobalConstants.apiUrl + "/products/" + modelNo,
 	GET_SIMILAR_PRODUCTS: (modelNo: string) => GlobalConstants.apiUrl + "/products/similarProducts?modelNo=" + modelNo,
 	LOGIN: GlobalConstants.apiUrl + "/login",
-	GET_ORDERS: (username: string) => GlobalConstants.apiUrl + "/orders/" + username,
+	GET_ORDERS: (username: string) =>{
+		let url = new URL(GlobalConstants.apiUrl + "/orders")
+		url.searchParams.append("userName", username);
+		return url.toString();
+	},
 	ADD_PRODUCT:GlobalConstants.apiUrl + "/products/add",
     EDIT_PRODUCT:GlobalConstants.apiUrl + "/products/edit",
 	DELETE_PRODUCT:(modelNo:string) => GlobalConstants.apiUrl + "/products/"+ modelNo,

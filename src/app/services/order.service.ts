@@ -11,6 +11,6 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   getOrders(username: string): Promise<Order[]>{
-    return this.http.get<Order[]>(URLS.GET_ORDERS(username)).toPromise()
+    return this.http.get<Order[]>(URLS.GET_ORDERS(username)).toPromise();
   }
 }
