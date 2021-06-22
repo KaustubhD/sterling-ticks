@@ -44,10 +44,11 @@ import { Cloudinary } from 'cloudinary-core';
 		ProductListComponent,
 		HeaderComponent,
 		FooterComponent,
-		RatingComponent,
+        RatingComponent,
 		CartQuantityComponent,
 		OtpComponent,
 		EmailPhoneComponent,
+        AddressComponent,
 		FileUploadComponent,
 		UserSectionComponent,
 		OrdersComponent,
@@ -66,7 +67,7 @@ import { Cloudinary } from 'cloudinary-core';
 		HttpClientModule,
 		ReactiveFormsModule,
 		FileUploadModule,
-		CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
+		CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dssno9il5' } as CloudinaryConfiguration),
  
 	],
 	providers: [
