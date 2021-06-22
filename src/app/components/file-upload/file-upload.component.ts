@@ -44,12 +44,12 @@ export class FileUploadComponent implements OnInit {
 
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       form.append('upload_preset','sterling-ticks');
-      let tags = 'myphotoalbum';
+      let tags = 'images';
       if (this.title) {
         form.append('context', `photo=${this.title}`);
-        tags = `myphotoalbum,${this.title}`;
+        tags = `images,${this.title}`;
       }
-      form.append('folder', 'angular_sample');
+      form.append('folder', 'sterling-ticks');
       form.append('tags', tags);
       form.append('file', fileItem);
       fileItem.withCredentials = false;
@@ -108,7 +108,6 @@ export class FileUploadComponent implements OnInit {
     return Object.keys(fileProperties)
       .map((key) => ({ 'key': key, 'value': fileProperties[key] }));
   }
-
   getResponse(){
     console.log(this.responses);
     this.responses.forEach(el =>{

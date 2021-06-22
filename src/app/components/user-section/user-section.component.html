@@ -7,8 +7,11 @@
                         <div class="sub-section logged" *ngIf="islogged">
                             <!---->
                             <div class=" container profile">
-                                <div class="img-container">
-                                    <img [src]="user.profileImg" alt="profile-img" class="profile-img">
+                                <div class="profile-img">
+                                    <div class="img-container">
+                                        <img [src]="user.userImage" alt="profile-img" class="profile-img">
+                                    </div>
+                                    <button class="btn btn-info" (click)="select='img'">Change Profile Image</button>
                                 </div>
                                 <table class="profile-table">
                                     <tr>
@@ -92,9 +95,14 @@
                         <app-address [userName]="user.userName"></app-address>
                         <button class="btn btn-info" (click)="select='none'">Back to Your Account!</button>
                     </div>
-                    <div class="address justified" *ngIf="select=='payment'">
+                    <div class="payment justified" *ngIf="select=='payment'">
                         <!-- <app-address [userName]="user.userName"></app-address> -->
                         <button class="btn btn-info" (click)="select='none'">Back to Your Account!</button>
+                    </div>
+                    <div class="img justified" *ngIf="select=='img'">
+                        <img class="img-change" [src]="user.userImage">
+                        <file-upload [responses]="response"></file-upload>
+                        <button class="btn btn-info" (click)="updateImg()">Upload Image!</button>
                     </div>
                 </div>
             </div>

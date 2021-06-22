@@ -50,3 +50,9 @@
     background-color: #ddd;
 }
 
+.img-change{
+    height: 10em;
+    width: auto;
+    border: 2 px solid gray;
+    border-radius: 3% 3%;
+}

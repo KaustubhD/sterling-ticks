@@ -5,6 +5,7 @@ export class GlobalConstants{
 }
 
 export const URLS = {
+	UPDATE_PROFILE_IMAGE: GlobalConstants.apiUrl + "/user/update",
 	OTP_GENERATE: GlobalConstants.apiUrl + "/otp/generate",
 	OTP_VALIDATE: GlobalConstants.apiUrl + "/otp/validate",
 	REGISTER: GlobalConstants.apiUrl + "/register",
