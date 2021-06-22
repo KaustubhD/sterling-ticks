@@ -24,15 +24,15 @@
                 </div>
                 <hr />
                 <div class="list items" *ngFor="let order of orders">
-                    <div *ngIf="order.status.toLowerCase()!='in_cart'">
+                    <div *ngIf="order.orderStatus.toLowerCase()!='in_cart'">
                         <div class="row">
                             <div class="item col col-12 col-md-1">
                                 <span class="d-inline d-md-none">
                                     <strong>Order Id :&nbsp;</strong>
                                 </span>
-                                {{order.id}}
+                                {{order.orderId}}
                             </div>
-                            <div class="item col col-6 col-md-2 d-none d-md-flex">{{order.placedAt}}</div>
+                            <div class="item col col-6 col-md-2 d-none d-md-flex">{{order.placedAt.substr(0,10)}}</div>
                             <div class="col col-12 col-md-4">
                                 <div *ngFor="let item of order.orderItems" class="individual-item">
                                     <div class="row">
@@ -54,7 +54,7 @@
                                 <span class="d-inline d-md-none">
                                     <strong>Status :&nbsp;</strong>
                                 </span>
-                                <span class="{{order.status.toLowerCase()}}"><strong>{{order.status.toLowerCase()=='in_transit'?'Shipped':order.status.toLowerCase()}} </strong> </span>
+                                <span class="{{order.orderStatus.toLowerCase()}}"><strong>{{order.orderStatus.toLowerCase()=='in_transit'?'Shipped':order.orderStatus.toLowerCase()}} </strong> </span>
                             </div>
                             <div class="item col col-6 col-md-2 d-none d-md-flex">
                                 <div class="row">
