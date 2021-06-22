@@ -63,3 +63,9 @@ cursor: pointer;
     height: auto;
     margin: 2% auto;
 }
+
+.order-head{
+    background-color: #eee;
+    border-bottom: 2px solid #ccc;
+    padding: 1%;
+}
