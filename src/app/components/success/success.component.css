@@ -1,39 +1,25 @@
-* {
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
-}
-
 .block {
-    height: 100vh;
     width: 100vw;
     overflow-x: hidden;
 }
 
-.checkboxcontainer input {
-    display: none;
-}
-
 .checkboxcontainer {
-    display: block;
     position: relative;
-    width: 100%;
     height: 15%;
     margin-top: 2%;
-    left: 47%;
-    transform: translate(-50%), -50%;
 }
 
 .checkboxcontainer .checkmark {
     display: inline-block;
+	position: relative;
     width: 75px;
     height: 75px;
     background: #008000;
     border-color: #83833F;
-    position: absolute;
     border-radius: 50%;
-    left: 0;
     top: 0;
+	left: 50%;
+    transform: translate(-50%);
     box-shadow: 0px 5px 5px 0 #82e661 inset, 0px 5px 5px 0 #aae597, 0px 5px 5px 0 #aae597 inset, 0px 5px 5px 0 #aae597;
 }
 
@@ -81,6 +67,7 @@ hr.solid {
 .grey {
     padding-top: 5px;
     padding-bottom: 5px;
+	display: flex;
 }
 
 .grey1 {
@@ -89,8 +76,17 @@ hr.solid {
     padding-bottom: 5px;
 }
 
-.grey p {
+.grey * {
     padding-right: 14px;
+	width: 50%;
+}
+
+.grey strong {
+	text-align: end;
+}
+
+.grey span {
+	text-align: start;
 }
 
 .column {
@@ -165,6 +161,10 @@ hr.solid {
     padding: 5px;
 }
 
+.order-details {
+	width: 50%;
+	margin: auto;
+}
 @media (max-width: 700px) {
     .order {
         font-size: 1.2rem;

@@ -47,8 +47,6 @@ export class PaymentComponent implements OnInit {
 	ngOnInit(): void { }
 
 	onPaymentSuccess() {
-		let validDate = this.checkExpiryDate()
-		if(validDate){
 		this.payment.expiry = new Date(this.year, this.month)
 		this.cartService.saveCard(this.payment, this.name).then((res: any) => {
 			this.payment.paymentMethodId = res.id
@@ -60,6 +58,7 @@ export class PaymentComponent implements OnInit {
 				let result: boolean = res.result;
 				this.paymentSuccess = result;
 				if(this.paymentSuccess == true){
+
 					this.router.navigate(['/success'])
 				}
 			}).catch((e) => {
@@ -68,20 +67,10 @@ export class PaymentComponent implements OnInit {
 		}).catch(() => {
 			this.paymentSuccess = false;
 		})
-		}
 	}
 
 	setAddress(address: AddressModel) {
 		this.addressId = address.id;
-	}
-
-	checkExpiryDate(){
-		if(isNaN(this.year) || isNaN(this.month)){
-			this.greater = false
-		}else{
-			this.greater = parseInt(this.currentYear) < this.year ? true: (parseInt(this.currentMonth) <= this.month) ? true : false;
-		}
-		return this.greater
 	}
 
 }

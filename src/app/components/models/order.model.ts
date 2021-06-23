@@ -8,4 +8,7 @@ export class Order{
     public orderStatus: string;
     public orderItems: OrderItem[];
     public transactions: {price : number};
+	constructor() {
+		this.address = new Address()
+	}
 }

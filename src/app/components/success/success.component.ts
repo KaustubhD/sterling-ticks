@@ -11,7 +11,7 @@ import { UserModel } from '../models/user.model';
 })
 export class SuccessComponent implements OnInit {
 
-  orders: Order[] = [];
+  order: Order = new Order();
   user: UserModel = new UserModel();
   latestOrderIndex: number;
   constructor(private service: OrderService, private authService: LoginService) { }
@@ -21,7 +21,7 @@ export class SuccessComponent implements OnInit {
 			this.user = user ;
     });
     this.service.getOrders(this.user.userName).then(data =>{
-      this.orders = data;
+      this.order = data[data.length - 1];
     });
 
   }
