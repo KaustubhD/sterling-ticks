@@ -2,197 +2,186 @@
     <div class="main-heading">
         Billing Information
     </div><hr/>
-    <div>
-        <p class="heading"><i class="bi bi-geo-alt px-3"></i>Shipping Address</p>
-        <app-address [userName]="name" (selectedAddress)="setAddress($event)"></app-address>
-    </div>
+	<div class="d-flex flex-wrap">
+		<div class="col-lg-8 col-md-9 col-sm-12">
+			<p class="heading"><i class="bi bi-geo-alt px-3"></i>Shipping Address</p>
+			<app-address [userName]="name" (selectedAddress)="setAddress($event)"></app-address>
+		</div>
 
-    <div>
-        <p class="heading"><i class="bi bi-currency-exchange px-3"></i>Price Details</p>
-        <div class="price">Total Price: <span class="px-2">{{totalPrice | currency: "INR" : "symbol"}}</span></div>
-    </div>
+		<div class="col-lg-4 col-md-3 col-sm-12">
+			<p class="heading"><i class="bi bi-currency-exchange px-3"></i>Price Details</p>
+			<div class="price">Total Price: <span class="px-2">{{totalPrice | currency: "INR" : "symbol"}}</span></div>
+		</div>
+		
+		<div class="row mb-5 col-lg-8 col-md-9 col-sm-12">
+			<div class="col-sm-12 mt-3">
+				<p class="heading"><i class="bi bi-check2-circle px-3"></i>Choose Payment Mode</p>
+	
+				<article class="card">
+					<div class="card-body p-5">
+	
+						<ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="pill" href="#nav-tab-cash">
+									<i class="bi bi-credit-card"></i> Cash On Delivery</a></li>
+							<li class="nav-item">
+								<a class="nav-link " data-toggle="pill" href="#nav-tab-card">
+									<i class="bi bi-credit-card"></i> Credit Card</a></li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+									<i class="bi bi-wallet-fill"></i> Paypal</a></li>
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+									<i class="bi bi-bank"></i> Bank Transfer</a></li>
+						</ul>
+	
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="nav-tab-cash">
+								<div class="text-center">
+									<h5 class="text-center mt-4">Pay on Delivery(Cash/Card/UPI)</h5>
+									<div >You can pay via Cash/Card or UPI enabled app at the time of delivery. Ask your delivery executive for these options.</div>                                
+									<button type="submit" class="btn btn-info m-3">PLACE ORDER</button>
+								</div>
+							</div>
+	
+							<div class="tab-pane fade" id="nav-tab-card">
+							   
+								<form role="form" class="was-validated" (ngSubmit)="onPaymentSuccess()" #form="ngForm">
+									<div class="form-group">
+										<label for="username">Full name (on the card)</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+											</div>
+											<input type="text" class="form-control is-valid" name="fullname" #fullname=ngModel [(ngModel)]="payment.nameOnCard" required pattern="[a-zA-Z\s]{3,}">
+											<div *ngIf="fullname.invalid" class="invalid-feedback">
+												Invalid name
+											</div>
+										</div> <!-- input-group.// -->
+									</div> <!-- form-group.// -->
+	
+									<div class="form-group">
+										<label for="cardNumber">Card number</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><i class="bi bi-credit-card-fill"></i></span>
+											</div>
+											<input type="text" class="form-control is-valid" name="cardNo" #cardNumber=ngModel [(ngModel)]="payment.cardNumber" required pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}">
+											<div *ngIf="cardNumber.invalid" class="invalid-feedback">
+												Invalid card number
+											</div>
+										</div> <!-- input-group.// -->
+									</div> <!-- form-group.// -->
+	
+									<div class="row">
+										<div class="col-sm-8">
+											<div class="form-group">
+												<label><span class="hidden-xs">Expiration</span> </label>
+												<div class="form-inline">
+													<select class="form-control is-valid" name="expmonth" #expmonth=ngModel [(ngModel)]="month" style="width:45%" required pattern="[\d]+">
+														<option value="">MM</option>
+														<option *ngFor="let month of getMonthsList()" [value]="month">{{month | number: '2.0'}}</option>
+													</select>
+													<span style="width:10%; text-align: center"> / </span>
+													<select class="form-control is-valid" name="expyear" #expyear=ngModel [(ngModel)]="year" style="width:45%" required pattern="[\d]+">
+														<option value="">YYYY</option>
+														<option *ngFor="let year of getYearsList()" [value]="year">{{ year }}</option>
+													</select>
+													<div *ngIf="expyear.invalid || expmonth.invalid" class="invalid-feedback">
+														Please select a valid expiration date
+													</div>
+												</div>
+											</div>
+											
+										</div>
+	
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label data-toggle="tooltip" title="3 digits code on back side of the card" >CVV 
+													<i class="bi bi-question-circle-fill"></i>
+												</label>
+												<input class="form-control" #cvv=ngModel name="cvv" [(ngModel)]="payment.cvvNo" required type="password" pattern="[0-9]{3,4}">
+												<div *ngIf="cvv.invalid" class="invalid-feedback">
+													Invalid CVV
+												</div>
+											</div> <!-- form-group.// -->
+										</div>
+									</div> <!-- row.// -->
+	
+									<div class="text-center">
+									<button class="btn btn-info border-3 rounded" type="submit"> CONFIRM PAYMENT </button>
+									</div>
+								</form>
+							</div> <!-- tab-pane.// -->
+	
+							<div class="tab-pane fade" id="nav-tab-paypal">
+								<form class="paypalForm">
+									<div class="imgcontainer">
+									  <img src="../../../assets/images/paypal.png" alt="paypal" class="paypal">
+									</div>
+								  
+									<div class="container">
+									  <label for="uname"><b>Username</b></label>
+									  <input type="text" placeholder="Enter Username" class="paypal-login" name="uname" required>
+								  
+									  <label for="psw"><b>Password</b></label>
+									  <input type="password" placeholder="Enter Password"  class="paypal-login" name="psw" required>
+										  
+									  <button type="submit" class="paypal-button">Login</button>
+									  <label>
+										<input type="checkbox" checked="checked" name="remember"> Remember me
+									  </label>
+									</div>
+								  
+									<div class="container" style="background-color:#f1f1f1">
+									  <button type="button" class="cancelbtn">Cancel</button>
+									  <span class="psw">Forgot <a href="#">password?</a></span>
+									</div>
+								  </form>
+							</div>
+	
+							<div class="tab-pane fade" id="nav-tab-bank">
+								<form class="net-banking">
+									<div class="inner mb-3">
+								<h1 class="mb-3">NET BANKING</h1>
+								<label class="bank-option">Axis Bank
+									<input type="radio" checked="checked" name="radio">
+									<span class="checkmark"></span>
+								</label>
+								<label class="bank-option">SBI
+									<input type="radio" name="radio">
+									<span class="checkmark"></span>
+								</label>
+								<label class="bank-option">HDFC Bank
+									<input type="radio" name="radio">
+									<span class="checkmark"></span>
+								</label>
+								<label class="bank-option">ICICI Bank
+									<input type="radio" name="radio">
+									<span class="checkmark"></span>
+								</label>
+								<label class="bank-option">Kotak
+									<input type="radio" name="radio">
+									<span class="checkmark"></span>
+								</label>
+								<div>
+									<button class="btn btn-info border-3 rounded" type="button" (click)="onPaymentSuccess()"> PAY NOW</button>
+								</div>
+							</div>
+							</form>
+							</div> <!-- tab-pane.// -->
+	
+						</div> <!-- tab-content .// -->
+										
+					</div> <!-- card-body.// -->
+				</article> <!-- card.// -->
+	
+			
+			</div> <!-- col.// -->
+		</div> <!-- row.// -->
+	</div>
 
-    <div class="row mb-5">
-        <div class="col-sm-10 mt-3">
-            <p class="heading"><i class="bi bi-check2-circle px-3"></i>Choose Payment Mode</p>
 
-            <article class="card">
-                <div class="card-body p-5">
-
-                    <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="pill" href="#nav-tab-cash">
-                                <i class="bi bi-credit-card"></i> Cash On Delivery</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link " data-toggle="pill" href="#nav-tab-card">
-                                <i class="bi bi-credit-card"></i> Credit Card</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
-                                <i class="bi bi-wallet-fill"></i> Paypal</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
-                                <i class="bi bi-bank"></i> Bank Transfer</a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="nav-tab-cash">
-                            <div class="text-center">
-                                <h5 class="text-center mt-4">Pay on Delivery(Cash/Card/UPI)</h5>
-                                <div >You can pay via Cash/Card or UPI enabled app at the time of delivery. Ask your delivery executive for these options.</div>                                
-                                <button type="submit" class="btn btn-info m-3">PLACE ORDER</button>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-tab-card">
-                           
-                            <form role="form" class="was-validated" (ngSubmit)="onPaymentSuccess()" #form="ngForm">
-                                <div class="form-group">
-                                    <label for="username">Full name (on the card)</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control is-valid" name="fullname" #fullname=ngModel [(ngModel)]="payment.nameOnCard" required pattern="[a-zA-Z\s]{3,}">
-                                        <div *ngIf="fullname.invalid" class="invalid-feedback">
-                                            Invalid name
-                                        </div>
-                                    </div> <!-- input-group.// -->
-                                </div> <!-- form-group.// -->
-
-                                <div class="form-group">
-                                    <label for="cardNumber">Card number</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-credit-card-fill"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control is-valid" name="cardNo" #cardNumber=ngModel [(ngModel)]="payment.cardNumber" required pattern="[0-9\s]{4,}[0-9\s]{4,}[0-9\s]{4,}[0-9\s]{4,}">
-                                        <div *ngIf="cardNumber.invalid" class="invalid-feedback">
-                                            Invalid card number
-                                        </div>
-                                    </div> <!-- input-group.// -->
-                                </div> <!-- form-group.// -->
-
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <div class="form-group">
-                                            <label><span class="hidden-xs">Expiration</span> </label>
-                                            <div class="form-inline">
-                                                <select class="form-control is-valid" name="expmonth" #expmonth=ngModel [(ngModel)]="month" style="width:45%">
-                                                    <option value="MM">MM</option>
-                                                    <option value="01">01</option>
-                                                    <option value="02">02</option>
-                                                    <option value="03">03</option>
-                                                    <option value="04">04</option>
-                                                    <option value="05">05</option>
-                                                    <option value="06">06</option>
-                                                    <option value="07">07</option>
-                                                    <option value="08">08</option>
-                                                    <option value="09">09</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                </select>
-                                                <span style="width:10%; text-align: center"> / </span>
-                                                <select class="form-control is-valid" name="expyear" #expyear=ngModel [(ngModel)]="year" style="width:45%">
-                                                    <option value="YY">YY</option>
-                                                    <option value="21">2021</option>
-                                                    <option value="22">2022</option>
-                                                    <option value="23">2023</option>
-                                                    <option value="24">2024</option>
-                                                    <option value="25">2025</option>
-                                                </select>
-                                                <div *ngIf="expyear.invalid || expmonth.invalid" class="invalid-feedback">
-                                                    Please select a value
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label data-toggle="tooltip" title="3 digits code on back side of the card" >CVV 
-                                                <i class="bi bi-question-circle-fill"></i>
-                                            </label>
-                                            <input class="form-control is-valid" #cvv=ngModel name="cvv" [(ngModel)]="payment.cvvNo" required type="text" pattern="[0-9]{3}">
-                                            <div *ngIf="cvv.invalid" class="invalid-feedback">
-                                                Invalid CVV
-                                            </div>
-                                        </div> <!-- form-group.// -->
-                                    </div>
-                                </div> <!-- row.// -->
-
-                                <div class="text-center">
-                                <button class="btn btn-info border-3 rounded" type="submit"> CONFIRM PAYMENT </button>
-                                </div>
-                            </form>
-                        </div> <!-- tab-pane.// -->
-
-                        <div class="tab-pane fade" id="nav-tab-paypal">
-                            <form class="paypalForm">
-                                <div class="imgcontainer">
-                                  <img src="../../../assets/images/paypal.png" alt="paypal" class="paypal">
-                                </div>
-                              
-                                <div class="container">
-                                  <label for="uname"><b>Username</b></label>
-                                  <input type="text" placeholder="Enter Username" class="paypal-login" name="uname" required>
-                              
-                                  <label for="psw"><b>Password</b></label>
-                                  <input type="password" placeholder="Enter Password"  class="paypal-login" name="psw" required>
-                                      
-                                  <button type="submit" class="paypal-button">Login</button>
-                                  <label>
-                                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                                  </label>
-                                </div>
-                              
-                                <div class="container" style="background-color:#f1f1f1">
-                                  <button type="button" class="cancelbtn">Cancel</button>
-                                  <span class="psw">Forgot <a href="#">password?</a></span>
-                                </div>
-                              </form>
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-tab-bank">
-                            <form class="net-banking">
-                                <div class="inner mb-3">
-                            <h1 class="mb-3">NET BANKING</h1>
-                            <label class="bank-option">Axis Bank
-                                <input type="radio" checked="checked" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">SBI
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">HDFC Bank
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">ICICI Bank
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">Kotak
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div>
-                                <button class="btn btn-info border-3 rounded" type="button" (click)="onPaymentSuccess()"> PAY NOW</button>
-                            </div>
-                        </div>
-                        </form>
-                        </div> <!-- tab-pane.// -->
-
-                    </div> <!-- tab-content .// -->
-                                    
-                </div> <!-- card-body.// -->
-            </article> <!-- card.// -->
-
-        
-        </div> <!-- col.// -->
-    </div> <!-- row.// -->
 
     <div *ngIf="paymentSuccess == true" class="alert alert-primary" role="alert">
         <div class="text-success">Order placed by {{name | titlecase}} and has paid an amount of {{totalPrice | currency: "INR" : "symbol"}} successfully</div>

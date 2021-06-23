@@ -16,7 +16,7 @@
                             <tr>
                                 <td>
                                     <figure class="itemside align-items-center">
-                                        <div class="aside"><img src="../../../assets/images/watch.webp" class="img-sm"></div>
+                                        <div class="aside"><img src="{{cartItem.product.images[0]}}" class="img-sm"></div>
                                         <figcaption class="info"> <a [routerLink]="['/product', cartItem.product.modelNo]" class="title text-dark" data-abc="true">{{cartItem.product.name}}</a>
                                             <p class="text-muted small">Brand : {{cartItem.product.brand.name}} <br>{{cartItem.product.gender}}  {{cartItem.product.strap.color}}   {{cartItem.product.glassMaterial}}</p>
                                         </figcaption>
@@ -58,12 +58,12 @@
                     <dl class="dlist-align">
                         <dt>Discount: </dt>
                         
-                        <dd class="text-right text-danger ml-3">{{getDiscountPrice() | currency : 'INR'}}</dd>
+                        <dd class="text-right text-success ml-3">{{getDiscountPrice() | currency : 'INR'}}</dd>
                     </dl>
-                    <dl class="dlist-align" *ngIf="voucherApplied">
+                    <dl class="dlist-align" *ngIf="voucherDiscount > 0">
                         <dt>Voucher Discount: </dt>
                         
-                        <dd class="text-right text-danger ml-3">{{voucherDiscount | currency : 'INR'}}</dd>
+                        <dd class="text-right text-success ml-3">({{ voucherDiscount }}%) {{getVoucherDiscount() | currency : 'INR'}}</dd>
                     </dl>
                     <dl class="dlist-align">
                         <dt>Total: </dt>
