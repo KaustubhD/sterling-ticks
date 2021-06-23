@@ -3,8 +3,7 @@ import { Order } from '../models/order.model';
 import { Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 import { LoginService } from 'src/app/services/login.service';
-import { Product } from '../models/product.model';
-import { AddressModel } from '../models/address.model';
+
 
 @Component({
   selector: 'app-orders',

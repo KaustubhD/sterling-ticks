@@ -12,6 +12,6 @@ export class UserProfileService {
   constructor(private http: HttpClient) { }
 
   updateProfileImg(user: UserModel) {
-    return this.http.put<Boolean>(URLS.UPDATE_PROFILE_IMAGE,user).subscribe();
+    return this.http.put<Boolean>(URLS.UPDATE_PROFILE_IMAGE,user);
   }
 }
