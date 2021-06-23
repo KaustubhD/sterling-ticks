@@ -1,93 +1,82 @@
-<body>
-    <label class="checkboxcontainer">
-    <input type="checkbox">
-    <span class="checkmark"></span>
-</label>
-    <h1 class="order">Order Placed Successfully!</h1>
+<div class="container">
+    <div class="block">
+        <label class="checkboxcontainer">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <h1 class="order">Order Placed Successfully!</h1>
 
-    <div class="p">
-        <p class="id">Order Id:<span> <%= id %> </span></p>
-        <p class="p"> Payment Method:<span class="span"> Cash On Delivery</span></p>
-    </div>
-    <hr class="solid">
-    <div class="box">
-        <h3 class="we">We are processing your order , here are the details.</h3>
+        <div class="box">
+            <div>
+                <span class="id">Name:</span>
+                <span class="p">{{ user.userName | titlecase }}</span>
+            </div>
+            <div *ngIf="user.phoneNo!=null">
+                <span class="id">Phone:</span>
+                <span class="p">(+91) {{ user.phoneNo }}</span>
+            </div>
+            <h3 class="we">We are processing your order , here are the details.</h3>
+        </div>
+        <hr class="solid">
+
         <div class="row">
-            <div class="column">
+            <div class="col col-6 column">
                 <div class="grey">
-                    <p>Name:</p>
-                </div>
-                <div class="white">
-                    <p>Phone:</p>
+                    <p>Order Id:</p>
                 </div>
                 <div class="grey">
-                    <p>Quantity:</p>
-                </div>
-                <div class="white">
-                    <p> Price :
-                    </p>
+                    <p>Product:</p>
                 </div>
                 <div class="grey">
                     <p>Quantity:</p>
                 </div>
-                <div class="white">
+                <div class="grey">
+                    <p>Price:</p>
+                </div>
+                <div class="grey">
                     <p>Order At:</p>
                 </div>
                 <div class="grey">
-                    <p>Order Address:</p>
+                    <p>Payment Method:</p>
+                </div>
+                <div class="grey">
+                    <p>Address:</p>
                 </div>
             </div>
-            <div class="column1">
-                <div class="grey1">
-                    <p>
-                        <%= username %>
-                    </p>
-                </div>
-                <div class="white1">
-                    <p class="phone">(+91)
-                        <%= phone %>
-                    </p>
-                </div>
-                <div class="grey1">
-                    <p>
-                        <%= choose %>
-                    </p>
-                </div>
-                <div class="white1">
-                    <p>
-                        <%= date %>
-                    </p>
-                </div>
-                <div class="grey1">
-                    <p>
-                        <%= quantity %>
-                    </p>
-                </div>
-                <div class="white1">
-                    <p>
-                        <%=  %>
-                            <%=  %>
-                                <%=  %>
-                    </p>
-                </div>
-                <div class="grey1">
-                    <p>
-                        <%= message %>
-                    </p>
+            <div class="col col-6 column1">
+                <div *ngFor="let item of orders[orders.length-1].orderItems">
+                    <div class="grey1">
+                        <p>{{orders[orders.length-1].orderId}}</p>
+                    </div>
+                    <div class="grey1">
+                        <p>{{item.product.name}}</p>
+                    </div>
+                    <div class="grey1">
+                        <p>{{item.quantity}}</p>
+                    </div>
+                    <div class="grey1">
+                        <p>{{orders[orders.length-1].transactions.price|currency : "INR" : "symbol"}}</p>
+                    </div>
+                    <div class="grey1">
+                        <p>{{orders[orders.length-1].placedAt.substr(0,10)}}</p>
+                    </div>
+                    <div class="grey1">
+                        <p>Credit Card</p>
+                    </div>
+                    <div class="grey1">
+                        <p>{{orders[orders.length-1].address.address}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <h3 class="email">We will email you at <span> <%= email %> </span> for an order confirmation with details.</h3>
-        <div class="href">
-            <div class="row1">
-                <div class="col2">
-                    <a href="/" class="btn">Back to home</a>
-                </div>
-                <div class="col3">
-                    <a href="" class="button"><i class="fa fa-print" aria-hidden="true"></i>Print</a>
-                </div>
-            </div>
 
+        <div class="box">
+            <h3 class="email">We will email you at <span> {{user.email}} </span> for an order confirmation with details.
+            </h3>
+            <button type="button" class="btn btn-info button px-2 mx-2" routerLink="/home">Back to Home</button>
+            <button type="button" class="btn btn-info button px-2 mx-2" routerLink="/products">Continue
+                Shopping</button>
         </div>
+
     </div>
-</body>
+</div>

@@ -1,7 +1,8 @@
 <div class="container">
     <div class="main-heading">
         Billing Information
-    </div><hr/>
+    </div>
+    <hr />
     <div>
         <p class="heading"><i class="bi bi-geo-alt px-3"></i>Shipping Address</p>
         <app-address [userName]="name" (selectedAddress)="setAddress($event)"></app-address>
@@ -13,11 +14,12 @@
     </div>
 
     <div class="row mb-5">
-        <div class="col-sm-10 mt-3">
+        <div class="col-sm-12 col-md-12 mt-3">
             <p class="heading"><i class="bi bi-check2-circle px-3"></i>Choose Payment Mode</p>
 
             <article class="card">
-                <div class="card-body p-5">
+
+                <div class="card-body px-5 mt-3">
 
                     <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
                         <li class="nav-item">
@@ -37,14 +39,18 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="nav-tab-cash">
                             <div class="text-center">
-                                <h5 class="text-center mt-4">Pay on Delivery(Cash/Card/UPI)</h5>
-                                <div >You can pay via Cash/Card or UPI enabled app at the time of delivery. Ask your delivery executive for these options.</div>                                
+                                <h5 class="text-center mt-5">Pay on Delivery(Cash/Card/UPI)</h5>
+                                <div>You can pay via Cash/Card or UPI enabled app at the time of delivery. Ask your
+                                    delivery executive for these options.</div>
                                 <button type="submit" class="btn btn-info m-3">PLACE ORDER</button>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="nav-tab-card">
-                           
+
+                            <div class="card-heading text-center mt-5">
+                                Add a Credit Card
+                            </div>
                             <form role="form" class="was-validated" (ngSubmit)="onPaymentSuccess()" #form="ngForm">
                                 <div class="form-group">
                                     <label for="username">Full name (on the card)</label>
@@ -52,7 +58,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                                         </div>
-                                        <input type="text" class="form-control is-valid" name="fullname" #fullname=ngModel [(ngModel)]="payment.nameOnCard" required pattern="[a-zA-Z\s]{3,}">
+                                        <input type="text" class="form-control is-valid" name="fullname"
+                                            #fullname=ngModel [(ngModel)]="payment.nameOnCard" required
+                                            pattern="[a-zA-Z\s]{3,}">
                                         <div *ngIf="fullname.invalid" class="invalid-feedback">
                                             Invalid name
                                         </div>
@@ -65,7 +73,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-credit-card-fill"></i></span>
                                         </div>
-                                        <input type="text" class="form-control is-valid" name="cardNo" #cardNumber=ngModel [(ngModel)]="payment.cardNumber" required pattern="[0-9\s]{4,}[0-9\s]{4,}[0-9\s]{4,}[0-9\s]{4,}">
+                                        <input type="text" class="form-control is-valid" name="cardNo"
+                                            #cardNumber=ngModel [(ngModel)]="payment.cardNumber" required
+                                            pattern="[0-9\s]{4,}[0-9\s]{4,}[0-9\s]{4,}[0-9\s]{4,}">
                                         <div *ngIf="cardNumber.invalid" class="invalid-feedback">
                                             Invalid card number
                                         </div>
@@ -77,8 +87,9 @@
                                         <div class="form-group">
                                             <label><span class="hidden-xs">Expiration</span> </label>
                                             <div class="form-inline">
-                                                <select class="form-control is-valid" name="expmonth" #expmonth=ngModel [(ngModel)]="month" style="width:45%">
-                                                    <option value="MM">MM</option>
+                                                <select class="form-control is-valid" name="expmonth" #expmonth=ngModel
+                                                    [(ngModel)]="month" style="width:45%">
+                                                    <option value="MM" selected>MM</option>
                                                     <option value="01">01</option>
                                                     <option value="02">02</option>
                                                     <option value="03">03</option>
@@ -93,28 +104,36 @@
                                                     <option value="12">12</option>
                                                 </select>
                                                 <span style="width:10%; text-align: center"> / </span>
-                                                <select class="form-control is-valid" name="expyear" #expyear=ngModel [(ngModel)]="year" style="width:45%">
-                                                    <option value="YY">YY</option>
-                                                    <option value="21">2021</option>
-                                                    <option value="22">2022</option>
-                                                    <option value="23">2023</option>
-                                                    <option value="24">2024</option>
-                                                    <option value="25">2025</option>
+                                                <select class="form-control is-valid" name="expyear" #expyear=ngModel
+                                                    [(ngModel)]="year" style="width:45%">
+                                                    <option value="YY" selected>YY</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
                                                 </select>
-                                                <div *ngIf="expyear.invalid || expmonth.invalid" class="invalid-feedback">
+                                                <div *ngIf="expyear.invalid || expmonth.invalid"
+                                                    class="invalid-feedback">
                                                     Please select a value
+                                                </div>
+                                                <div *ngIf="greater == false" class="text-danger">
+                                                    Invalid Card Details
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label data-toggle="tooltip" title="3 digits code on back side of the card" >CVV 
+                                            <label data-toggle="tooltip"
+                                                title="3 digits code on back side of the card">CVV
                                                 <i class="bi bi-question-circle-fill"></i>
                                             </label>
-                                            <input class="form-control is-valid" #cvv=ngModel name="cvv" [(ngModel)]="payment.cvvNo" required type="text" pattern="[0-9]{3}">
+                                            <input class="form-control is-valid" #cvv=ngModel name="cvv"
+                                                [(ngModel)]="payment.cvvNo" required type="text" maxlength="4"
+                                                pattern="[0-9]{3,4}">
                                             <div *ngIf="cvv.invalid" class="invalid-feedback">
                                                 Invalid CVV
                                             </div>
@@ -123,81 +142,105 @@
                                 </div> <!-- row.// -->
 
                                 <div class="text-center">
-                                <button class="btn btn-info border-3 rounded" type="submit"> CONFIRM PAYMENT </button>
+                                    <button class="btn btn-info border-3 rounded" type="submit"> CONFIRM PAYMENT
+                                    </button>
                                 </div>
                             </form>
+
                         </div> <!-- tab-pane.// -->
 
                         <div class="tab-pane fade" id="nav-tab-paypal">
                             <form class="paypalForm">
                                 <div class="imgcontainer">
-                                  <img src="../../../assets/images/paypal.png" alt="paypal" class="paypal">
+                                    <img src="../../../assets/images/paypal.png" alt="paypal" class="paypal">
                                 </div>
-                              
+
                                 <div class="container">
-                                  <label for="uname"><b>Username</b></label>
-                                  <input type="text" placeholder="Enter Username" class="paypal-login" name="uname" required>
-                              
-                                  <label for="psw"><b>Password</b></label>
-                                  <input type="password" placeholder="Enter Password"  class="paypal-login" name="psw" required>
-                                      
-                                  <button type="submit" class="paypal-button">Login</button>
-                                  <label>
-                                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                                  </label>
+                                    <label for="uname"><b>Username</b></label>
+                                    <input type="text" placeholder="Enter Username" class="paypal-login" name="uname"
+                                        required>
+
+                                    <label for="psw"><b>Password</b></label>
+                                    <input type="password" placeholder="Enter Password" class="paypal-login" name="psw"
+                                        required>
+
+                                    <button type="submit" class="paypal-button">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
                                 </div>
-                              
-                                <div class="container" style="background-color:#f1f1f1">
-                                  <button type="button" class="cancelbtn">Cancel</button>
-                                  <span class="psw">Forgot <a href="#">password?</a></span>
+
+                                <div class="block" style="background-color:#f1f1f1">
+                                    <button type="button" class="cancelbtn btn btn-danger">Cancel</button>
+                                    <span class="psw">Forgot <a href="#">password?</a></span>
                                 </div>
-                              </form>
+                            </form>
                         </div>
 
                         <div class="tab-pane fade" id="nav-tab-bank">
+
                             <form class="net-banking">
-                                <div class="inner mb-3">
-                            <h1 class="mb-3">NET BANKING</h1>
-                            <label class="bank-option">Axis Bank
-                                <input type="radio" checked="checked" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">SBI
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">HDFC Bank
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">ICICI Bank
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="bank-option">Kotak
-                                <input type="radio" name="radio">
-                                <span class="checkmark"></span>
-                            </label>
-                            <div>
-                                <button class="btn btn-info border-3 rounded" type="button" (click)="onPaymentSuccess()"> PAY NOW</button>
-                            </div>
-                        </div>
-                        </form>
+                                <div class="container">
+                                    <div class="bottom-bordered card-heading mt-5">Net Banking</div>
+
+                                    <div class="row">
+                                        <div class="col col-md-4 col-12">
+                                            <div class="col col-12"><img src="../../../assets/images/bank-icici.jpg"
+                                                    width="180" height="180" class="img-bank"></div>
+                                            <div class="col col-12"><img src="../../../assets/images/bank-axis.jpg"
+                                                    width="230" height="230" class="img-bank"></div>
+                                        </div>
+                                        <div class="col col-md-4 col-12">
+                                            <div class="col col-12"><img src="../../../assets/images/bank-hdfc.png"
+                                                    width="180" height="200" class="img-bank"></div>
+                                            <div class="col col-12"><img src="../../../assets/images/bank-idfc.jpg"
+                                                    width="230" height="230" class="img-bank"></div>
+                                        </div>
+                                        <div class="col col-md-4 col-12">
+                                            <div class="col col-12"><img src="../../../assets/images/bank-sbi.png"
+                                                    width="180" height="160" class="img-bank"></div>
+                                            <div class="col col-12"><img src="../../../assets/images/bank-kotak.jpeg"
+                                                    width="230" height="230" class="img-bank"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="text-center">
+                                        <p>We will redirect you to the bank website to authorize the payment.</p>
+                                        <button class="btn btn-info mb-3" type="button"> PAY NOW</button>
+                                    </div>
+
+
+                                </div>
+                            </form>
+
                         </div> <!-- tab-pane.// -->
 
                     </div> <!-- tab-content .// -->
-                                    
+                    <div class="checkout-footer">
+                        <div class="content">
+                            <div class="images">
+                                <img src="../../../assets/images/visa.png" width="76" height="40">
+                                <img src="../../../assets/images/mastercard.png" width="76" height="40">
+                                <img src="../../../assets/images/americanexpress.png" width="76" height="40">
+                                <img src="../../../assets/images/cod.png" width="76" height="40">
+                                <img src="../../../assets/images/paypal-img.png" width="76" height="40">
+                                <img src="../../../assets/images/netbanking.png" width="76" height="40">
+                                <img src="../../../assets/images/rupay.png" width="76" height="40">
+                                <img src="../../../assets/images/dc.png" width="76" height="40">
+                                <img src="../../../assets/images/bhim.png" width="76" height="40">
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div> <!-- card-body.// -->
             </article> <!-- card.// -->
 
-        
+
         </div> <!-- col.// -->
     </div> <!-- row.// -->
 
-    <div *ngIf="paymentSuccess == true" class="alert alert-primary" role="alert">
-        <div class="text-success">Order placed by {{name | titlecase}} and has paid an amount of {{totalPrice | currency: "INR" : "symbol"}} successfully</div>
-        <button routerLink="/products" type="button" class="btn btn-info">Continue Shopping</button>
-    </div>
     <div *ngIf="paymentSuccess == false">
         <div class="text-danger">Payment is unsuccessful. Try again!</div>
     </div>

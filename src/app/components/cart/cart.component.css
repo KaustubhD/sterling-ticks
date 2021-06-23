@@ -1,12 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-
-body {
-    background-color: #eeeeee;
-    font-family: 'Open Sans', serif;
-    font-size: 14px
-}
-
- .container-fluid {
+.container-fluid {
     margin-top: 70px
 } 
 
@@ -16,13 +8,17 @@ body {
     padding: 1.40rem;
 }
 
+.card-body .table tr td, th{
+    border: none;
+}
+
 .img-sm {
     width: 140px;
     height: 140px
 }
 
 .itemside .info {
-    padding-left: 15px;
+    padding-left: 8px;
     padding-right: 7px;
 }
 
