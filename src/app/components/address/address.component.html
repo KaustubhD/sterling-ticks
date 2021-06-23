@@ -1,7 +1,7 @@
-<div class="col-md-10 mt-3 ml-2">
+<div>
 	<div *ngFor="let addr of address, index as i">
 		<div *ngIf="address.length">
-			<div class="baseBlock" (click)="selectAddress(addr)">
+			<div class="baseBlock" (click)="selectAddress(addr)" [ngClass]="{'selected': this.selectedId == addr.id}">
 				<div class="innerBlock">
 					<div class="defaultTitle"  *ngIf="addr.isDefault">DEFAULT ADDRESS</div>
 					<div class="defaultTitle"  *ngIf="!addr.isDefault">OTHER ADDRESS</div>

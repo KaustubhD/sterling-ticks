@@ -34,6 +34,7 @@ import { FileUploadModule } from "ng2-file-upload";
 import { CloudinaryModule, CloudinaryConfiguration} from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { PaymentComponent } from './components/payment/payment.component';
+import { SuccessComponent } from './components/success/success.component';
 
 @NgModule({
 	declarations: [
@@ -61,7 +62,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 		AdminListComponent,
 		BymodelnoComponent,
 		AdminComponent,
-  		PaymentComponent
+  		PaymentComponent,
+        SuccessComponent
 	],
 	imports: [
 		BrowserModule,

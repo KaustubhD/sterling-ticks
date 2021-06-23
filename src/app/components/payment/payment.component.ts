@@ -5,6 +5,8 @@ import { PaymentModel } from '../models/payment.model';
 import { PlaceOrderModel } from '../models/placeorder.model';
 import { AddressModel } from '../models/address.model';
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
+
 
 @Component({
 	selector: 'app-payment',
@@ -21,6 +23,10 @@ export class PaymentComponent implements OnInit {
 	year: number;
 	addressId: number;
 	order: PlaceOrderModel = new PlaceOrderModel();
+	currentDate: string;
+	currentYear: string;
+	currentMonth: string;
+	greater: boolean | undefined;
 
 	constructor(private service: LoginService, private cartService: CartItemsService, private router: Router) {
 		this.service.getAuthenticatedUser().subscribe(user => {
@@ -32,6 +38,10 @@ export class PaymentComponent implements OnInit {
 				}
 			});
 		});
+		this.currentDate = formatDate(new Date(), 'yyyy/MM/dd', 'en')
+		this.currentYear = this.currentDate.substr(0, 4);
+		this.currentMonth = this.currentDate.substr(5, 2);
+
 	}
 
 	ngOnInit(): void { }
@@ -47,6 +57,10 @@ export class PaymentComponent implements OnInit {
 			this.cartService.placeOrder(this.order).then((res: any) => {
 				let result: boolean = res.result;
 				this.paymentSuccess = result;
+				if(this.paymentSuccess == true){
+
+					this.router.navigate(['/success'])
+				}
 			}).catch((e) => {
 				throw e;
 			})
@@ -57,6 +71,16 @@ export class PaymentComponent implements OnInit {
 
 	setAddress(address: AddressModel) {
 		this.addressId = address.id;
+	}
+
+	getMonthsList(): number[] {
+		const currentMethod = new Date().getMonth() + 2 // zero based index
+		return new Array(12 - currentMethod).fill(0).map((_, i) => currentMethod + i)
+	}
+  
+	getYearsList(): number[] {
+		const currentYear = new Date().getFullYear()
+		return new Array(5).fill(0).map((_, i) => currentYear + i)
 	}
 
 }

@@ -19,6 +19,7 @@ import { AuthGuard } from './guards/AuthGuard/auth.guard';
 import { AdminGuard } from './guards/AdminGuard/admin.guard';
 import { NegateAuthGuard } from './guards/NegateAuth/negate-auth.guard';
 import { PaymentComponent } from './components/payment/payment.component';
+import { SuccessComponent } from './components/success/success.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'orders', component: OrdersComponent},
   {path: 'cart',component:CartComponent, canActivate: [AuthGuard]},
   {path: 'bymodelno',component:BymodelnoComponent, canActivate: [AdminGuard]},
-  {path: 'payment', component:PaymentComponent}
+  {path: 'payment', component:PaymentComponent},
+  {path: 'success', component:SuccessComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

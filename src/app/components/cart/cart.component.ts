@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
 		})
 		this.service.getUserCart(this.userName).subscribe((cart: CartModel) => {
 			this.cartItems = cart.orderItems;
+			this.voucherDiscount = cart.voucherDiscount || 0
 		})
 	}
 
@@ -55,10 +56,14 @@ export class CartComponent implements OnInit {
 	}
 
 	getTotalAmount() {
-		if(this.voucherApplied)
-			return this.totalPrice - this.discountPrice - this.voucherDiscount
+		if(this.voucherDiscount)
+			return this.totalPrice - this.discountPrice - this.getVoucherDiscount()
 
 		return this.totalPrice - this.discountPrice
+	}
+
+	getVoucherDiscount() {
+		return (this.totalPrice  * this.voucherDiscount) / 100
 	}
 
 	removeItem(productId: number) {
@@ -77,7 +82,7 @@ export class CartComponent implements OnInit {
 		vouchers.forEach(voucher => {
 			if (voucher.name == this.voucherInput) {
 				this.service.addVoucher(this.userName, voucher.discount).then(() => {
-					this.voucherDiscount = (this.totalPrice  * voucher.discount) / 100
+					this.voucherDiscount = voucher.discount
 					this.voucherApplied = true;
 				})
 			}
