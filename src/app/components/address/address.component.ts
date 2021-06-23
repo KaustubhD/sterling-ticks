@@ -12,6 +12,7 @@ export class AddressComponent implements OnInit {
   @Input() userName: string;
   @Output() selectedAddress = new EventEmitter<AddressModel>();
   address: AddressModel[];
+  selectedId: number;
   addr: AddressModel = new AddressModel();
   editAddr: AddressModel = new AddressModel();
   constructor(private service: AddressService) {
@@ -24,7 +25,10 @@ export class AddressComponent implements OnInit {
 
   refreshAddressList(): void {
 	this.service.getAddressList(this.userName).then((addresses: AddressModel[]) => {
-		this.address = addresses
+		this.address = addresses;
+		if(addresses.length) {
+			this.selectAddress(this.address.find(x => x.isDefault) || this.address[0])
+		}
 	})
   }
   
@@ -71,7 +75,8 @@ export class AddressComponent implements OnInit {
   }
 
   selectAddress(addr: AddressModel){
-    this.selectedAddress.emit(addr)
+	this.selectedId = addr.id
+	this.selectedAddress.emit(addr)
   }
 
 }

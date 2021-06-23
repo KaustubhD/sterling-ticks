@@ -73,4 +73,14 @@ export class PaymentComponent implements OnInit {
 		this.addressId = address.id;
 	}
 
+	getMonthsList(): number[] {
+		const currentMethod = new Date().getMonth() + 2 // zero based index
+		return new Array(12 - currentMethod).fill(0).map((_, i) => currentMethod + i)
+	}
+  
+	getYearsList(): number[] {
+		const currentYear = new Date().getFullYear()
+		return new Array(5).fill(0).map((_, i) => currentYear + i)
+	}
+
 }
