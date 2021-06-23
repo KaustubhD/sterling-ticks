@@ -11,18 +11,18 @@
                         <div class="row order-head">
                             <div class="item col col-12 col-md-4">
                                 <span class="d-inline">
-                                    <strong>Order Id :&nbsp;</strong>
+                                    <strong>Order Id :</strong>
                                 </span>
                                 {{order.orderId}}
                             </div>
                             <div class="item col col-12 col-md-4">
                                 <span class="d-inline">
-                                    <strong>Total Price :&nbsp;</strong>
+                                    <strong>Total Price :</strong>
                                 </span>
                                 {{order.transactions.price|currency : "INR" : "symbol"}}
                             </div>
                             <div class="item col col-12 col-md-4">
-                                <strong>Date:&nbsp;</strong>
+                                <strong>Date:</strong>
                                 {{order.placedAt.substr(0,10)}}
                             </div>
                         </div>
@@ -42,14 +42,14 @@
                                 <div class="col col-12 col-sm-8 item">
                                     <div class="row">
                                         <div class="col col-12 col-md-3 item">
-                                            <span><strong>Price:&nbsp;</strong></span>{{item.boughtAtPrice|currency: "INR":"symbol"}}
+                                            <span><strong>Price:</strong></span>{{item.boughtAtPrice|currency: "INR":"symbol"}}
                                         </div>
                                         <div class="col col-12 col-md-3 item">
-                                            <span><strong>Qty:&nbsp;</strong></span>{{item.quantity}}
+                                            <span><strong>Qty:</strong></span>{{item.quantity}}
                                         </div>
                                         <div class="item col col-12 col-md-3">
                                             <span class="d-inline d-md-none">
-                                                <strong>Status :&nbsp;</strong>
+                                                <strong>Status :</strong>
                                             </span>
                                             <span class="{{order.orderStatus.toLowerCase()}}"><strong>{{order.orderStatus.toLowerCase()=='in_transit'?'Shipped':order.orderStatus.toLowerCase()}}
                                                 </strong> </span>
