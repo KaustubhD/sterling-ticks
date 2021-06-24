@@ -1,5 +1,13 @@
-img{
+img {
     height: 80px;
-    width: 120px;
-    margin: 0 auto;
+    margin: auto;
+    display: block;
+}
+
+.div {
+    height: 10vh;
+    background-color: whitesmoke;
+    position: relative;
+    text-align: center;
+    justify-content: center;
 }

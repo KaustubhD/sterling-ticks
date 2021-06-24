@@ -47,12 +47,10 @@ export class ProductService {
   }
   
   addProduct(product: Product){
-    console.log("add");
-    return this.http.post(URLS.ADD_PRODUCT,product).toPromise();
+   return this.http.post(URLS.ADD_PRODUCT,product).toPromise();
   }
   
   editProduct(product : Product) {
-    console.log( product);
     this.http.put(URLS.EDIT_PRODUCT,product).subscribe(data => data = product);
   }
    

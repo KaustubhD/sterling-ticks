@@ -42,10 +42,10 @@ export class AdminAddComponent implements OnInit {
         this.productAdd.images.push(response.data.secure_url);
 
       });
-      console.log(this.productAdd.images);
-
-      // this.productAdd.images=this.responses[this.responses.length-1].data.secure_url;
-     
     }
+  }
+  removeImg(i:number){
+    this.responses.splice(i,1);
+    this.productAdd.images.splice(i,1);
   }
 }

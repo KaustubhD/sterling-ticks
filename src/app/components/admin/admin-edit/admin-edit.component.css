@@ -6,7 +6,28 @@
 }
 
 .button {
- 
     width: 50vw;
     margin: 0 auto;
+}
+
+.div {
+    height: 10vh;
+    background-color: whitesmoke;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+}
+
+.image {
+    padding: 2px 43px;
+    /* background-color: grey; */
+    margin-top: 7%;
+    color: honeydew;
+}
+
+.upload {
+    color: white;
+    padding-left: 43px;
+    padding-right: 43px;
+    padding-top: 3px;
 }
