@@ -23,6 +23,10 @@ h3{
     font-weight: 600;
 }
 
+strong {
+	margin-right: 5px;
+}
+
 a,a:active,a:visited{
     text-decoration: none;
     color: initial;
@@ -53,4 +57,16 @@ cursor: pointer;
 }
 .alert-info.card{
     cursor: initial;
+}
+
+.order-item-img{
+    max-width: 200px;
+    height: 170px;
+    margin: 2% auto;
+}
+
+.order-head{
+    background-color: #eee;
+    border-bottom: 2px solid #ccc;
+    padding: 1%;
 }

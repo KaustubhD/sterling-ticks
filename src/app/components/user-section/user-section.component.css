@@ -10,6 +10,12 @@
     margin: auto;
     text-transform: none;
 }
+.profile-table th, .profile-table td {
+	border: none;
+}
+.profile-table th {
+	text-align: end;
+}
 .img-container{
     width: 95%;
     max-width: 140px;

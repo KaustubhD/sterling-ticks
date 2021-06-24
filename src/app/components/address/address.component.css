@@ -5,7 +5,11 @@
     border-radius: 4px;
     position: relative;
     cursor: pointer;
-    box-shadow: 0 0 4px rgb(40 44 63 / 20%);
+    box-shadow: 1px 1px 2px 1px rgb(40 44 63 / 20%);
+}
+
+.selected {
+	box-shadow: 1px 1px 2px 1px rgb(44 168 36 / 48%), 0 0 3px 1px rgb(44 168 36 / 32%);
 }
 
 .innerBlock{

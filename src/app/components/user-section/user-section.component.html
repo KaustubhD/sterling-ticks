@@ -6,33 +6,29 @@
                     <div class="aside-left">
                         <div class="sub-section logged" *ngIf="islogged">
                             <!---->
-                            <div class=" container profile">
+                            <div class="container profile">
                                 <div class="profile-img">
                                     <div class="img-container">
                                         <img [src]="user.userImage" alt="profile-img" class="profile-img">
                                     </div>
                                     <button class="btn btn-info" (click)="select='img'">Change Profile Image</button>
                                 </div>
-                                <table class="profile-table">
+                                <table class="profile-table table table-sm">
                                     <tr>
-                                        <td>Name</td>
-                                        <td> : </td>
+                                        <th>Name:</th>
                                         <td>{{user.userName}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Email ID</td>
-                                        <td> : </td>
+                                        <th>Email ID: </th>
                                         <td>{{user.email}}</td>
                                     </tr>
                                     <tr *ngIf="user.phoneNo!=null">
-                                        <td>Phone No</td>
-                                        <td> : </td>
+                                        <th>Phone No:</th>
                                         <td>{{user.phoneNo}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Created</td>
-                                        <td> : </td>
-                                        <td>{{user.dateCreated.substr(0,10)}}</td>
+                                        <th>Created:</th>
+                                        <td>{{user.dateCreated | date:'dd-MM-yyyy'}}</td>
                                     </tr>
                                     <!-- <tr>
                                             <td>Saved Addresses : </td>

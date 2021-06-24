@@ -1,41 +1,43 @@
 <div class="container-fluid">
     <div class="row mt-5" *ngIf="cartItems.length > 0">
-        <div class="col col-md-8"><div class="col-md-12 col-sm-12 col-12 mb-3 col-lg-12"  *ngFor="let cartItem of cartItems">
+        <div class="col col-lg-8">
+            <div class="col-12 mb-3 col-lg-12"  *ngFor="let cartItem of cartItems">
             <div class="card">
                 <div class="table-responsive">
                     <table class="table table-borderless table-shopping-cart" >
                         <thead class="text-muted">
                             <tr class="small text-uppercase">
-                                <th scope="col">Product</th>
-                                <th scope="col" class="mr-3">Quantity</th>
-                                <th scope="col">Price</th>
-                                <th scope="col" class="text-right d-none d-md-block" width="200"></th>
+                                <th scope="col" colspan="3">Product</th>
+                                <th scope="col" colspan="4">Quantity</th>
+                                <th scope="col" colspan="3">Price</th>
+                                <th scope="col" colspan="1"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <figure class="itemside align-items-center">
-                                        <div class="aside"><img src="../../../assets/images/watch.webp" class="img-sm"></div>
+                                <td colspan="3">
+                                    <figure class="itemside justify-content-between align-items-center">
+                                        <div class="aside"><img src="{{cartItem.product.images[0]}}" class="img-sm"></div>
                                         <figcaption class="info"> <a [routerLink]="['/product', cartItem.product.modelNo]" class="title text-dark" data-abc="true">{{cartItem.product.name}}</a>
                                             <p class="text-muted small">Brand : {{cartItem.product.brand.name}} <br>{{cartItem.product.gender}}  {{cartItem.product.strap.color}}   {{cartItem.product.glassMaterial}}</p>
                                         </figcaption>
                                     </figure>
                                 </td>
-                                <td>
+                                <td colspan="4">
                                    <app-cart-quantity [productId]="cartItem.product.id" [(quantity)]="cartItem.quantity" (quantityChange)="handleChange(cartItem.product.id, $event)"></app-cart-quantity>
                                  </td>
-                                <td>
+                                <td colspan="3">
                                     <div class="price-wrap"> <var class="price">{{cartItem.product.price | currency:'INR'}}</var> </div>
                                 </td>
-                                <td class="text-right d-none d-md-block"> <button class="btn btn-light"  (click)="removeItem(cartItem.product.id)"> Remove</button> </td>
+                                <td colspan="1"> <button class="btn btn-light"  (click)="removeItem(cartItem.product.id)"> Remove</button> </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div></div>
-        <div class="col col-md-4"><div class="col-md-12 col-sm-12 col-12 col-lg-12">
+            </div>
+        </div>
+        <div class="col col-lg-4"><div class="col-md-12 col-sm-12 col-12 col-lg-12">
             <div class="card mb-5">
                 <div class="card-body">
                     <form>
@@ -51,24 +53,24 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <dl class="dlist-align">
-                        <dt>Total price: </dt>
-                        <dd class="text-right ml-3">{{getTotalPrice() | currency:'INR'}}</dd>
-                    </dl>
-                    <dl class="dlist-align">
-                        <dt>Discount: </dt>
-                        
-                        <dd class="text-right text-danger ml-3">{{getDiscountPrice() | currency : 'INR'}}</dd>
-                    </dl>
-                    <dl class="dlist-align" *ngIf="voucherApplied">
-                        <dt>Voucher Discount: </dt>
-                        
-                        <dd class="text-right text-danger ml-3">{{voucherDiscount | currency : 'INR'}}</dd>
-                    </dl>
-                    <dl class="dlist-align">
-                        <dt>Total: </dt>
-                        <dd class="text-right text-dark b ml-3"><strong>{{getTotalAmount()  | currency : 'INR'}}</strong></dd>
-                    </dl>
+                    <table class="table">
+                          <tr>
+                            <th scope="col">Total Price</th>
+                            <td scope="row">{{getTotalPrice() | currency:'INR'}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="col">Discount Price</th>
+                            <td scope="row" class="text-danger">{{getDiscountPrice() | currency : 'INR'}}</td>
+                          </tr>
+                          <tr *ngIf="voucherDiscount > 0">
+                            <th scope="col">Voucher Discount</th>
+                            <td scope="row" class="text-danger">({{ voucherDiscount }}%) {{getVoucherDiscount() | currency : 'INR'}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="col">Grand Total</th>
+                            <td scope="row" class="text-success">{{getTotalAmount()  | currency : 'INR'}}</td>
+                          </tr>
+                      </table>
                     <hr> <a routerLink="/payment" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
                 </div>
             </div>

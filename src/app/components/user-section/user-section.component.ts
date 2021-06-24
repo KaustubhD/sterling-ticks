@@ -10,46 +10,45 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
 })
 export class UserSectionComponent implements OnInit {
   islogged: boolean = true;
-  user:UserModel;
+  user: UserModel;
   select: string = 'none';
   response: Array<any> = new Array<any>();
-  constructor(private authService: LoginService, private userService : UserProfileService) { }
+  constructor(private authService: LoginService, private userService: UserProfileService) { }
 
   ngOnInit(): void {
     this.authService.getAuthenticatedUser().subscribe(
-      user =>{
+      user => {
         this.user = user;
-        if(this.user.userImage==null){
-          this.user.userImage='assets/images/user/default.png';
+        if (this.user.userImage == null) {
+          this.user.userImage = 'assets/images/user/default.png';
         }
       }
-   );  
-   this.authService.loggedIn.subscribe(
-     logged =>{
-       this.islogged=logged;
-     }
-   );
+    );
+    this.authService.loggedIn.subscribe(
+      logged => {
+        this.islogged = logged;
+      }
+    );
 
-   this.select="none";
+    this.select = "none";
   }
 
-  addressSelected(){
-    this.select="address";
+  addressSelected() {
+    this.select = "address";
   }
 
-  paymentSelected(){
-    this.select="payment";
+  paymentSelected() {
+    this.select = "payment";
   }
 
-  updateImg(){
-    if(this.response.length!=0){
-      this.user.userImage=this.response[this.response.length-1].data.secure_url;
-      this.userService.updateProfileImg(this.user);
-      this.authService.saveAuthenticatedUser(this.user);
-      setTimeout(() => {
+  updateImg() {
+    if (this.response.length != 0) {
+      this.user.userImage = this.response[this.response.length - 1].data.secure_url;
+      this.userService.updateProfileImg(this.user).subscribe(() => {
+        this.authService.saveAuthenticatedUser(this.user);
         this.select = 'none';
-        this.response.length=0;
-      }, 400);
+        this.response.length = 0;
+      });
     }
   }
 }
