@@ -37,6 +37,7 @@ export class AdminAddComponent implements OnInit {
     this.productAdd.features = value.split(",");
   }
   addImage(){
+    console.log(this.responses);
     if(this.responses.length!=0){
       this.responses.forEach(response=>{
         this.productAdd.images.push(response.data.secure_url);
@@ -44,8 +45,20 @@ export class AdminAddComponent implements OnInit {
       });
       console.log(this.productAdd.images);
 
+
       // this.productAdd.images=this.responses[this.responses.length-1].data.secure_url;
      
     }
   }
-}
+  removeImg(i:number){
+    this.responses.splice(i,1);
+    this.productAdd.images.splice(i,1);
+  }
+//   disableBtn(){
+//  if(this.responses.length>=1)
+//  setTimeout(()=>{
+//   return true;
+// },900)
+// return false;
+//   }
+ }

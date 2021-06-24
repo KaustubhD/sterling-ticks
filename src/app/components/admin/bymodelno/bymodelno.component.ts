@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../../models/product.model';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-bymodelno',
   templateUrl: './bymodelno.component.html',
@@ -17,16 +18,23 @@ export class BymodelnoComponent implements OnInit {
   constructor(private service: ProductService, private router: Router) { }
 
   ngOnInit(): void {
- 
+
   }
 
   findByModelNo() {
   this.service.getByModel(this.model).then(data => {
-     this.alert=data!=null?false:true;
+    // this.alert=data!=null?false:true;
+    console.log(data)
+    if(data!=null){
       this.product = data;
-  }
-  ).catch(error => this.alert=false);
-  
+      this.alert=this.product.modelNo==this.model?false:true;
+      console.log(this.product.modelNo);
+      console.log(this.model);
+    }
+  else
+     throw new Error("No pRoduct found")
+     })
+  this.service.getByModel(this.model).catch(err=>this.alert=true)
 }
 
 
@@ -34,8 +42,7 @@ export class BymodelnoComponent implements OnInit {
     var answer = confirm('Are you sure to delete entry?');
     if (answer)
     this.service.delProduct(modelNo);
-      // this.service.delProduct(modelNo);
-      location.reload();
+     location.reload();
   }
   edit(model: string) {
     this.router.navigate((['admin-edit']), { queryParams: { model: model } }).then(() =>

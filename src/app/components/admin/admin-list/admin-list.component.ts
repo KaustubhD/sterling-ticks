@@ -11,6 +11,7 @@ import { ProductListModel } from '../../models/productList.model';
   styleUrls: ['./admin-list.component.css']
 })
 export class AdminListComponent implements OnInit {
+ 
   products: ProductListModel[] = [];
   logged: boolean = false;
 
@@ -60,3 +61,7 @@ export class AdminListComponent implements OnInit {
 
 
 }
+
+
+
+  
