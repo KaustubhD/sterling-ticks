@@ -16,19 +16,19 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link text-light font-weight-bold px-3" routerLink="home">HOME</a>
+                        <a class="nav-link text-light font-weight-bold px-3" [routerLink]="['/home']">HOME</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-light font-weight-bold px-3" routerLink="products">PRODUCTS</a>
+                        <a class="nav-link text-light font-weight-bold px-3" [routerLink]="['/products']">PRODUCTS</a>
                     </li>
 
                     <li *ngIf="isAdmin" class="nav-item">
-                        <a class="nav-link text-light font-weight-bold px-3" routerLink="admin-list">Admin</a>
+                        <a class="nav-link text-light font-weight-bold px-3" [routerLink]="['/admin-list']">Admin</a>
                     </li>
 
                     <li *ngIf="!logged" class="nav-item">
-                        <a class="nav-link text-light font-weight-bold px-3 no-margin nav-link-icon" routerLink="login">
+                        <a class="nav-link text-light font-weight-bold px-3 no-margin nav-link-icon" [routerLink]="['/login']">
                             <i class="bi bi-person "></i> LOGIN
                         </a>
                     </li>
@@ -49,7 +49,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#" routerLink="home" (click)="logout()">
+                            <li><a class="dropdown-item" href="#" routerLink="['/home']" (click)="logout()">
                                 <i class="bi bi-person"></i> Logout</a></li>
                         </ul>
                     </li>
