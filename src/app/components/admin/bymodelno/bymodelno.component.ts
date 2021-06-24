@@ -22,27 +22,23 @@ export class BymodelnoComponent implements OnInit {
   }
 
   findByModelNo() {
-  this.service.getByModel(this.model).then(data => {
-    // this.alert=data!=null?false:true;
-    console.log(data)
-    if(data!=null){
-      this.product = data;
-      this.alert=this.product.modelNo==this.model?false:true;
-      console.log(this.product.modelNo);
-      console.log(this.model);
-    }
-  else
-     throw new Error("No pRoduct found")
-     })
-  this.service.getByModel(this.model).catch(err=>this.alert=true)
-}
+    this.service.getByModel(this.model).then(data => {
+      if (data != null) {
+        this.product = data;
+        this.alert = this.product.modelNo == this.model ? false : true;
+       }
+      else
+        throw new Error("No pRoduct found")
+    })
+    this.service.getByModel(this.model).catch(err => this.alert = true)
+  }
 
 
   remove(modelNo: string) {
     var answer = confirm('Are you sure to delete entry?');
     if (answer)
-    this.service.delProduct(modelNo);
-     location.reload();
+      this.service.delProduct(modelNo);
+    location.reload();
   }
   edit(model: string) {
     this.router.navigate((['admin-edit']), { queryParams: { model: model } }).then(() =>

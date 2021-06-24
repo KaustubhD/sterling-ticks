@@ -31,7 +31,7 @@ export class AdminEditComponent implements OnInit {
 	}
 
 	update() {
-		console.log(this.product);
+		
 		this.service.editProduct(this.product);
 		this.router.navigate(['admin-list']);
 	}
@@ -43,29 +43,17 @@ export class AdminEditComponent implements OnInit {
 		return features.join(",");
 	}
 	addImage(){
-		console.log(this.responses);
+		
 		if(this.responses.length!=0){
 		  this.responses.forEach(response=>{
 			this.product.images.push(response.data.secure_url);
 	
 		  });
-		  console.log(this.product.images);
-	
-	
-		  // this.productAdd.images=this.responses[this.responses.length-1].data.secure_url;
-		 
 		}
 	  }
 	  removeImg(i:number){
 		this.responses.splice(i,1);
 		this.product.images.splice(i,1);
 	  }
-	//   disableBtn(){
-	//  if(this.responses.length>=1)
-	//  setTimeout(()=>{
-	//   return true;
-	// },900)
-	// return false;
-	//   }
 	 }
 
