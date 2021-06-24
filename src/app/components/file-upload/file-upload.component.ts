@@ -109,9 +109,7 @@ export class FileUploadComponent implements OnInit {
       .map((key) => ({ 'key': key, 'value': fileProperties[key] }));
   }
   getResponse(){
-    console.log(this.responses);
-    this.responses.forEach(el =>{
-      console.log(el.data.secure_url);
-    });
+   this.responses.forEach(el =>{
+      });
   }
 }
