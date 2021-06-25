@@ -15,7 +15,7 @@
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="name">Model Name: </label>
-                <input pattern="[a-zA-Z\s\_-']{2,}" class="form-control is-valid" name='name' [(ngModel)]='product.name' required #name=ngModel>
+                <input pattern="[a-zA-Z\s_\-']{2,}" class="form-control is-valid" name='name' [(ngModel)]='product.name' required #name=ngModel>
                 <div class="invalid-feedback">Enter Correct Product Name</div>
             </div>
 
@@ -46,7 +46,7 @@
 
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="series">Product Series: </label>
-                <input class="form-control is-valid" name='series' [(ngModel)]='product.series' required #series=ngModel pattern="[a-zA-Z\s\_-/]{1,}">
+                <input class="form-control is-valid" name='series' [(ngModel)]='product.series' required #series=ngModel pattern="[a-zA-Z\s_\-/]{1,}">
                 <div class="invalid-feedback">Invalid Series</div>
             </div>
 
@@ -168,23 +168,11 @@
                 <div class="invalid-feedback ">Choose Deliver Speed</div>
             </div>
         </div>
-        <!-- <div class="row ">
-            <file-upload *ngIf="responses.length<1 " [responses]='responses'></file-upload>
-            <div *ngFor="let image of product.images, let i=i ndex ">
-                <img (click)="removeImg(i) " [src]="image " alt=" " style="width: 200px; height: 200px; ">
-            </div>
-            <div *ngFor="let response of responses ">
-                <div *ngIf="response.status!='200' " style="width: 250px; background-color: green; ">{{response.progress}}</div>
-
-                <div>{{response.status=='200'?'Ready to Upload':'Failure'}}</div>
-            </div>
-            <button (click)="addImage() ">UPLOAD IMAGES</button>
-        </div> -->
         <div class="row ">
             <file-upload *ngIf="responses.length<1" [responses]='responses'></file-upload>
 
             <div class="upload">
-                <button type="button" class="btn-primary image" (click)="addImage() ">UPLOAD IMAGES</button>
+                <button type="button" class="btn btn-primary image" (click)="addImage()">UPLOAD IMAGES</button>
             </div>
             <div *ngFor="let image of product.images, let i=index">
                 <img (click)="removeImg(i)" [src]="image " alt="" style="width: 150px; height: 150px; ">
