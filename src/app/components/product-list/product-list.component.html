@@ -42,11 +42,7 @@
     </div>
 </div>
 <div class="container box-container">
-    <div *ngIf="aBrand" class="brand-banner" style="background-image: linear-gradient(to right bottom, rgba(0, 135, 147, 0.7), rgba(3, 124, 134,0.7), rgba(5, 113, 122, 0.7), rgba(6, 102, 110,0.7), rgba(7, 91, 98, 0.7), rgba(2, 87, 97, 0.7), rgba(0, 82, 95, 0.7), rgba(0, 78, 93, 0.7), rgba(0, 79, 101, 0.7), rgba(0, 79, 109, 0.7), rgba(0, 78, 116, 0.7), rgba(0, 77, 122, 0.7)),
-     url({{aBrand.imageUrl}});">
-        <p class="name">{{aBrand.name}}</p>
-        <p class="description">{{aBrand.shortDesc}}</p>
-    </div>
+    <div *ngIf="aBrand" class="brand-banner" style="background-image: url({{aBrand.imageUrl}});"></div>
     <div class="container product-container box-container">
         <div class="row box-container">
             <div *ngFor="let product of products | slice : ((page-1)*maxItem):((page)*maxItem); let j = index" class="col-12 col-sm-6 col-md-3 col-lg-2 col  box-container">
