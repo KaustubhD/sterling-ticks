@@ -13,7 +13,7 @@
 			<div class="price">Total Price: <span class="px-2">{{totalPrice | currency: "INR" : "symbol"}}</span></div>
 		</div>
 		
-		<div class="row mb-5 col-lg-8 col-md-9 col-sm-12">
+		<div class="row mb-5 col-lg-8 col-md-11 col-sm-12">
 			<div class="col-sm-12 mt-3">
 				<p class="heading"><i class="bi bi-check2-circle px-3"></i>Choose Payment Mode</p>
 	
@@ -49,7 +49,7 @@
 								<div class="card-heading text-center mt-5">
 									Add a Credit Card
 								</div>
-								<form role="form" class="was-validated" (ngSubmit)="onPaymentSuccess()" #form="ngForm">
+								<form role="form" class="was-validated credit-card-form" (ngSubmit)="onPaymentSuccess()" #form="ngForm" appValidateExpiry>
 									<div class="form-group">
 										<label for="username">Full name (on the card)</label>
 										<div class="input-group">
@@ -69,7 +69,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="bi bi-credit-card-fill"></i></span>
 											</div>
-											<input type="text" class="form-control is-valid" name="cardNo" #cardNumber=ngModel [(ngModel)]="payment.cardNumber" required pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}">
+											<input type="text" class="form-control is-valid" name="cardNo" #cardNumber=ngModel [(ngModel)]="payment.cardNumber" required pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}" placeholder="xxxx xxxx xxxx xxxx">
 											<div *ngIf="cardNumber.invalid" class="invalid-feedback">
 												Invalid card number
 											</div>
@@ -81,16 +81,16 @@
 											<div class="form-group">
 												<label><span class="hidden-xs">Expiration</span> </label>
 												<div class="form-inline">
-													<select class="form-control is-valid" name="expmonth" #expmonth=ngModel [(ngModel)]="month" style="width:45%" required pattern="[\d]+">
-														<option value="">MM</option>
-														<option *ngFor="let month of getMonthsList()" [value]="month">{{month | number: '2.0'}}</option>
+													<select class="form-control" name="expmonth" #expmonth=ngModel [ngClass]="{'ng-invalid': form.errors?.expiryDate, 'ng-valid': !form.errors?.expiryDate}" [(ngModel)]="month" style="width:45%" required pattern="[\d]+">
+														<option value="" selected>MM</option>
+														<option *ngFor="let month of monthList" [value]="month">{{month | number: '2.0'}}</option>
 													</select>
 													<span style="width:10%; text-align: center"> / </span>
-													<select class="form-control is-valid" name="expyear" #expyear=ngModel [(ngModel)]="year" style="width:45%" required pattern="[\d]+">
-														<option value="">YYYY</option>
-														<option *ngFor="let year of getYearsList()" [value]="year">{{ year }}</option>
+													<select class="form-control" name="expyear" #expyear=ngModel [ngClass]="{'ng-invalid': form.errors?.expiryDate, 'ng-valid': !form.errors?.expiryDate}" [(ngModel)]="year" style="width:45%" required pattern="[\d]+">
+														<option value="" selected>YYYY</option>
+														<option *ngFor="let year of yearList" [value]="year">{{ year }}</option>
 													</select>
-													<div *ngIf="expyear.invalid || expmonth.invalid" class="invalid-feedback">
+													<div *ngIf="form.errors?.expiryDate == true" class="invalid-message">
 														Please select a valid expiration date
 													</div>
 												</div>
@@ -150,22 +150,22 @@
 	
 										<div class="row">
 											<div class="col col-md-4 col-12">
-												<div class="col col-12"><img src="../../../assets/images/bank-icici.jpg"
-														width="180" height="180" class="img-bank"></div>
-												<div class="col col-12"><img src="../../../assets/images/bank-axis.jpg"
-														width="230" height="230" class="img-bank"></div>
+												<div class="col col-12"><img src="assets/images/bank-icici.jpg"
+														class="img-bank"></div>
+												<div class="col col-12"><img src="assets/images/bank-axis.jpg"
+														class="img-bank"></div>
 											</div>
 											<div class="col col-md-4 col-12">
-												<div class="col col-12"><img src="../../../assets/images/bank-hdfc.png"
-														width="180" height="200" class="img-bank"></div>
-												<div class="col col-12"><img src="../../../assets/images/bank-idfc.jpg"
-														width="230" height="230" class="img-bank"></div>
+												<div class="col col-12"><img src="assets/images/bank-hdfc.png"
+														class="img-bank"></div>
+												<div class="col col-12"><img src="assets/images/bank-idfc.jpg"
+														class="img-bank"></div>
 											</div>
 											<div class="col col-md-4 col-12">
-												<div class="col col-12"><img src="../../../assets/images/bank-sbi.png"
-														width="180" height="160" class="img-bank"></div>
-												<div class="col col-12"><img src="../../../assets/images/bank-kotak.jpeg"
-														width="230" height="230" class="img-bank"></div>
+												<div class="col col-12"><img src="assets/images/bank-sbi.png"
+														class="img-bank"></div>
+												<div class="col col-12"><img src="assets/images/bank-kotak.jpeg"
+														class="img-bank"></div>
 											</div>
 	
 										</div>

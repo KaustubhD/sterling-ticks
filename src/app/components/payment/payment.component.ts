@@ -23,10 +23,9 @@ export class PaymentComponent implements OnInit {
 	year: number;
 	addressId: number;
 	order: PlaceOrderModel = new PlaceOrderModel();
-	currentDate: string;
-	currentYear: string;
-	currentMonth: string;
 	greater: boolean | undefined;
+	monthList:  number[]
+	yearList: number[]
 
 	constructor(private service: LoginService, private cartService: CartItemsService, private router: Router) {
 		this.service.getAuthenticatedUser().subscribe(user => {
@@ -38,10 +37,9 @@ export class PaymentComponent implements OnInit {
 				}
 			});
 		});
-		this.currentDate = formatDate(new Date(), 'yyyy/MM/dd', 'en')
-		this.currentYear = this.currentDate.substr(0, 4);
-		this.currentMonth = this.currentDate.substr(5, 2);
-
+		const currentYear = new Date().getFullYear()
+		this.monthList = new Array(12).fill(0).map((_, i) => i + 1)
+		this.yearList = new Array(5).fill(0).map((_, i) => currentYear + i)
 	}
 
 	ngOnInit(): void { }
@@ -73,14 +71,6 @@ export class PaymentComponent implements OnInit {
 		this.addressId = address.id;
 	}
 
-	getMonthsList(): number[] {
-		const currentMethod = new Date().getMonth() + 2 // zero based index
-		return new Array(12 - currentMethod).fill(0).map((_, i) => currentMethod + i)
-	}
-  
-	getYearsList(): number[] {
-		const currentYear = new Date().getFullYear()
-		return new Array(5).fill(0).map((_, i) => currentYear + i)
-	}
+	
 
 }

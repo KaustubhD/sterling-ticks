@@ -35,6 +35,7 @@ import { CloudinaryModule, CloudinaryConfiguration} from '@cloudinary/angular-5.
 import { Cloudinary } from 'cloudinary-core';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SuccessComponent } from './components/success/success.component';
+import { ValidateExpiryDirective } from './directives/expiryValidator/validate-expiry.directive';
 
 @NgModule({
 	declarations: [
@@ -63,7 +64,8 @@ import { SuccessComponent } from './components/success/success.component';
 		BymodelnoComponent,
 		AdminComponent,
   		PaymentComponent,
-        SuccessComponent
+        SuccessComponent,
+        ValidateExpiryDirective
 	],
 	imports: [
 		BrowserModule,
