@@ -39,6 +39,7 @@ const routes: Routes = [
   {path: 'bymodelno',component:BymodelnoComponent, canActivate: [AdminGuard]},
   {path: 'payment', component:PaymentComponent},
   {path: 'success', component:SuccessComponent},
+  {path: '**', redirectTo: ""},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
