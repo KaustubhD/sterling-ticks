@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpinnerService } from './services/shared/spinner/spinner.service';
 
 @Component({
 	selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'sterling-ticks';
+	isSpinnerActive: boolean = false;
+
+	constructor(private spinnerService: SpinnerService) {
+		this.spinnerService.isSpinnerActive.subscribe((value: boolean) => {
+			this.isSpinnerActive = value
+		})
+	}
 }

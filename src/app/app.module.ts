@@ -36,6 +36,7 @@ import { Cloudinary } from 'cloudinary-core';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SuccessComponent } from './components/success/success.component';
 import { ValidateExpiryDirective } from './directives/expiryValidator/validate-expiry.directive';
+import { SpinnerComponent } from './components/shared/spinner/spinner.component';
 
 @NgModule({
 	declarations: [
@@ -65,7 +66,8 @@ import { ValidateExpiryDirective } from './directives/expiryValidator/validate-e
 		AdminComponent,
   		PaymentComponent,
         SuccessComponent,
-        ValidateExpiryDirective
+        ValidateExpiryDirective,
+        SpinnerComponent
 	],
 	imports: [
 		BrowserModule,

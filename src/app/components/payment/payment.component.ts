@@ -5,7 +5,7 @@ import { PaymentModel } from '../models/payment.model';
 import { PlaceOrderModel } from '../models/placeorder.model';
 import { AddressModel } from '../models/address.model';
 import { Router } from '@angular/router';
-import { formatDate } from '@angular/common';
+import { SpinnerService } from 'src/app/services/shared/spinner/spinner.service';
 
 
 @Component({
@@ -27,7 +27,8 @@ export class PaymentComponent implements OnInit {
 	monthList:  number[]
 	yearList: number[]
 
-	constructor(private service: LoginService, private cartService: CartItemsService, private router: Router) {
+	constructor(private service: LoginService, private cartService: CartItemsService,
+		private router: Router, private spinnerService: SpinnerService) {
 		this.service.getAuthenticatedUser().subscribe(user => {
 			this.name = user.userName;
 			cartService.getTotalAmount(this.name).subscribe(() => {
@@ -45,6 +46,7 @@ export class PaymentComponent implements OnInit {
 	ngOnInit(): void { }
 
 	onPaymentSuccess() {
+		this.spinnerService.showSpinner()
 		this.payment.expiry = new Date(this.year, this.month)
 		this.cartService.saveCard(this.payment, this.name).then((res: any) => {
 			this.payment.paymentMethodId = res.id
@@ -52,11 +54,11 @@ export class PaymentComponent implements OnInit {
 			this.order.userName = this.name
 			this.order.addressId = this.addressId
 			this.order.transaction.amount = this.totalPrice
-			this.cartService.placeOrder(this.order).then((res: any) => {
+			return this.cartService.placeOrder(this.order).then((res: any) => {
 				let result: boolean = res.result;
 				this.paymentSuccess = result;
 				if(this.paymentSuccess == true){
-
+					
 					this.router.navigate(['/success'])
 				}
 			}).catch((e) => {
@@ -64,6 +66,9 @@ export class PaymentComponent implements OnInit {
 			})
 		}).catch(() => {
 			this.paymentSuccess = false;
+		})
+		.finally(() => {
+			this.spinnerService.hideSpinner()
 		})
 	}
 
