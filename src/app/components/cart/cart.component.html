@@ -56,22 +56,24 @@
                     <table class="table">
                           <tr>
                             <th scope="col">Total Price</th>
-                            <td scope="row">{{getTotalPrice() | currency:'INR'}}</td>
+                            <td class="text-right" scope="row">{{getTotalPrice() | currency:'INR'}}</td>
                           </tr>
                           <tr>
                             <th scope="col">Discount Price</th>
-                            <td scope="row" class="text-danger">{{getDiscountPrice() | currency : 'INR'}}</td>
+                            <td scope="row" class="text-danger text-right">- {{getDiscountPrice() | currency : 'INR'}}</td>
                           </tr>
                           <tr *ngIf="voucherDiscount > 0">
                             <th scope="col">Voucher Discount</th>
-                            <td scope="row" class="text-danger">({{ voucherDiscount }}%) {{getVoucherDiscount() | currency : 'INR'}}</td>
+                            <td scope="row" class="text-danger text-right">({{ voucherDiscount }}%) -&nbsp;{{ getVoucherDiscount() | currency : 'INR'}}</td>
                           </tr>
+						  <tr>
+							  <td colspan="2" class="hr-col"><hr></td>
+						  </tr>
                           <tr>
                             <th scope="col">Grand Total</th>
-                            <td scope="row" class="text-success">{{getTotalAmount()  | currency : 'INR'}}</td>
+                            <td scope="row" class="text-success text-right">{{getTotalAmount()  | currency : 'INR'}}</td>
                           </tr>
-                      </table>
-                    <hr> <a routerLink="/payment" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
+                      </table><a routerLink="/payment" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
                 </div>
             </div>
         </div></div>

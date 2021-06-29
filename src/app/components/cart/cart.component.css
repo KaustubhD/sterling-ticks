@@ -132,3 +132,6 @@ a {
 .voucher-message .invalid {
 	color: #F44336;
 }
+.hr-col hr{
+	margin: 0;
+}
