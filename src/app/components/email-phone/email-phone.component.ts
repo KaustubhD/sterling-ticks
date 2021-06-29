@@ -27,10 +27,10 @@ export class EmailPhoneComponent implements OnInit {
 				.toPromise()
 				.then(() => this.navigate())
 		}
-			else if (choice == 2){
-				this.http.post(URLS.OTP_GENERATE, {username: this.username, phone: this.phone})
-				.toPromise()
-				.then(() => this.navigate())
+		else if (choice == 2){
+			this.http.post(URLS.OTP_GENERATE, {username: this.username, phone: this.phone})
+			.toPromise()
+			.then(() => this.navigate())
 		}
 		else {
 			// Do nothing
