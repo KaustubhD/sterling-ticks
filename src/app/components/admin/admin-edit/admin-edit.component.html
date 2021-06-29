@@ -39,14 +39,14 @@
 
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="collection">Product Collection: </label>
-                <input class="form-control is-valid" name='collection' [(ngModel)]='product.collection.name' required #collection=ngModel pattern="[A-Za-z]{3,}">
+                <input class="form-control is-valid" name='collection' [(ngModel)]='product.collection.name' required #collection=ngModel pattern="[A-Za-z'\s]{3,}">
                 <div class="invalid-feedback">Invalid Collection</div>
             </div>
 
 
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="series">Product Series: </label>
-                <input class="form-control is-valid" name='series' [(ngModel)]='product.series' required #series=ngModel pattern="[a-zA-Z\s_\-/]{1,}">
+                <input class="form-control is-valid" name='series' [(ngModel)]='product.series' required #series=ngModel pattern="[a-zA-Z\s_\-/&]{1,}">
                 <div class="invalid-feedback">Invalid Series</div>
             </div>
 
@@ -184,7 +184,7 @@
             </div>
         </div>
         <div class="button">
-            <button type="submit" class="btn btn-info btn-block ">Update</button>
+            <button type="submit" class="btn btn-info btn-block">Update</button>
         </div>
 
     </form>
