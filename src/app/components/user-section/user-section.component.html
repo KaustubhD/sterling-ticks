@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="address justified" *ngIf="select=='address'">
-                        <app-address [userName]="user.userName"></app-address>
+                        <app-address [userName]="user.userName" [center]="true"></app-address>
                         <button class="btn btn-info" (click)="select='none'">Back to Your Account!</button>
                     </div>
                     <div class="payment justified" *ngIf="select=='payment'">
@@ -98,7 +98,7 @@
                     <div class="img justified" *ngIf="select=='img'">
                         <img class="img-change" [src]="user.userImage">
                         <file-upload [responses]="response"></file-upload>
-                        <button [disabled]="response.length==0" class="btn btn-info" (click)="updateImg()">Upload Image!</button>
+                        <button [disabled]="response[response.length - 1]?.status!='200'" class="btn btn-info" (click)="updateImg()">Upload Image!</button>
                     </div>
                 </div>
             </div>

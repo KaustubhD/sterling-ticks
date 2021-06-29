@@ -10,6 +10,7 @@ import { AddressService } from 'src/app/services/address.service';
 export class AddressComponent implements OnInit {
 
   @Input() userName: string;
+  @Input() center: boolean = false;
   @Output() selectedAddress = new EventEmitter<AddressModel>();
   address: AddressModel[];
   selectedId: number;
